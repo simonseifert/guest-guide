@@ -4,8 +4,6 @@ A multilingual, offline-capable, brand-customizable **guest information PWA** fo
 
 A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**, **TouchStay**, and other "guest info" SaaS tools. Built on **Astro 5 + Tailwind 4** — fast, owned by you, no monthly fee. Mobile-first, sub-200kb first load, full offline support after the first visit.
 
-> Use it for one rental, ten rentals, or as the foundation of a guest-info SaaS of your own.
-
 ---
 
 ## Features
