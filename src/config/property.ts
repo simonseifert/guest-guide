@@ -86,6 +86,44 @@ export const PROPERTY = {
   /* ---------- Vercel deploy ---------- */
   /** Site URL used by Astro for canonical links + OG/Twitter previews. */
   siteUrl: 'https://your-cabin.example.com',
+
+  /* ---------- Affiliate links (optional) ----------
+   * If you have partner accounts with Viator, GetYourGuide, Booking.com or
+   * Amazon, set the IDs below. In any markdown file you can then use:
+   *
+   *     {{viator:Skip-the-line tour | https://viator.com/tours/Paris/d479-12345}}
+   *     {{gyg:Louvre guided tour     | https://getyourguide.com/paris-l16/abc-12345}}
+   *     {{booking:Hotel near you     | https://booking.com/hotel/foo.html}}
+   *     {{amazon:Travel adapter      | https://amazon.com/dp/B07XYZ}}
+   *
+   * The build will append your partner ID to the URL and add
+   * `target="_blank" rel="sponsored noopener"` (Google requires `sponsored`
+   * for paid links). Leave any field empty / null to disable that provider.
+   */
+  affiliates: {
+    viator: '',         // Viator partner code (pid)
+    getYourGuide: '',   // GetYourGuide partner ID
+    booking: '',        // Booking.com aid parameter
+    amazon: '',         // Amazon Associates tag
+  },
+
+  /* ---------- Analytics (optional) ----------
+   * Add a single privacy-friendly analytics provider to learn which sections
+   * guests actually open. Set exactly one of the keys below — leave the
+   * others as `null`. All three options are GDPR-friendly with no cookie
+   * banner required.
+   *
+   *  - Plausible:   https://plausible.io      (or self-host)
+   *  - Umami:       https://umami.is           (or self-host)
+   *  - GoatCounter: https://www.goatcounter.com (free for non-commercial)
+   *
+   * Set to `null` to disable analytics entirely (zero third-party requests).
+   */
+  analytics: null as
+    | null
+    | { plausible: { domain: string; src?: string } }
+    | { umami: { src: string; websiteId: string } }
+    | { goatcounter: { code: string } },
 } as const;
 
 export type PropertyConfig = typeof PROPERTY;

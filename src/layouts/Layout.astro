@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import '../styles/print.css';
 import Icon from '../components/Icon.astro';
+import Analytics from '../components/Analytics.astro';
 import { languages, t, withFallback, type Lang } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 import { PROPERTY } from '../config/property';
@@ -59,6 +60,7 @@ const f = withFallback(footerLabels, lang);
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
     />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <Analytics />
   </head>
   <body data-palette="forest" data-page={isHomepage ? 'home' : 'section'}>
     <div class="page">

@@ -23,6 +23,8 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 - 🆓 **No SaaS fees** — host it on Vercel / Netlify / Cloudflare Pages free tier
 - 🖨️ **Printable A4 poster** — `npm run poster` generates a fridge-ready PNG with Wi-Fi QR + guide QR
 - 📰 **Print-friendly stylesheet** — guests can print any section as clean monochrome A4
+- 💸 **Affiliate-link helper** — earn commission from Viator / GetYourGuide / Booking / Amazon links with one config field
+- 📊 **Privacy-friendly analytics** (optional) — Plausible / Umami / GoatCounter, no cookie banner needed
 
 ## Screenshots
 
@@ -144,7 +146,9 @@ src/
     [lang]/index.astro              ← /en, /de, /hr, /it (homepages)
     [lang]/[slug].astro             ← per-section pages
   i18n/ui.ts                        ← UI strings + per-language labels
+  lib/remark-affiliates.mjs         ← rewrites affiliate links at build time
   styles/global.css                 ← design system tokens + component CSS
+  styles/print.css                  ← print stylesheet (single column, hide chrome)
 public/
   logo.svg                          ← your wordmark
   favicon.svg, icon-*.png, apple-touch-icon.png
@@ -164,6 +168,56 @@ scripts/
 - [@vite-pwa/astro](https://vite-pwa-org.netlify.app/frameworks/astro.html) for service worker + manifest generation (Workbox under the hood)
 - [qrcode](https://github.com/soldair/node-qrcode) for build-time Wi-Fi QR generation
 - [rehype-external-links](https://github.com/rehypejs/rehype-external-links) so external markdown links open in new tabs
+
+## Earn commission from your guide (optional)
+
+If you have a Viator, GetYourGuide, Booking.com, or Amazon Associates partner account, the template can attribute every outbound link to you with a single config edit. Hosts using paid SaaS tools cite affiliate revenue as the #1 reason they upgrade tiers — here it's free.
+
+### 1. Add your partner IDs
+
+```ts
+// src/config/property.ts
+affiliates: {
+  viator: 'YOUR_PID',          // Viator partner code
+  getYourGuide: 'YOUR_ID',     // GetYourGuide partner ID
+  booking: 'YOUR_AID',         // Booking.com aid parameter
+  amazon: 'yourtag-20',        // Amazon Associates tag
+},
+```
+
+Don't have a partner account? Apply: [Viator](https://www.viator.com/affiliates/) · [GetYourGuide](https://partner.getyourguide.com/) · [Booking](https://partners.booking.com/) · [Amazon Associates](https://affiliate-program.amazon.com/).
+
+### 2. Use the link prefix in any markdown file
+
+```md
+- [Eiffel Tower skip-the-line](viator:https://viator.com/tours/Paris/d479-12345)
+- [Louvre guided tour](gyg:https://getyourguide.com/paris-l16/abc-12345)
+- [Hotel near you](booking:https://booking.com/hotel/foo.html)
+- [Travel adapter](amazon:https://amazon.com/dp/B07XYZ)
+```
+
+The build strips the `viator:` prefix, appends your partner ID as a query parameter, and adds `target="_blank" rel="sponsored noopener"` (Google requires the `sponsored` rel for paid links — done automatically).
+
+If you leave a partner ID empty, the link still works — it just doesn't earn you a commission. Plain markdown links work as normal.
+
+## Optional analytics
+
+Plug in **one** privacy-friendly analytics provider to learn which sections guests actually open. All three options are GDPR-compliant without a cookie banner.
+
+```ts
+// src/config/property.ts — pick ONE, leave the rest as null
+analytics: { plausible: { domain: 'guest-guide.example.com' } },
+// analytics: { umami: { src: 'https://umami.example.com/script.js', websiteId: 'xxx' } },
+// analytics: { goatcounter: { code: 'your-code' } },
+// analytics: null,  // disabled (zero third-party requests)
+```
+
+Recommended providers:
+- **[Plausible](https://plausible.io/)** — €9/mo or self-host (lightweight 1 KB script)
+- **[Umami](https://umami.is/)** — free self-host, $20/mo cloud
+- **[GoatCounter](https://www.goatcounter.com/)** — free for non-commercial sites
+
+The hosted analytics dashboard tells you "Hot tub gets 80% of section views, Music system gets 5%" — now you know where to put your effort.
 
 ## Print a backup poster
 

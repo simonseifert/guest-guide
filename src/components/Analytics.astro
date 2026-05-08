@@ -1,0 +1,44 @@
+---
+/**
+ * Optional, privacy-friendly analytics.
+ *
+ * Reads PROPERTY.analytics from src/config/property.ts and renders the right
+ * snippet for whichever provider is configured. If `analytics: null`, this
+ * component renders nothing — zero third-party requests.
+ *
+ * All supported providers are GDPR-compliant without a cookie banner.
+ */
+import { PROPERTY } from '../config/property';
+
+const a = PROPERTY.analytics;
+const plausible = a && 'plausible' in a ? a.plausible : null;
+const umami = a && 'umami' in a ? a.umami : null;
+const goatcounter = a && 'goatcounter' in a ? a.goatcounter : null;
+---
+{plausible && (
+  <script
+    is:inline
+    defer
+    data-domain={plausible.domain}
+    src={plausible.src ?? 'https://plausible.io/js/script.js'}
+  />
+)}
+
+{umami && (
+  <script
+    is:inline
+    async
+    defer
+    data-website-id={umami.websiteId}
+    src={umami.src}
+  />
+)}
+
+{goatcounter && (
+  <script
+    is:inline
+    data-goatcounter={`https://${goatcounter.code}.goatcounter.com/count`}
+    async
+    src="//gc.zgo.at/count.js"
+  />
+)}

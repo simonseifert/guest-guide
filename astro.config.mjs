@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import rehypeExternalLinks from 'rehype-external-links';
 import AstroPWA from '@vite-pwa/astro';
 import { PROPERTY } from './src/config/property';
+import { remarkAffiliates } from './src/lib/remark-affiliates.mjs';
 
 export default defineConfig({
   site: PROPERTY.siteUrl,
@@ -15,6 +16,9 @@ export default defineConfig({
     },
   },
   markdown: {
+    remarkPlugins: [
+      [remarkAffiliates, { affiliates: PROPERTY.affiliates }],
+    ],
     rehypePlugins: [
       [
         rehypeExternalLinks,
@@ -24,7 +28,14 @@ export default defineConfig({
           test: (node) => {
             const href = node.properties?.href ?? '';
             if (typeof href !== 'string') return false;
-            return /^https?:\/\//.test(href);
+            if (!/^https?:\/\//.test(href)) return false;
+            // Don't touch affiliate links — the remark-affiliates plugin
+            // already set `rel="sponsored noopener"` (Google requirement)
+            // and overriding it here would strip `sponsored`.
+            const rel = node.properties?.rel;
+            const relStr = Array.isArray(rel) ? rel.join(' ') : (rel ?? '');
+            if (relStr.includes('sponsored')) return false;
+            return true;
           },
         },
       ],
