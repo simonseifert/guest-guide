@@ -6,16 +6,14 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 
 **🌐 [Live demo →](https://guest-guide.vercel.app)** &nbsp;·&nbsp; [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsimonseifert%2Fguest-guide)
 
-![Desktop hero](docs/screenshots/desktop-hero.png)
-
 <table>
-  <tr>
+  <tr valign="top">
     <td width="33%"><img src="docs/screenshots/mobile-home.png" alt="Mobile home"/></td>
     <td width="33%"><img src="docs/screenshots/mobile-section.png" alt="Mobile section page"/></td>
     <td width="33%"><img src="docs/screenshots/mobile-explore.png" alt="Mobile explore the area"/></td>
   </tr>
-  <tr>
-    <td align="center"><sub>Home — Wi-Fi card, house rules, sections grouped by category</sub></td>
+  <tr valign="top">
+    <td align="center"><sub>Home — Wi-Fi QR, house rules, sections grouped by category</sub></td>
     <td align="center"><sub>Section page — safety callouts, prose styled for readability</sub></td>
     <td align="center"><sub>Explore the area — embedded map + place lists</sub></td>
   </tr>
