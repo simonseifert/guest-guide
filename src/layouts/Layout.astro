@@ -136,16 +136,16 @@ const f = withFallback(footerLabels, lang);
       }).catch(() => { /* dev mode: no-op */ });
     </script>
 
-    <script>
+    <script define:vars={{ supportedLangs: Object.keys(languages) }}>
       // Header over-hero state — only for homepages with a hero
       (function() {
         const header = document.getElementById('siteHeader');
         const hero = document.getElementById('hero');
         if (!header || !hero) return;
         function onScroll() {
-          const r = (hero as HTMLElement).getBoundingClientRect();
+          const r = hero.getBoundingClientRect();
           const overHero = r.bottom > 80;
-          header!.classList.toggle('over-hero', overHero);
+          header.classList.toggle('over-hero', overHero);
         }
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
@@ -163,20 +163,21 @@ const f = withFallback(footerLabels, lang);
         });
         document.addEventListener('click', () => langMenu.classList.remove('open'));
         langMenu.addEventListener('click', (e) => {
-          const a = (e.target as HTMLElement).closest('a[data-lang]') as HTMLAnchorElement | null;
+          const a = e.target.closest('a[data-lang]');
           if (!a) return;
-          try { localStorage.setItem('guest-guide-lang', a.dataset.lang!); } catch {}
+          try { localStorage.setItem('guest-guide-lang', a.dataset.lang); } catch {}
         });
       })();
 
-      // First-visit auto-redirect to preferred language
+      // First-visit auto-redirect to preferred language. Supported languages
+      // are injected at build time from `Object.keys(languages)` in
+      // src/i18n/ui.ts so adding a new language Just Works.
       (function() {
-        const supported = ['hr','en','de','it'] as const;
         const stored = (() => { try { return localStorage.getItem('guest-guide-lang'); } catch { return null; } })();
         const path = window.location.pathname;
         const currentLang = path.split('/')[1];
-        if (stored && (supported as readonly string[]).includes(stored) && stored !== currentLang && (supported as readonly string[]).includes(currentLang)) {
-          const newPath = path.replace(/^\/[a-z]{2}/, `/${stored}`);
+        if (stored && supportedLangs.includes(stored) && stored !== currentLang && supportedLangs.includes(currentLang)) {
+          const newPath = path.replace(/^\/[a-z]{2}/, '/' + stored);
           if (newPath !== path) window.location.replace(newPath);
         }
       })();

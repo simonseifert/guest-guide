@@ -89,16 +89,19 @@ export const PROPERTY = {
 
   /* ---------- Affiliate links (optional) ----------
    * If you have partner accounts with Viator, GetYourGuide, Booking.com or
-   * Amazon, set the IDs below. In any markdown file you can then use:
+   * Amazon, set the IDs below. In any markdown file you can then prefix the
+   * URL of an ordinary markdown link with `viator:`, `gyg:`, `booking:`, or
+   * `amazon:`:
    *
-   *     {{viator:Skip-the-line tour | https://viator.com/tours/Paris/d479-12345}}
-   *     {{gyg:Louvre guided tour     | https://getyourguide.com/paris-l16/abc-12345}}
-   *     {{booking:Hotel near you     | https://booking.com/hotel/foo.html}}
-   *     {{amazon:Travel adapter      | https://amazon.com/dp/B07XYZ}}
+   *     [Skip-the-line tour](viator:https://viator.com/tours/Paris/d479-12345)
+   *     [Louvre guided tour](gyg:https://getyourguide.com/paris-l16/abc-12345)
+   *     [Hotel near you](booking:https://booking.com/hotel/foo.html)
+   *     [Travel adapter](amazon:https://amazon.com/dp/B07XYZ)
    *
-   * The build will append your partner ID to the URL and add
-   * `target="_blank" rel="sponsored noopener"` (Google requires `sponsored`
-   * for paid links). Leave any field empty / null to disable that provider.
+   * The build strips the prefix, appends your partner ID to the URL, and
+   * adds `target="_blank" rel="sponsored noopener"` (Google requires
+   * `sponsored` for paid links). Empty partner ID = the link still works,
+   * just no commission. Plain markdown links work as normal.
    */
   affiliates: {
     viator: '',         // Viator partner code (pid)

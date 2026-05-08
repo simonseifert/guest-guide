@@ -95,6 +95,8 @@ export const PROPERTY = {
   defaultLanguage: 'en',
   noindex: true,
   siteUrl: 'https://your-property.example.com',
+  affiliates: { viator: '', getYourGuide: '', booking: '', amazon: '' },  // optional
+  analytics: null,                                                         // optional
 };
 ```
 

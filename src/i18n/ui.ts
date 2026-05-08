@@ -4,8 +4,8 @@
  * Out of the box we ship full UI translations for EN/DE/HR/IT. Any other
  * language code added to `languages` below will fall back to English for any
  * missing string. Run `node scripts/translate.mjs <lang>` to populate the
- * markdown content for a new language; UI strings can be added by hand or
- * through the same script (see scripts/translate.mjs --ui).
+ * markdown content for a new language; UI strings need to be added by hand
+ * here (about 30 strings — copy the `en` block and translate the values).
  */
 
 export const languages = {

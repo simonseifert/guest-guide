@@ -34,12 +34,18 @@ A few of our favourite places — from a short walk away to full-day trips. Repl
 
 **Local specialties:** _replace this with two or three things your area is known for._
 
+<!--
+  ❗ DEMO: remove or replace the block below before you ship.
+  These two links point at fake URLs and exist only to demonstrate the
+  affiliate-link syntax. See README → "Earn commission from your guide".
+-->
+
 ## 🎟️ Tours & experiences
 
 > Hosts can earn commission on tours by adding a partner-program prefix to any markdown link. Set the partner IDs in `src/config/property.ts → affiliates`, then prefix the URL with `viator:`, `gyg:`, `booking:`, or `amazon:`. Plain links work too — just write them as normal markdown links.
 
-- [Eiffel Tower skip-the-line](viator:https://viator.com/tours/Paris/d479-12345)
-- [Louvre guided tour](gyg:https://getyourguide.com/paris-l16/abc-12345)
+- [Eiffel Tower skip-the-line (demo)](viator:https://example.com/replace-with-real-viator-url)
+- [Louvre guided tour (demo)](gyg:https://example.com/replace-with-real-gyg-url)
 
 ## ☔ If it rains
 

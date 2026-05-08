@@ -39,9 +39,15 @@ const out = outArg ? outArg.split('=')[1] : 'dist/poster.png';
 
 const propertyTs = await readFile(resolve(ROOT, 'src/config/property.ts'), 'utf8');
 
+// Pluck `key: '...'` or `key: "..."` from property.ts. Handles escaped
+// quotes (e.g. `name: 'Maria\\'s House'` produced by bootstrap.mjs) by
+// allowing backslash-escaped characters inside the captured string.
 const pluck = (key, fallback = '') => {
-  const m = propertyTs.match(new RegExp(`${key}\\s*:\\s*['\`"]([^'\`"]*)['\`"]`));
-  return m ? m[1] : fallback;
+  const re = new RegExp(`\\b${key}\\s*:\\s*'((?:\\\\.|[^'\\\\])*)'|\\b${key}\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"`);
+  const m = propertyTs.match(re);
+  if (!m) return fallback;
+  const raw = m[1] ?? m[2] ?? '';
+  return raw.replace(/\\(.)/g, '$1');
 };
 
 const PROPERTY = {
