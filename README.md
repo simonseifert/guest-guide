@@ -21,6 +21,8 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 - 🎨 **Brand-customizable** — single config file (`src/config/property.ts`) controls all property-specific data
 - 🔒 **`noindex` by default** — guest info, not search-traffic content
 - 🆓 **No SaaS fees** — host it on Vercel / Netlify / Cloudflare Pages free tier
+- 🖨️ **Printable A4 poster** — `npm run poster` generates a fridge-ready PNG with Wi-Fi QR + guide QR
+- 📰 **Print-friendly stylesheet** — guests can print any section as clean monochrome A4
 
 ## Screenshots
 
@@ -150,6 +152,7 @@ public/
   manifest.webmanifest              ← (auto-generated at build)
 scripts/
   generate-icons.mjs                ← regenerates PWA icons from a source SVG
+  generate-poster.mjs               ← writes dist/poster.png — fridge-ready Wi-Fi + guide QR
   translate.mjs                     ← translate EN markdown into another language
 ```
 
@@ -161,6 +164,23 @@ scripts/
 - [@vite-pwa/astro](https://vite-pwa-org.netlify.app/frameworks/astro.html) for service worker + manifest generation (Workbox under the hood)
 - [qrcode](https://github.com/soldair/node-qrcode) for build-time Wi-Fi QR generation
 - [rehype-external-links](https://github.com/rehypejs/rehype-external-links) so external markdown links open in new tabs
+
+## Print a backup poster
+
+When a guest's phone dies (or they just prefer paper), you want them to be able to walk to the fridge and find the Wi-Fi password and your phone number.
+
+```bash
+npm run poster
+# → dist/poster.png  (A4 at 300 DPI, ~1.4 MB)
+```
+
+Two QR codes — one to join the Wi-Fi automatically, one to open the digital guide — plus the property name, Wi-Fi credentials in plain text, the host phone, and the European emergency number. All pulled from `src/config/property.ts`. Print at A4 with no scaling.
+
+<p align="center">
+  <img src="docs/screenshots/poster-preview.png" alt="Printable A4 poster preview" width="320"/>
+</p>
+
+The site itself also has a print stylesheet — guests can print any section page (rules, hot tub instructions, check-out) as clean monochrome A4. The web chrome (header, language switcher, footer, embedded maps) is hidden automatically.
 
 ## Adding or removing languages
 

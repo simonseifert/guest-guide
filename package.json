@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "translate": "node scripts/translate.mjs"
+    "translate": "node scripts/translate.mjs",
+    "poster": "node scripts/generate-poster.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
