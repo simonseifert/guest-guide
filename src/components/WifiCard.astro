@@ -1,0 +1,82 @@
+---
+import QRCode from 'qrcode';
+import Icon from './Icon.astro';
+import { PROPERTY } from '../config/property';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  ssid?: string;
+  password?: string;
+  encryption?: 'WPA' | 'WEP' | 'nopass';
+  lang: Lang;
+}
+const {
+  ssid = PROPERTY.wifi.ssid,
+  password = PROPERTY.wifi.password,
+  encryption = PROPERTY.wifi.encryption,
+  lang,
+} = Astro.props;
+
+const wifiURI = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
+const qrSvg = await QRCode.toString(wifiURI, {
+  type: 'svg',
+  margin: 1,
+  width: 220,
+  color: { dark: '#14201A', light: '#F4EFE6' },
+});
+
+const labels: Record<Lang, { wifi: string; net: string; pass: string; copy: string; copied: string; foot: string }> = {
+  hr: { wifi: 'Wi-Fi', net: 'Mreža', pass: 'Lozinka', copy: 'Kopiraj', copied: 'Kopirano', foot: 'Skenirajte QR kamerom' },
+  en: { wifi: 'Wi-Fi', net: 'Network', pass: 'Password', copy: 'Copy', copied: 'Copied', foot: 'Scan the QR with your camera' },
+  de: { wifi: 'Wi-Fi', net: 'Netzwerk', pass: 'Passwort', copy: 'Kopieren', copied: 'Kopiert', foot: 'QR mit der Kamera scannen' },
+  it: { wifi: 'Wi-Fi', net: 'Rete', pass: 'Password', copy: 'Copia', copied: 'Copiato', foot: 'Inquadra il QR con la fotocamera' },
+};
+const l = labels[lang];
+---
+<div class="wifi-wrap">
+  <div class="wifi" aria-labelledby="wifiTitle" data-copied={l.copied}>
+    <div class="wifi-head">
+      <span class="label" id="wifiTitle">
+        <Icon name="wifi" />
+        {l.wifi}
+      </span>
+    </div>
+
+    <div class="wifi-grid">
+      <div class="wifi-fields">
+        <div class="wifi-row">
+          <span class="k">{l.net}</span>
+          <span class="v">{ssid}</span>
+          <button type="button" class="copy-btn" data-copy={ssid}>{l.copy}</button>
+        </div>
+        <div class="wifi-row">
+          <span class="k">{l.pass}</span>
+          <span class="v">{password}</span>
+          <button type="button" class="copy-btn" data-copy={password}>{l.copy}</button>
+        </div>
+      </div>
+      <div class="wifi-qr" aria-label="Wi-Fi QR — scan to join" set:html={qrSvg} />
+    </div>
+
+    <div class="wifi-foot">
+      <Icon name="qr" />
+      <span>{l.foot}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const copied = (document.querySelector('.wifi') as HTMLElement)?.dataset.copied ?? 'Copied';
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const v = btn.dataset.copy;
+      if (!v) return;
+      try { await navigator.clipboard.writeText(v); } catch {}
+      const orig = btn.textContent;
+      btn.textContent = copied;
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 1400);
+    });
+  });
+</script>

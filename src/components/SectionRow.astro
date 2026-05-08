@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  href: string;
+  icon: IconName;
+  title: string;
+  summary?: string;
+  safety?: boolean;
+  lang: Lang;
+}
+const { href, icon, title, summary, safety = false, lang } = Astro.props;
+const safetyLabel: Record<Lang, string> = {
+  hr: 'Oprez',
+  en: 'Safety first',
+  de: 'Vorsicht',
+  it: 'Attenzione',
+};
+---
+<a class:list={['row', safety && 'safety']} href={href}>
+  <span class="icon-tile"><Icon name={icon} size={26} /></span>
+  <span class="body">
+    <h4>{title}</h4>
+    {summary && <span class="summary">{summary}</span>}
+    {safety && (
+      <span class="safety-flag">
+        <Icon name="warn" size={10} />
+        {safetyLabel[lang]}
+      </span>
+    )}
+  </span>
+  <Icon name="arrow" size={14} class="arrow" />
+</a>

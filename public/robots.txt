@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# This is the default. The site is also marked noindex via meta + X-Robots-Tag.
+# To allow search engines, set PROPERTY.noindex = false in
+# src/config/property.ts AND replace the rule above with `Allow: /`.

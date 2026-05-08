@@ -1,0 +1,35 @@
+---
+// Static root redirector — picks language client-side from localStorage > navigator.language > 'hr'
+---
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Divjake Log Home – Kraljica šume</title>
+    <meta http-equiv="refresh" content="0; url=/hr" />
+    <script>
+      (() => {
+        const supported = ['hr', 'en', 'de', 'it'];
+        const stored = localStorage.getItem('ksume-lang');
+        let lang = supported.includes(stored ?? '') ? stored : null;
+        if (!lang) {
+          const langs = (navigator.languages?.length ? navigator.languages : [navigator.language]) ?? [];
+          for (const l of langs) {
+            const code = (l ?? '').toLowerCase().split('-')[0];
+            if (supported.includes(code)) { lang = code; break; }
+          }
+        }
+        window.location.replace(`/${lang ?? 'hr'}`);
+      })();
+    </script>
+    <style>
+      body { background: #f5efe3; color: #2f4a3a; font-family: system-ui, sans-serif; display: grid; place-items: center; height: 100vh; margin: 0; }
+      a { color: #2f4a3a; }
+    </style>
+  </head>
+  <body>
+    <p>Loading… <a href="/hr">Otvori vodič</a></p>
+  </body>
+</html>

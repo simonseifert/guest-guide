@@ -1,0 +1,112 @@
+---
+// Tailwind-styled prose container for rendered markdown bodies
+---
+<div class="prose-ksume">
+  <slot />
+</div>
+
+<style is:global>
+  .prose-ksume {
+    color: var(--color-bark-900);
+    line-height: 1.65;
+    font-size: 1.0625rem;
+  }
+  .prose-ksume > * + * { margin-top: 1.1em; }
+  .prose-ksume h2 {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 500;
+    color: var(--color-forest-700);
+    margin-top: 2.25em;
+    margin-bottom: 0.4em;
+    line-height: 1.2;
+  }
+  .prose-ksume h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-forest-700);
+    margin-top: 1.6em;
+    margin-bottom: 0.3em;
+  }
+  .prose-ksume p { margin: 0; }
+  .prose-ksume strong { color: var(--color-forest-800); font-weight: 600; }
+  .prose-ksume a {
+    color: var(--color-forest-700);
+    text-decoration: underline;
+    text-decoration-color: rgba(47, 74, 58, 0.3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s;
+  }
+  .prose-ksume a:hover { text-decoration-color: var(--color-forest-700); }
+  .prose-ksume ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.6em;
+  }
+  .prose-ksume ul > li {
+    position: relative;
+    padding-left: 1.4em;
+    margin-top: 0.45em;
+  }
+  .prose-ksume ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.35em;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-forest-500);
+  }
+  .prose-ksume ol {
+    counter-reset: ksume-counter;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.6em;
+  }
+  .prose-ksume ol > li {
+    counter-increment: ksume-counter;
+    position: relative;
+    padding-left: 2em;
+    margin-top: 0.6em;
+  }
+  .prose-ksume ol > li::before {
+    content: counter(ksume-counter);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    background: var(--color-forest-700);
+    color: var(--color-cream-100);
+    font-size: 0.8em;
+    font-weight: 600;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+  }
+  .prose-ksume code {
+    background: var(--color-forest-700);
+    color: var(--color-cream-100);
+    padding: 0.15em 0.5em;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .prose-ksume hr {
+    border: 0;
+    border-top: 1px solid rgba(47, 74, 58, 0.15);
+    margin: 2em 0;
+  }
+  .prose-ksume blockquote {
+    border-left: 3px solid var(--color-forest-500);
+    padding-left: 1em;
+    color: var(--color-bark-900);
+    opacity: 0.85;
+    font-style: italic;
+  }
+</style>

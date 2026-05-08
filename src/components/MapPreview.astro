@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+import { PROPERTY } from '../config/property';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  href?: string;
+  embed?: string;
+}
+const {
+  lang,
+  href = PROPERTY.map.shareUrl,
+  embed = PROPERTY.map.embedUrl,
+} = Astro.props;
+
+const place = PROPERTY.map.placeLabel;
+const ariaLabel = place;
+const openLabel: Record<Lang, string> = {
+  hr: 'Otvori u Mapama',
+  en: 'Open in Maps',
+  de: 'In Maps öffnen',
+  it: 'Apri in Maps',
+};
+const c = { place, open: openLabel[lang], ariaLabel };
+---
+<div class="map-card">
+  <iframe
+    class="map-frame"
+    src={embed}
+    title={c.ariaLabel}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+  <div class="map-foot">
+    <span class="place">
+      <Icon name="pin" size={14} />
+      {c.place}
+    </span>
+    <a class="open" href={href} target="_blank" rel="noopener">
+      {c.open}
+      <Icon name="external" size={12} />
+    </a>
+  </div>
+</div>

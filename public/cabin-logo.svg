@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 120" fill="none" aria-label="Cabin logo">
+  <!-- Generic placeholder wordmark.
+       Replace this file with your own SVG logo (white-on-transparent works
+       best for the dark hero overlay). Designed for ~612×120 viewBox.
+       For best result, deliver as an outlined SVG so it scales crisply. -->
+  <g fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif">
+    <!-- Antler mark on the left -->
+    <g transform="translate(60, 60)" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none">
+      <path d="M0 30 L0 0"/>
+      <path d="M0 0 C -10 -8, -18 -16, -22 -28 M-18 -22 L-22 -32 M-14 -18 L-18 -28 M-8 -10 L-12 -22"/>
+      <path d="M0 0 C 10 -8, 18 -16, 22 -28 M18 -22 L22 -32 M14 -18 L18 -28 M8 -10 L12 -22"/>
+    </g>
+    <circle cx="60" cy="92" r="5" fill="#FFFFFF"/>
+    <!-- Wordmark -->
+    <text x="130" y="68" font-size="48" font-style="italic" font-weight="500" fill="#FFFFFF">Your Cabin</text>
+    <text x="130" y="98" font-size="14" font-weight="400" fill="#FFFFFF" letter-spacing="3px">GUEST GUIDE</text>
+  </g>
+</svg>

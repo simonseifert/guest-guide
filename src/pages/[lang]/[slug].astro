@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import MapPreview from '../../components/MapPreview.astro';
+import type { IconName } from '../../components/icons';
+import { t, type Lang } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const all = await getCollection('sections');
+  return all.map((entry) => {
+    const [lang, slug] = entry.id.split('/');
+    return {
+      params: { lang, slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const slug = (entry.id.split('/')[1]) as string;
+
+const iconForSlug: Record<string, IconName> = {
+  jacuzzi: 'jacuzzi',
+  sauna: 'sauna',
+  grill: 'grill',
+  tv: 'tv',
+  coffee: 'coffee',
+  oven: 'oven',
+  water: 'water',
+  avr: 'audio',
+  rules: 'house',
+  checkout: 'clock',
+  explore: 'pine',
+  emergency: 'phone',
+  welcome: 'antlers',
+};
+
+const { Content } = await render(entry);
+
+const safetyCopy: Record<Lang, string> = {
+  hr: 'Pažljivo pročitajte sigurnosna pravila prije korištenja.',
+  en: 'Please read the safety rules carefully before use.',
+  de: 'Bitte lesen Sie die Sicherheitsregeln vor der Nutzung sorgfältig.',
+  it: 'Leggete attentamente le regole di sicurezza prima dell’uso.',
+};
+const importantLabel: Record<Lang, string> = {
+  hr: 'Važno',
+  en: 'Important',
+  de: 'Wichtig',
+  it: 'Importante',
+};
+---
+<Layout title={entry.data.title} description={entry.data.summary}>
+  <article class:list={['section-page', entry.data.safetyCritical && 'safety']}>
+    <a class="back" href={`/${lang}`}>
+      <Icon name="caret" size={10} class="rotate-90" />
+      {t(lang, 'common.back')}
+    </a>
+
+    <header class="s-head">
+      <span class="icon-tile">
+        <Icon name={iconForSlug[slug] ?? 'antlers'} size={30} />
+      </span>
+      <div>
+        <h1>{entry.data.title}</h1>
+        {entry.data.summary && <p class="summary">{entry.data.summary}</p>}
+      </div>
+    </header>
+
+    {entry.data.safetyCritical && (
+      <div class="safety-callout">
+        <Icon name="warn" size={18} />
+        <p><strong>{importantLabel[lang]}:</strong> {safetyCopy[lang]}</p>
+      </div>
+    )}
+
+    {slug === 'explore' && (
+      <div class="explore-map">
+        <MapPreview lang={lang} />
+      </div>
+    )}
+
+    <div class="prose-ksume">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .explore-map { margin: 20px 0 8px; }
+</style>
+
+<style is:global>
+  .back .rotate-90 { transform: rotate(90deg); }
+</style>

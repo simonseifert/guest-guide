@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  href: string;
+  title: string;
+  desc?: string;
+  lang: Lang;
+}
+const { href, title, desc, lang } = Astro.props;
+const eyebrow: Record<Lang, string> = {
+  hr: 'Pročitajte prvo',
+  en: 'Read this first',
+  de: 'Bitte zuerst lesen',
+  it: 'Da leggere per primo',
+};
+---
+<a class="rules-feature" href={href}>
+  <span class="icon-tile"><Icon name="house" size={28} /></span>
+  <span class="meta">
+    <div class="eyebrow">{eyebrow[lang]}</div>
+    <h3>{title}</h3>
+    {desc && <div class="desc">{desc}</div>}
+  </span>
+  <Icon name="arrow" size={16} class="arrow" />
+</a>

@@ -1,0 +1,185 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { languages, t, type Lang } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+import { PROPERTY } from '../config/property';
+// vite-pwa/astro virtual module — gives us the manifest <link> + theme-color
+// tags. Falls back to undefined in dev mode (registerType: autoUpdate).
+// @ts-ignore - virtual module
+import { pwaInfo } from 'virtual:pwa-info';
+
+interface Props {
+  title?: string;
+  description?: string;
+  isHomepage?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const { title, description, isHomepage = false } = Astro.props;
+const pageTitle = title ? `${title} · ${PROPERTY.brand.name}` : PROPERTY.brand.name;
+const pageDescription = description ?? PROPERTY.brand.tagline;
+
+const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
+const langLabels: Record<Lang, { full: string }> = {
+  hr: { full: 'Hrvatski' },
+  en: { full: 'English' },
+  de: { full: 'Deutsch' },
+  it: { full: 'Italiano' },
+};
+---
+<!doctype html>
+<html lang={lang} data-page={isHomepage ? 'home' : 'section'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    {PROPERTY.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#1A2A20" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Favicons + PWA icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/icon.svg" color="#1A2A20" />
+    <meta name="apple-mobile-web-app-title" content={PROPERTY.brand.shortName} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=yes" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+    />
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+  </head>
+  <body data-palette="forest" data-page={isHomepage ? 'home' : 'section'}>
+    <div class="page">
+      <header class:list={['site-header', isHomepage && 'over-hero']} id="siteHeader">
+        <div class="header-inner">
+          <a class="brand" href={`/${lang}`}>
+            <Icon name="antlers" size={22} class="antlers" />
+            <span>{PROPERTY.brand.shortName}</span>
+          </a>
+          <button class="lang-pill" id="langBtn" aria-haspopup="true" aria-expanded="false" type="button">
+            <span id="langLabel">{lang.toUpperCase()}</span>
+            <Icon name="caret" size={10} />
+          </button>
+          <div class="lang-menu" id="langMenu" role="menu">
+            {Object.keys(languages).map((code) => (
+              <a
+                role="menuitem"
+                data-lang={code}
+                href={`/${code}${pathWithoutLang === '/' ? '' : pathWithoutLang}`}
+                aria-current={code === lang ? 'true' : 'false'}
+              >
+                {langLabels[code as Lang].full} <span class="code">{code.toUpperCase()}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <slot />
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="brand">
+            <Icon name="antlers" size={18} />
+            <span>{PROPERTY.brand.name}</span>
+          </div>
+          <dl>
+            <dt>{lang === 'hr' ? 'Adresa' : lang === 'de' ? 'Adresse' : lang === 'it' ? 'Indirizzo' : 'Address'}</dt>
+            <dd>{PROPERTY.address.line1}, {PROPERTY.address.postcode} {PROPERTY.address.city}, {PROPERTY.address.country}</dd>
+            {PROPERTY.hosts[0] && (
+              <>
+                <dt>{lang === 'hr' ? 'Domaćin' : lang === 'de' ? 'Gastgeber:in' : lang === 'it' ? 'Padrone/a' : 'Host'}</dt>
+                <dd>{PROPERTY.hosts[0].name}</dd>
+              </>
+            )}
+            {PROPERTY.website && (
+              <>
+                <dt>Web</dt>
+                <dd><a href={PROPERTY.website} target="_blank" rel="noopener">{PROPERTY.website.replace(/^https?:\/\//, '')}</a></dd>
+              </>
+            )}
+            {PROPERTY.oib && (
+              <>
+                <dt>OIB</dt>
+                <dd>{PROPERTY.oib}</dd>
+              </>
+            )}
+          </dl>
+          <div class="emergency">
+            <span class="badge">112</span>
+            <span class="label">
+              {lang === 'hr' ? 'Jedinstveni broj za hitne slučajeve' :
+               lang === 'de' ? 'Einheitliche Notrufnummer' :
+               lang === 'it' ? 'Numero unico di emergenza' :
+               'European emergency number'}
+            </span>
+          </div>
+          <div class="legal">© {new Date().getFullYear()} {PROPERTY.brand.name}</div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Service worker registration — caches the site for offline cabin use -->
+    <script>
+      // @ts-ignore - virtual module from vite-pwa/astro
+      import('virtual:pwa-register').then(({ registerSW }) => {
+        registerSW({ immediate: true });
+      }).catch(() => { /* dev mode: no-op */ });
+    </script>
+
+    <script>
+      // Header over-hero state — only for homepages with a hero
+      (function() {
+        const header = document.getElementById('siteHeader');
+        const hero = document.getElementById('hero');
+        if (!header || !hero) return;
+        function onScroll() {
+          const r = (hero as HTMLElement).getBoundingClientRect();
+          const overHero = r.bottom > 80;
+          header!.classList.toggle('over-hero', overHero);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+
+      // Lang switcher menu
+      (function() {
+        const langBtn = document.getElementById('langBtn');
+        const langMenu = document.getElementById('langMenu');
+        if (!langBtn || !langMenu) return;
+        langBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = langMenu.classList.toggle('open');
+          langBtn.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('click', () => langMenu.classList.remove('open'));
+        langMenu.addEventListener('click', (e) => {
+          const a = (e.target as HTMLElement).closest('a[data-lang]') as HTMLAnchorElement | null;
+          if (!a) return;
+          try { localStorage.setItem('ksume-lang', a.dataset.lang!); } catch {}
+        });
+      })();
+
+      // First-visit auto-redirect to preferred language
+      (function() {
+        const supported = ['hr','en','de','it'] as const;
+        const stored = (() => { try { return localStorage.getItem('ksume-lang'); } catch { return null; } })();
+        const path = window.location.pathname;
+        const currentLang = path.split('/')[1];
+        if (stored && (supported as readonly string[]).includes(stored) && stored !== currentLang && (supported as readonly string[]).includes(currentLang)) {
+          const newPath = path.replace(/^\/[a-z]{2}/, `/${stored}`);
+          if (newPath !== path) window.location.replace(newPath);
+        }
+      })();
+    </script>
+  </body>
+</html>

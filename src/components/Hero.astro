@@ -1,0 +1,53 @@
+---
+import { PROPERTY } from '../config/property';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+/* Edit these per-language headlines for your property. The {titleEm} segment
+   gets a heavier weight and is rendered as an inline emphasis. */
+const copy: Record<Lang, { eyebrow: string; titleLead: string; titleEm: string; titleTail: string }> = {
+  hr: {
+    eyebrow: 'Vodič za goste',
+    titleLead: 'Dobrodošli u ',
+    titleEm: 'kolibu',
+    titleTail: '. Sve što vam treba — na jednom mjestu.',
+  },
+  en: {
+    eyebrow: 'Guest guide',
+    titleLead: 'Welcome to ',
+    titleEm: 'the cabin',
+    titleTail: '. Everything you need — in one place.',
+  },
+  de: {
+    eyebrow: 'Gästeführer',
+    titleLead: 'Willkommen in ',
+    titleEm: 'der Hütte',
+    titleTail: '. Alles, was Sie brauchen — an einem Ort.',
+  },
+  it: {
+    eyebrow: 'Guida per gli ospiti',
+    titleLead: 'Benvenuti nella ',
+    titleEm: 'baita',
+    titleTail: '. Tutto ciò che vi serve — in un unico posto.',
+  },
+};
+
+const c = copy[lang];
+const subline = `${PROPERTY.address.city}, ${PROPERTY.address.country} — ${PROPERTY.brand.name}.`;
+---
+<section class="hero" id="hero" style={`--hero-photo: url('${PROPERTY.hero.photoSrc}')`}>
+  <div class="photo" role="img" aria-label={PROPERTY.hero.photoAlt}></div>
+  <div class="scrim"></div>
+  <div class="hero-stack">
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="dash"></span><span>{c.eyebrow}</span></p>
+      <img class="wordmark" src={PROPERTY.brand.logoSrc} alt={PROPERTY.brand.name} width="612" height="120" />
+      <h1>{c.titleLead}<em>{c.titleEm}</em>{c.titleTail}</h1>
+      <p class="sub">{subline}</p>
+    </div>
+  </div>
+</section>

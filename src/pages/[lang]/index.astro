@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import WifiCard from '../../components/WifiCard.astro';
+import RulesFeature from '../../components/RulesFeature.astro';
+import AntlerDivider from '../../components/AntlerDivider.astro';
+import SectionGroup from '../../components/SectionGroup.astro';
+import SectionRow from '../../components/SectionRow.astro';
+import MapPreview from '../../components/MapPreview.astro';
+import { languages, t, type Lang } from '../../i18n/ui';
+import type { IconName } from '../../components/icons';
+import { PROPERTY } from '../../config/property';
+
+const WIFI_SSID = PROPERTY.wifi.ssid;
+const WIFI_PASSWORD = PROPERTY.wifi.password;
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const all = await getCollection('sections');
+const sections = all
+  .filter((s) => s.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const slug = (s: typeof sections[number]) => s.id.split('/')[1];
+const rules = sections.find((s) => s.data.category === 'rules');
+const indulge = sections.filter((s) => s.data.category === 'indulge');
+const tech = sections.filter((s) => s.data.category === 'tech');
+const stay = sections.filter((s) => s.data.category === 'stay');
+
+// Map markdown slugs → icon names from our custom icon set.
+const iconForSlug: Record<string, IconName> = {
+  jacuzzi: 'jacuzzi',
+  sauna: 'sauna',
+  grill: 'grill',
+  tv: 'tv',
+  coffee: 'coffee',
+  oven: 'oven',
+  water: 'water',
+  avr: 'audio',
+  rules: 'house',
+  checkout: 'clock',
+  explore: 'pine',
+  emergency: 'phone',
+  welcome: 'antlers',
+};
+---
+<Layout isHomepage>
+  <Hero lang={lang} />
+
+  <WifiCard ssid={WIFI_SSID} password={WIFI_PASSWORD} lang={lang} />
+
+  {rules && (
+    <RulesFeature
+      lang={lang}
+      href={`/${lang}/${slug(rules)}`}
+      title={rules.data.title}
+      desc={rules.data.summary}
+    />
+  )}
+
+  <AntlerDivider />
+
+  {indulge.length > 0 && (
+    <SectionGroup title={t(lang, 'cat.indulge')} num="01" meta={t(lang, 'cat.indulge.sub')}>
+      {indulge.map((s) => (
+        <SectionRow
+          lang={lang}
+          href={`/${lang}/${slug(s)}`}
+          icon={iconForSlug[slug(s)] ?? 'antlers'}
+          title={s.data.title}
+          summary={s.data.summary}
+          safety={s.data.safetyCritical}
+        />
+      ))}
+    </SectionGroup>
+  )}
+
+  {tech.length > 0 && (
+    <SectionGroup title={t(lang, 'cat.tech')} num="02" meta={t(lang, 'cat.tech.sub')}>
+      {tech.map((s) => (
+        <SectionRow
+          lang={lang}
+          href={`/${lang}/${slug(s)}`}
+          icon={iconForSlug[slug(s)] ?? 'antlers'}
+          title={s.data.title}
+          summary={s.data.summary}
+          safety={s.data.safetyCritical}
+        />
+      ))}
+    </SectionGroup>
+  )}
+
+  {stay.length > 0 && (
+    <SectionGroup title={t(lang, 'cat.stay')} num="03" meta={t(lang, 'cat.stay.sub')}>
+      {stay.map((s) => (
+        <SectionRow
+          lang={lang}
+          href={`/${lang}/${slug(s)}`}
+          icon={iconForSlug[slug(s)] ?? 'antlers'}
+          title={s.data.title}
+          summary={s.data.summary}
+          safety={s.data.safetyCritical}
+        />
+      ))}
+      <MapPreview lang={lang} />
+    </SectionGroup>
+  )}
+</Layout>
