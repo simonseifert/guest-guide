@@ -3,48 +3,43 @@ title: Musiksystem
 icon: 🎵
 order: 8
 category: tech
-summary: Onkyo TX-8220 Stereo-Receiver — Einschalten, Eingangsquelle, Bluetooth.
+summary: Wie Sie den Verstärker einschalten, eine Quelle wählen und vom Telefon streamen.
 ---
 
-Das Musiksystem ist ein **Onkyo TX-8220** — ein Stereo-Receiver (Verstärker) mit Bluetooth und FM/AM-Radio. Er ist mit den Lautsprechern im Raum verbunden.
+Das Musiksystem ist ein Stereo-Receiver / Verstärker, der mit den Lautsprechern im Raum verbunden ist. Die meisten modernen Receiver funktionieren ähnlich — diese Anleitung ist bewusst allgemein gehalten. _Bitte mit den Spezifika Ihres Modells ersetzen._
 
 ## ▶️ Ein-/Ausschalten
 
-- Drücken Sie die **🔘 Power-Taste** an der Vorderseite oder auf der Fernbedienung.
-- Die Kontrollleuchte um die Taste leuchtet, wenn das Gerät an ist.
+- Drücken Sie die **Power-Taste** an der Vorderseite oder auf der Fernbedienung.
+- Eine Kontrollleuchte zeigt an, wenn das Gerät eingeschaltet ist.
 
 ## 🎚️ Lautstärke
 
-- Der **große runde Knopf rechts** (Volume) — drehen, um die Lautstärke zu ändern.
-- Langsam aufdrehen — das Gerät ist kräftig (100 W pro Kanal) und kann unerwartet laut werden.
+- Verwenden Sie den **großen Lautstärkeregler** an der Vorderseite (oder die Fernbedienung).
+- Drehen Sie langsam auf — die meisten Receiver haben viel Leistung und werden schnell laut.
 
-## 🎛️ Eingangsquelle wählen
+## 🎛️ Eingang wählen
 
-Links vom Lautstärkeregler ist der **kleine Input-Selector-Knopf** — drehen, um zu wählen:
+Mit dem **Input Selector** wählen Sie die Quelle:
 
-- **NET / BT** — Bluetooth (siehe unten)
-- **TUNER** — FM/AM-Radio
-- **CD / GAME / AUX / PHONO** — analoge Eingänge (CD-Player, Plattenspieler usw.)
+- **Bluetooth** — vom Telefon streamen (siehe unten)
+- **Tuner** — FM/AM-Radio
+- **CD / Aux** — analoge Eingänge
 
-Die aktuelle Quelle wird auf dem **Frontdisplay** angezeigt.
+Die aktuelle Quelle wird auf dem Frontdisplay angezeigt.
 
 ## 🔵 Bluetooth — mit dem Telefon koppeln
 
-1. Den **Input Selector** auf **NET/BT** stellen (oder **BT**-Taste auf der Fernbedienung).
+1. Stellen Sie den **Input Selector** auf **Bluetooth** (oder drücken Sie **BT** auf der Fernbedienung).
 2. Im Display erscheint **"Pairing"**.
-3. Am Telefon die **Bluetooth-Einstellungen** öffnen und **"Onkyo TX-8220"** auswählen.
-4. Ein paar Sekunden warten — sobald der Telefon-Name im Display steht, sind Sie verbunden.
-5. Musik wie gewohnt abspielen — sie kommt aus den Lautsprechern.
+3. Öffnen Sie am Telefon die **Bluetooth-Einstellungen** und wählen Sie **\[den Namen Ihres Receivers\]**.
+4. Warten Sie ein paar Sekunden — sobald der Telefon-Name im Display erscheint, sind Sie verbunden.
+5. Spielen Sie Musik wie gewohnt ab — sie kommt aus den Lautsprechern.
 
-Beim nächsten Mal verbindet sich das Telefon automatisch, wenn der Receiver an ist und BT gewählt ist.
+Beim nächsten Mal verbindet sich das Telefon automatisch, wenn der Receiver eingeschaltet und Bluetooth ausgewählt ist.
 
 ## 🔇 Wenn kein Ton kommt
 
-- Prüfen, ob das Gerät **stumm geschaltet** ist (Mute-Taste auf der Fernbedienung — Display zeigt *"Muting"*).
-- Prüfen, ob die **richtige Quelle** gewählt ist (Input Selector).
-- Prüfen, ob die **Lautsprecher an** sind — die **Speaker-A-Taste** muss eingedrückt sein (Lampe leuchtet).
-- Wenn Sie den Fernseher über das AUX-Kabel hören wollen, kommt der TV-Ton nur durch, wenn AUX als Quelle gewählt ist.
-
-## 📋 Spezifikationen
-
-[Onkyo TX-8220 — offizielle Seite →](https://onkyo.com/emea/home-audio/tx-8220)
+- Prüfen Sie, ob das Gerät **stumm geschaltet** ist (Mute-Taste auf der Fernbedienung).
+- Prüfen Sie, ob der **richtige Eingang gewählt** ist.
+- Prüfen Sie, ob die **Lautsprecher am Receiver eingeschaltet** sind.

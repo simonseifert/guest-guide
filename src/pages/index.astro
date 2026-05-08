@@ -1,18 +1,21 @@
 ---
-// Static root redirector — picks language client-side from localStorage > navigator.language > 'hr'
+// Static root redirector — picks language client-side from
+// localStorage > navigator.language > PROPERTY.defaultLanguage.
+import { PROPERTY } from '../config/property';
+const supported = PROPERTY.languages;
+const fallback = PROPERTY.defaultLanguage;
 ---
 <!doctype html>
-<html lang="hr">
+<html lang={fallback}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Divjake Log Home – Kraljica šume</title>
-    <meta http-equiv="refresh" content="0; url=/hr" />
-    <script>
+    <title>{PROPERTY.brand.name}</title>
+    <meta http-equiv="refresh" content={`0; url=/${fallback}`} />
+    <script define:vars={{ supported, fallback }}>
       (() => {
-        const supported = ['hr', 'en', 'de', 'it'];
-        const stored = localStorage.getItem('ksume-lang');
+        const stored = localStorage.getItem('guest-guide-lang');
         let lang = supported.includes(stored ?? '') ? stored : null;
         if (!lang) {
           const langs = (navigator.languages?.length ? navigator.languages : [navigator.language]) ?? [];
@@ -21,7 +24,7 @@
             if (supported.includes(code)) { lang = code; break; }
           }
         }
-        window.location.replace(`/${lang ?? 'hr'}`);
+        window.location.replace(`/${lang ?? fallback}`);
       })();
     </script>
     <style>
@@ -30,6 +33,6 @@
     </style>
   </head>
   <body>
-    <p>Loading… <a href="/hr">Otvori vodič</a></p>
+    <p>Loading… <a href={`/${fallback}`}>Open guide</a></p>
   </body>
 </html>

@@ -14,7 +14,7 @@ export const PROPERTY = {
     /** Short version shown in the manifest and sticky header. */
     shortName: 'Your Cabin',
     /** Path to your wordmark / logo SVG (white-on-dark recommended for the hero). */
-    logoSrc: '/cabin-logo.svg',
+    logoSrc: '/logo.svg',
     /** A short tagline used in <meta description> when none is set. */
     tagline: 'Guest guide',
   },
@@ -26,8 +26,8 @@ export const PROPERTY = {
     postcode: '00000',
     country: 'Your Country',
   },
-  /** Croatian tax ID (or local equivalent). Set to `null` to hide the row. */
-  oib: null as string | null,
+  /** Local tax / business ID (e.g. Croatian OIB, Italian P.IVA). Set to `null` to hide the row. */
+  taxId: null as string | null,
   /** Public website (optional, shown in footer). */
   website: 'https://example.com',
 
@@ -58,7 +58,7 @@ export const PROPERTY = {
   /* ---------- Hero ---------- */
   hero: {
     /** Path to a wide cinematic photo of your property. ~1920×1280 ideal. */
-    photoSrc: '/images/hero-twilight.jpg',
+    photoSrc: '/images/hero-placeholder.svg',
     /** Alt text describing the photo (for screen readers). */
     photoAlt: 'A cabin at twilight',
   },
@@ -66,18 +66,18 @@ export const PROPERTY = {
   /* ---------- Map ---------- */
   map: {
     /** Embed URL for an interactive map (e.g. Google My Maps embed). */
-    embedUrl: 'https://www.google.com/maps?q=Hlevci+Croatia&output=embed',
+    embedUrl: 'https://www.google.com/maps?q=Eiffel+Tower&output=embed',
     /** Public share URL. Used by the "Open in Maps" button. */
-    shareUrl: 'https://www.google.com/maps?q=Hlevci+Croatia',
+    shareUrl: 'https://www.google.com/maps?q=Eiffel+Tower',
     /** Short address shown next to the open-in-maps link. */
     placeLabel: 'Your address · Your area',
   },
 
   /* ---------- i18n ---------- */
   /** Languages this build will produce. Drop any you don't need. */
-  languages: ['hr', 'en', 'de', 'it'] as Lang[],
+  languages: ['en', 'de', 'hr', 'it'] as Lang[],
   /** First-visit fallback language when the browser's preference doesn't match. */
-  defaultLanguage: 'hr' as Lang,
+  defaultLanguage: 'en' as Lang,
 
   /* ---------- Site policy ---------- */
   /** Set to `false` once your site is ready for search engines. */

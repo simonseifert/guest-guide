@@ -1,13 +1,13 @@
 ---
-title: Idromassaggio
+title: Idromassaggio (Jacuzzi)
 icon: 💦
 order: 1
 category: indulge
-summary: Sundance Denali 680 — regole d'uso, igiene e sicurezza.
+summary: Regole d'uso, igiene e sicurezza.
 safetyCritical: true
 ---
 
-L'idromassaggio **non è un parco giochi per bambini**, ma uno spazio di relax e terapia, pensato principalmente per adulti. Per garantire igiene, sicurezza e comfort a tutti gli ospiti, vi chiediamo di **rispettare scrupolosamente** le seguenti regole.
+L'idromassaggio (jacuzzi) **non è un parco giochi per bambini** — è uno spazio di relax e terapia, pensato principalmente per adulti. Per garantire igiene, sicurezza e comfort a tutti gli ospiti, vi chiediamo di **rispettare scrupolosamente** le seguenti regole.
 
 ## ⚠️ Regole d'uso
 
@@ -15,16 +15,16 @@ L'idromassaggio **non è un parco giochi per bambini**, ma uno spazio di relax e
 - **Doccia obbligatoria** prima di entrare.
 - **Vietato** entrare con piedi sporchi o con tracce dal giardino o dalla natura (terra, erba, sabbia…) — e **niente animali domestici**.
 - I bambini possono usare la vasca **solo sotto costante supervisione di un adulto**.
-- Vietato saltare, tuffarsi e qualsiasi comportamento inappropriato.
+- Vietato saltare, tuffarsi e qualsiasi comportamento sconsiderato.
 - Permanenza consigliata: **massimo 2 × 20 minuti**.
 - Persone con **ferite aperte, infezioni cutanee o problemi di salute non possono utilizzare la vasca**.
-- **Niente cibo, bevande o oggetti in vetro** nell'idromassaggio.
+- **Niente cibo, bevande o oggetti in vetro** nella jacuzzi.
 
 ## 💧 Manutenzione dell'acqua
 
-In caso di acqua torbida o anomalie, contattate subito la padrona di casa.
+In caso di acqua torbida o anomalie, contattate subito il padrone di casa.
 
-Se il soggiorno supera 2–3 giorni e siete pratici, potete aggiungere una pastiglia multifunzione per la manutenzione dell'acqua — la trovate nella cassapanca di legno accanto alla vasca.
+Se il soggiorno supera i 2–3 giorni e siete pratici del funzionamento, potete aggiungere una pastiglia multifunzione per la manutenzione dell'acqua — la trovate nella cassapanca di legno accanto alla jacuzzi.
 
 ## 🛡️ Dopo l'uso
 

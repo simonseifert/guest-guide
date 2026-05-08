@@ -20,23 +20,16 @@ Linker Drehknopf = **Funktion**, rechter = **Temperatur**.
 - **ECO** — energiesparend; **nicht vorheizen, Tür nicht öffnen** während des Garens
 - **Auftauen** — nur Lüfter
 
-**R-Lampe** = Ofen ist an. **L-Lampe** = Heizelement zieht Strom; geht aus, wenn die Solltemperatur erreicht ist. *Das Ein-/Ausschalten ist normal.*
+**R-Lampe** = Ofen ist an. **L-Lampe** = Heizelement zieht Strom; geht aus, sobald die Solltemperatur erreicht ist. *Das Ein-/Ausschalten ist normal.*
 
 ## 🔥 Erste Nutzung
 
-Bleche und Roste waschen, einsetzen, dann **Ober-/Unterhitze 250 °C / 30 Min.** leer bei offenem Fenster laufen lassen. Leichte Rauch- oder Geruchsentwicklung ist normal — Schutzschichten brennen aus.
+Bleche und Roste waschen, einsetzen, dann **Ober-/Unterhitze 250 °C / 30 Min.** leer bei offenem Fenster laufen lassen. Leichte Rauch- oder Geruchsentwicklung ist normal — Schutzschichten brennen ab.
 
 ## 🛡️ Sicherheit
 
 - **Tür und Glas werden sehr heiß** — Kinder fernhalten.
 - Beim Öffnen tritt **heißer Dampf** aus — Tür langsam öffnen, Gesicht zurück.
-- Nicht auf die offene Tür stützen; keine schweren Gegenstände auflegen (>15 kg).
+- Nicht auf die offene Tür stützen; keine schweren Gegenstände darauf abstellen (>15 kg).
 - Der **Kühl-Lüfter** läuft nach dem Backen einige Minuten nach — das ist normal.
-- Tür-Außenglas: feuchtes Tuch + mildes Reinigungsmittel. **Keine Scheuermittel oder Metallspachtel** — das Glas kann splittern.
-
-## 📋 Spezifikationen
-
-Der Backofen ist ein **Amica TR110TB Retro** (schwarz).
-
-- [Kroatisches Handbuch →](https://www.prirucnici.hr/amica/tr-110-tb/priručnik)
-- [Hersteller-PDF →](https://amica-group.hr/files-api/products-pim/manual/Amica/SER_0018751_IOB/e37690e294f8a0c819457a893f209d0c2f467b05_SER_0018751_IOB.pdf)
+- Tür-Glas: feuchtes Tuch + mildes Reinigungsmittel. **Keine Scheuermittel oder Metallspachtel** — das Glas kann splittern.

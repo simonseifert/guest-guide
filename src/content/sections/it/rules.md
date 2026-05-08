@@ -8,9 +8,9 @@ summary: Regole di soggiorno — ore di silenzio, ospiti, fumo, animali.
 
 ## 🤫 Quiete
 
-Rispettate le ore di silenzio **dalle 22:00 alle 08:00**.
+Vi preghiamo di rispettare le ore di silenzio **dalle 22:00 alle 08:00**.
 
-Feste e raduni più ampi non sono ammessi senza previa autorizzazione della padrona di casa.
+Feste e raduni più ampi non sono ammessi senza previa autorizzazione del padrone di casa.
 
 ## 🚭 Fumo
 
@@ -37,7 +37,7 @@ Dettagli completi nella sezione [Idromassaggio](/it/jacuzzi).
 - Tenete la porta d'ingresso e quella della terrazza chiuse (o tirate la zanzariera) per non far entrare insetti o altri animali. 🦟🐝🐭
 - Quando uscite dalla baita, **spegnete le luci** e il climatizzatore.
 - Custodite le chiavi in un luogo sicuro.
-- Segnalate **subito alla padrona di casa** qualsiasi danno o guasto.
+- Segnalate **subito al padrone di casa** qualsiasi danno o guasto.
 
 ## 🐾 Esterno
 
@@ -45,4 +45,4 @@ Non lasciate scarpe, vestiti o cibo all'aperto di notte — al mattino potreste 
 
 ## 💚 Mobili e attrezzatura
 
-Trattate mobili e attrezzatura come fossero vostri.
+Vi preghiamo di trattare mobili e attrezzatura come fossero vostri.

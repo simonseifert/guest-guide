@@ -1,100 +1,77 @@
 ---
-title: Gorski kotar entdecken
+title: Umgebung erkunden
 icon: 🌲
 order: 9
 category: stay
-summary: Was zu sehen, wo zu essen, und praktische Infos für die Umgebung.
+summary: Was zu sehen, wo zu essen und praktische Infos für die Umgebung.
 ---
 
-Erleben Sie Gorski kotar auf eine andere Art. Hier ist unsere Liste — von Orten direkt vor der Hütte bis zu Tagesausflügen.
+Ein paar unserer Lieblingsorte — von einem kurzen Spaziergang bis zu Tagesausflügen. Ersetzen Sie diese durch Ihre eigenen Empfehlungen.
 
-> ⚠️ **Mobilfunkempfang** kann im Wald lückenhaft sein. Laden Sie die Karte vorab für offline in Google Maps herunter — Einstellungen → Offline-Karten.
+> ⚠️ **Mobilfunkempfang** kann in manchen Gegenden lückenhaft sein. Laden Sie die Karte vorab in Google Maps zur Offline-Nutzung herunter — Einstellungen → Offline-Karten.
 
-## 🥾 Zu Fuß oder bis 15 Min. mit dem Auto
+## 🥾 Zu Fuß / unter 15 Min.
 
-- **Zeleni vir & Vražji prolaz** (Skrad) — Schlucht mit Holzstegen, Wasserfall und Höhle. Der schönste Spaziergang in der Region, direkt um die Ecke. *[Mehr Info](https://zelenivir.com.hr/en/)*
-- **Tor zu Gorski kotar** — Aussichtspunkt mit Blick auf Wald und Schluchten, perfekt für Fotos.
+- **\[Ortsname\]** — Kurzbeschreibung, was besonders ist, warum es sich lohnt. *([Mehr Infos](#))*
+- **\[Ortsname\]** — Aussichtspunkt / Spielplatz / Café / etwas in der Nähe.
 
 ## 🚗 Bis 30 Min. Fahrt
 
-- **Waldpark Golubinjak** (Lokve) — Pfad durch alten Wald, "Königin des Waldes" — eine 500 Jahre alte Tanne. Leicht begehbar, kinderfreundlich.
-- **Lokvarsko jezero** (Lokve) — Baden im Sommer, Bootsfahrten, Wege rund um den See.
-- **Schlucht Kamačnik** (Vrbovsko) — Holzstege entlang eines Baches, am Ende eine smaragdgrüne Quelle.
-- **Petehovac** (Delnice) — Aussichtspunkt, im Winter Schlittenrodeln.
+- **\[Ortsname\]** — Kurzbeschreibung.
+- **\[Ortsname\]** — Kurzbeschreibung.
+- **\[Ortsname\]** — Kurzbeschreibung.
 
 ## 🏞️ Bis 1 Std. Fahrt
 
-- **Nationalpark Risnjak** — unberührte Wildnis, Wege bis zum Gipfel (1528 m).
-- **Bijele und Samarske Stijene** — strenges Naturreservat, dramatische Karstformationen.
-- **Snježnik** — Alternative zum Risnjak, weniger besucht.
-- **Quelle der Kupa** — smaragdgrünes Quellbecken, Ursprung eines der schönsten Flüsse Kroatiens.
-- **Skigebiet Čelimbaša** (Mrkopalj) — Skifahren + Schlittenrodeln am "Gorski sjaj".
+- **\[Ortsname\]** — größerer Ausflug, ideal für einen ganzen Nachmittag.
+- **\[Ortsname\]** — Kurzbeschreibung.
 
 ## 🍽️ Wo essen
 
-- **Volta** (Fužine) — feine lokale Küche, saisonale Karte.
-- **Bitoraj** (Fužine) — Institution für Wildgerichte und Traditionsküche. *Wenn Sie nur ein Restaurant besuchen, dann dieses.*
-- **Mali raj** (Skrad) — bodenständige Küche, nahe der Hütte.
+- **\[Restaurantname\]** — welche Küche, warum Sie ihn mögen.
+- **\[Restaurantname\]** — Kurzbeschreibung.
+- **\[Restaurantname\]** — schnelle / unkomplizierte Option in der Nähe der Unterkunft.
 
-**Lokale Spezialitäten:** Froschschenkel 🐸, Schlafmaus-Eintopf (Puh) 🐭, Wildgerichte (Reh, Wildschwein), Pilze, Waldfrüchte, Käse aus der Region.
+**Lokale Spezialitäten:** _Ersetzen Sie dies durch zwei oder drei Dinge, für die Ihre Region bekannt ist._
 
 ## ☔ Wenn es regnet
 
-- **Volta** oder **Bitoraj** — langes Abendessen mit Wein 🍷
-- **Crna jezera** in Lokve — Höhle (saisonal)
-- **Risnjak-Besucherzentrum** (Crni Lug) — interaktive Ausstellung über den Wald und Bären
-- Zuhause: 🛀 Whirlpool + 🧖 Sauna + Musik über das **Onkyo-System** 🎵
+- **\[Indoor-Option 1\]**
+- **\[Indoor-Option 2\]**
+- Zuhause: 🛀 Whirlpool + 🧖 Sauna + ein Film 🎬
 
 ## 🛒 Praktische Infos
 
 **🛒 Lebensmittel**
 
-- [Konzum Skrad](https://www.google.com/maps/search/?api=1&query=Konzum+Skrad) (~3 km)
-- [Studenac Skrad](https://www.google.com/maps/search/?api=1&query=Studenac+Skrad) (~3 km)
-- [Plodine Delnice](https://www.google.com/maps/search/?api=1&query=Plodine+Delnice) (~15 km)
-- [Trgovina KRK Ravna Gora](https://www.google.com/maps/search/?api=1&query=Trgovina+KRK+Ravna+Gora) (~20 km)
+- [Nächster Supermarkt](https://www.google.com/maps/search/?api=1&query=supermarket+near+me)
 
 **⛽ Tankstellen**
 
-- [INA Delnice](https://www.google.com/maps/search/?api=1&query=INA+Delnice)
-- [Tifon Kupjak](https://www.google.com/maps/search/?api=1&query=Tifon+Kupjak)
-- [INA Ravna Gora](https://www.google.com/maps/search/?api=1&query=INA+Ravna+Gora)
+- [Nächste Tankstelle](https://www.google.com/maps/search/?api=1&query=petrol+station+near+me)
 
 **💵 Geldautomaten**
 
-- [Post Skrad](https://www.google.com/maps/search/?api=1&query=Pošta+Skrad)
-- [Post Delnice](https://www.google.com/maps/search/?api=1&query=Pošta+Delnice)
+- [Nächster Geldautomat](https://www.google.com/maps/search/?api=1&query=ATM+near+me)
 
 **💊 Apotheken**
 
-- [Apotheke Skrad](https://www.google.com/maps/search/?api=1&query=Ljekarna+Skrad)
-- [Apotheke Delnice](https://www.google.com/maps/search/?api=1&query=Ljekarna+Delnice)
+- [Nächste Apotheke](https://www.google.com/maps/search/?api=1&query=pharmacy+near+me)
 
-**🏥 Notaufnahme & Krankenhaus**
+**🏥 Krankenhaus**
 
-- [Krankenhaus Delnice](https://www.google.com/maps/search/?api=1&query=Bolnica+Delnice) — ~25 Min.
-
-**🩺 Tierarzt**
-
-- [Tierklinik Delnice](https://www.google.com/maps/search/?api=1&query=Veterinarska+stanica+Delnice)
+- [Nächstes Krankenhaus](https://www.google.com/maps/search/?api=1&query=hospital+near+me)
 
 ## 🍂 Nach Jahreszeit
 
-**Frühling (März–Mai)** — Wanderungen durch den erwachenden Wald, Kajak auf der Kupa (Brod na Kupi), erste Steinpilze 🍄.
+**Frühling** — _was im Frühling in Ihrer Region schön ist._
 
-**Sommer (Juni–September)** — Baden im **Lokvarsko-See** und am **Bajer** in Fužine; **Meer** in **Rijeka** und **Opatija** (~1 Std. Fahrt); Radtouren im Gorski-kotar-Netz; **Abenteuerpark Vrata** (Fužine) mit Zipline; **Froschschenkel-Festival** (Fužine, Juli).
+**Sommer** — _was im Sommer in Ihrer Region schön ist._
 
-**Herbst (September–November)** — Hochsaison für Pilze 🍄 (Steinpilze, Pfifferlinge); **Wildtage** in Skrad; Herbstfarben; Lauf **Risnjak Trail**.
+**Herbst** — _was im Herbst in Ihrer Region schön ist._
 
-**Winter (Dezember–März)**
-
-- **Skifahren auf Platak** (~1 Std. Fahrt) — das nächste richtige Skigebiet, mit Meerblick
-- **Skigebiet Čelimbaša** (Mrkopalj) — weniger besucht, gut für Anfänger
-- **Schlittenrodeln** auf Petehovac und im "Gorski sjaj" (Mrkopalj)
-- **Schneeschuhwandern und Langlaufen** — Petehovac, Begovo Razdolje
-- **Advent** in **Delnice** und **Fužine** — Weihnachtsmärkte, Glühwein, lebende Krippen
-- **Eisbahn** in Delnice (saisonal)
+**Winter** — _was im Winter in Ihrer Region schön ist._
 
 ## 💚 Unsere persönliche Empfehlung
 
-Fragen Sie uns — Selma und Marija kennen Orte, die auf keiner Karte stehen. Versteckte Picknickwiesen, die beste Quelle, wo zur Saison Pilze wachsen. Schreiben Sie uns gern. 🌿
+Fragen Sie uns einfach — wir kennen Orte, die auf keiner Karte stehen. Schreiben Sie uns gern. 🌿

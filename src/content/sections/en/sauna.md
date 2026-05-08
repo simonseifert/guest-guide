@@ -41,8 +41,3 @@ In a bio sauna we recommend **up to 30 minutes** per session.
 
 Let the fire burn out by itself (don't put it out with water). While embers are live, **don't fully close the air supply** — carbon monoxide risk. **Empty the ash only when cold**, ideally the next day.
 
-## 📋 Specifications
-
-The sauna stove is a **Fintec Loki** (wood-fired).
-
-[Manufacturer's specs →](https://www.fintec.de/saunaofen/fintec-holz-saunaofen-loki/)

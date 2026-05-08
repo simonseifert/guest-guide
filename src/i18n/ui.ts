@@ -6,42 +6,19 @@ export const languages = {
 } as const;
 
 export type Lang = keyof typeof languages;
-export const defaultLang: Lang = 'hr';
+export const defaultLang: Lang = 'en';
 
+/**
+ * Static UI strings, per language. Section names ("nav.*") map to the
+ * markdown filenames in `src/content/sections/<lang>/<slug>.md`. If you
+ * rename, add, or remove sections, update this file to match.
+ *
+ * `site.title` is shown when no per-page title is set; leave as `null` and
+ * the site falls back to `PROPERTY.brand.name` from `src/config/property.ts`.
+ */
 export const ui = {
-  hr: {
-    'site.title': 'Divjake Log Home – Kraljica šume',
-    'site.tagline': 'Vodič za goste',
-    'cat.rules': 'Kućni red',
-    'cat.indulge': 'Užici',
-    'cat.tech': 'Tehnika',
-    'cat.stay': 'Vaš boravak',
-    'cat.indulge.sub': 'Bazen, sauna, roštilj i TV',
-    'cat.tech.sub': 'Aparati i kućanske upute',
-    'cat.stay.sub': 'Odjava, okolica i hitni kontakti',
-    'nav.welcome': 'Dobrodošli',
-    'nav.wifi': 'Wi-Fi',
-    'nav.jacuzzi': 'Hidromasažni bazen',
-    'nav.sauna': 'Sauna',
-    'nav.coffee': 'Aparat za kavu',
-    'nav.grill': 'OFYR roštilj',
-    'nav.tv': 'TV',
-    'nav.oven': 'Pećnica',
-    'nav.rules': 'Kućni red',
-    'nav.checkout': 'Odjava',
-    'nav.explore': 'Gorski kotar',
-    'nav.evisitor': 'Prijava gosta',
-    'nav.contact': 'Kontakt',
-    'cta.host': 'Pišite domaćici',
-    'cta.emergency': 'Hitno (112)',
-    'common.read_more': 'Pročitaj više',
-    'common.back': 'Natrag',
-    'common.important': 'Važno',
-    'common.warning': 'Pažnja',
-    'lang.label': 'Jezik',
-  },
   en: {
-    'site.title': 'Divjake Log Home – Queen of the Forest',
+    'site.title': null,
     'site.tagline': 'Guest guide',
     'cat.rules': 'House rules',
     'cat.indulge': 'Indulge',
@@ -55,12 +32,12 @@ export const ui = {
     'nav.jacuzzi': 'Hot tub',
     'nav.sauna': 'Sauna',
     'nav.coffee': 'Coffee machine',
-    'nav.grill': 'OFYR grill',
+    'nav.grill': 'Grill',
     'nav.tv': 'TV',
     'nav.oven': 'Oven',
     'nav.rules': 'House rules',
     'nav.checkout': 'Check-out',
-    'nav.explore': 'Gorski kotar',
+    'nav.explore': 'Explore the area',
     'nav.evisitor': 'Guest registration',
     'nav.contact': 'Contact',
     'cta.host': 'Message host',
@@ -72,7 +49,7 @@ export const ui = {
     'lang.label': 'Language',
   },
   de: {
-    'site.title': 'Divjake Log Home – Königin des Waldes',
+    'site.title': null,
     'site.tagline': 'Gästeführer',
     'cat.rules': 'Hausordnung',
     'cat.indulge': 'Genießen',
@@ -86,15 +63,15 @@ export const ui = {
     'nav.jacuzzi': 'Whirlpool',
     'nav.sauna': 'Sauna',
     'nav.coffee': 'Kaffeemaschine',
-    'nav.grill': 'OFYR-Grill',
+    'nav.grill': 'Grill',
     'nav.tv': 'TV',
     'nav.oven': 'Backofen',
     'nav.rules': 'Hausordnung',
     'nav.checkout': 'Check-out',
-    'nav.explore': 'Gorski kotar',
+    'nav.explore': 'Umgebung entdecken',
     'nav.evisitor': 'Gästeanmeldung',
     'nav.contact': 'Kontakt',
-    'cta.host': 'Gastgeberin schreiben',
+    'cta.host': 'Gastgeber:in schreiben',
     'cta.emergency': 'Notruf (112)',
     'common.read_more': 'Mehr lesen',
     'common.back': 'Zurück',
@@ -102,8 +79,39 @@ export const ui = {
     'common.warning': 'Achtung',
     'lang.label': 'Sprache',
   },
+  hr: {
+    'site.title': null,
+    'site.tagline': 'Vodič za goste',
+    'cat.rules': 'Kućni red',
+    'cat.indulge': 'Užici',
+    'cat.tech': 'Tehnika',
+    'cat.stay': 'Vaš boravak',
+    'cat.indulge.sub': 'Bazen, sauna, roštilj i TV',
+    'cat.tech.sub': 'Aparati i kućanske upute',
+    'cat.stay.sub': 'Odjava, okolica i hitni kontakti',
+    'nav.welcome': 'Dobrodošli',
+    'nav.wifi': 'Wi-Fi',
+    'nav.jacuzzi': 'Hidromasažni bazen',
+    'nav.sauna': 'Sauna',
+    'nav.coffee': 'Aparat za kavu',
+    'nav.grill': 'Roštilj',
+    'nav.tv': 'TV',
+    'nav.oven': 'Pećnica',
+    'nav.rules': 'Kućni red',
+    'nav.checkout': 'Odjava',
+    'nav.explore': 'Istražite okolicu',
+    'nav.evisitor': 'Prijava gosta',
+    'nav.contact': 'Kontakt',
+    'cta.host': 'Pišite domaćinu',
+    'cta.emergency': 'Hitno (112)',
+    'common.read_more': 'Pročitaj više',
+    'common.back': 'Natrag',
+    'common.important': 'Važno',
+    'common.warning': 'Pažnja',
+    'lang.label': 'Jezik',
+  },
   it: {
-    'site.title': 'Divjake Log Home – Regina della Foresta',
+    'site.title': null,
     'site.tagline': 'Guida per gli ospiti',
     'cat.rules': 'Regole della casa',
     'cat.indulge': 'Goditi',
@@ -117,15 +125,15 @@ export const ui = {
     'nav.jacuzzi': 'Idromassaggio',
     'nav.sauna': 'Sauna',
     'nav.coffee': 'Macchina del caffè',
-    'nav.grill': 'Griglia OFYR',
+    'nav.grill': 'Griglia',
     'nav.tv': 'TV',
     'nav.oven': 'Forno',
     'nav.rules': 'Regole della casa',
     'nav.checkout': 'Check-out',
-    'nav.explore': 'Gorski kotar',
+    'nav.explore': 'Esplora la zona',
     'nav.evisitor': 'Registrazione ospite',
     'nav.contact': 'Contatti',
-    'cta.host': 'Scrivi alla padrona di casa',
+    'cta.host': 'Scrivi al padrone di casa',
     'cta.emergency': 'Emergenza (112)',
     'common.read_more': 'Leggi di più',
     'common.back': 'Indietro',
@@ -136,5 +144,6 @@ export const ui = {
 } as const;
 
 export function t(lang: Lang, key: keyof (typeof ui)[typeof defaultLang]): string {
-  return ui[lang][key] ?? ui[defaultLang][key];
+  const value = ui[lang][key] ?? ui[defaultLang][key];
+  return value ?? '';
 }

@@ -107,10 +107,10 @@ const langLabels: Record<Lang, { full: string }> = {
                 <dd><a href={PROPERTY.website} target="_blank" rel="noopener">{PROPERTY.website.replace(/^https?:\/\//, '')}</a></dd>
               </>
             )}
-            {PROPERTY.oib && (
+            {PROPERTY.taxId && (
               <>
-                <dt>OIB</dt>
-                <dd>{PROPERTY.oib}</dd>
+                <dt>{lang === 'hr' ? 'OIB' : lang === 'de' ? 'USt-ID' : lang === 'it' ? 'P.IVA' : 'Tax ID'}</dt>
+                <dd>{PROPERTY.taxId}</dd>
               </>
             )}
           </dl>
@@ -165,14 +165,14 @@ const langLabels: Record<Lang, { full: string }> = {
         langMenu.addEventListener('click', (e) => {
           const a = (e.target as HTMLElement).closest('a[data-lang]') as HTMLAnchorElement | null;
           if (!a) return;
-          try { localStorage.setItem('ksume-lang', a.dataset.lang!); } catch {}
+          try { localStorage.setItem('guest-guide-lang', a.dataset.lang!); } catch {}
         });
       })();
 
       // First-visit auto-redirect to preferred language
       (function() {
         const supported = ['hr','en','de','it'] as const;
-        const stored = (() => { try { return localStorage.getItem('ksume-lang'); } catch { return null; } })();
+        const stored = (() => { try { return localStorage.getItem('guest-guide-lang'); } catch { return null; } })();
         const path = window.location.pathname;
         const currentLang = path.split('/')[1];
         if (stored && (supported as readonly string[]).includes(stored) && stored !== currentLang && (supported as readonly string[]).includes(currentLang)) {

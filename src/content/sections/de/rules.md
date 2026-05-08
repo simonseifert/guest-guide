@@ -10,7 +10,7 @@ summary: Aufenthaltsregeln — Ruhezeiten, Gäste, Rauchen, Tiere.
 
 Bitte respektieren Sie die Ruhezeiten **von 22:00 bis 08:00 Uhr**.
 
-Partys und größere Versammlungen sind ohne vorherige Genehmigung der Gastgeberin nicht gestattet.
+Partys und größere Versammlungen sind ohne vorherige Genehmigung des Gastgebers nicht gestattet.
 
 ## 🚭 Rauchen
 
@@ -18,7 +18,7 @@ Rauchen ist **nur im Freien** erlaubt.
 
 ## 🛏️ Zusätzliche Gäste
 
-Tagesbesuche, mehrstündiger Aufenthalt oder Übernachtungen von **zusätzlichen Gästen** (Freunde, Verwandte…) sind **NICHT GESTATTET** und werden zusätzlich berechnet, abhängig vom Tag- oder Nachtaufenthalt.
+Tagesbesuche, längere Aufenthalte oder Übernachtungen von **zusätzlichen Gästen** (Freunde, Verwandte…) sind **NICHT GESTATTET** und werden zusätzlich berechnet, abhängig vom Tag- oder Nachtaufenthalt.
 
 Bei einer behördlichen Kontrolle trägt der angemeldete Gast die Kosten möglicher Strafen für nicht angemeldete Personen.
 
@@ -34,10 +34,10 @@ Details im Abschnitt [Whirlpool](/de/jacuzzi).
 ## 🕯️ Sicherheit
 
 - Keine Kerzen im Inneren der Hütte anzünden — nur draußen, in den dafür vorgesehenen Kerzenhaltern.
-- Eingangstür und Terrassentür möglichst geschlossen halten (oder Fliegengitter zuziehen) — gegen Insekten und andere Tiere. 🦟🐝🐭
+- Eingangstür und Terrassentür geschlossen halten (oder Fliegengitter zuziehen), um Insekten und andere Tiere fernzuhalten. 🦟🐝🐭
 - Beim Verlassen der Hütte **Licht** und **Klimaanlage ausschalten**.
 - Schlüssel an einem sicheren Ort aufbewahren.
-- Schäden oder Defekte **sofort der Gastgeberin melden**.
+- Schäden oder Defekte **sofort dem Gastgeber melden**.
 
 ## 🐾 Außenbereich
 

@@ -1,23 +1,23 @@
 ---
-title: Griglia OFYR
+title: Griglia
 icon: 🥩
 order: 3
 category: indulge
-summary: Accensione, preparazione della piastra e pulizia dopo l'uso.
+summary: Accensione, preparazione e pulizia dopo l'uso.
 ---
 
-L'OFYR Classic unisce braciere e piastra per cottura — trattatelo con cura.
+C'è una griglia / braciere all'aperto. Vi preghiamo di trattarli con cura.
 
 ## 🔥 Preparazione
 
-1. **Accendete il fuoco** al centro e lasciate riscaldare la piastra.
-2. **Prima di cucinare**, oliate la piastra con un tovagliolo di carta e un po' d'olio (semi o oliva).
+1. **Accendete il fuoco** e lasciate riscaldare la superficie di cottura.
+2. **Prima di cucinare**, oliate la piastra o la griglia con un tovagliolo di carta e un po' d'olio.
 
 ## 🥩 Cottura
 
-- Nel primo cassetto della cucina o accanto alla griglia trovate una **spatola con il logo OFYR** per girare e spostare i cibi.
-- Spostate il cibo cotto verso il bordo esterno della piastra — è la zona più fresca per mantenerlo caldo.
+- Spatola e pinze sono nel cassetto della cucina (o proprio accanto alla griglia).
+- Spostate il cibo verso il bordo più fresco della superficie di cottura per tenerlo in caldo mentre finite il resto.
 
 ## 🧽 Pulizia
 
-Per favore **rimuovete i residui di cibo dalla piastra mentre è ancora calda** — con tovagliolo di carta e spatola. Così la piastra resta in buone condizioni per gli ospiti successivi.
+Vi preghiamo di **rimuovere i residui di cibo mentre la superficie è ancora calda** — con tovagliolo di carta e spatola. Così la piastra resta in buone condizioni per gli ospiti successivi.

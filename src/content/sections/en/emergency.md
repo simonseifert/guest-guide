@@ -10,31 +10,27 @@ For anything related to your stay — if you need something, something isn't wor
 
 ## 🏡 Host & local help
 
-**Selma Seifert** — host
-[📱 +385 98 184 7383](tel:+385981847383)
-
-**Teta Marija (Marija Katić)** — local helper
-[📱 +385 91 595 8286](tel:+385915958286)
-
-Marija is a local who helps with the cabin, welcomes guests, and is available if Selma can't be reached. If you need **anything** during your stay, feel free to contact her directly.
+Host and helper details are pulled from `src/config/property.ts` and rendered automatically on the homepage. You can also list them here if you want extra context — like _"call \[helper\] if you can't reach \[host\]"._
 
 ## 🆘 Emergency numbers
 
 - **European emergency number:** [112](tel:112)
-- **Medical emergency:** [194](tel:194)
-- **Fire brigade:** [193](tel:193)
-- **Police:** [192](tel:192)
-- **HGSS — Croatian Mountain Rescue:** [call 112](tel:112) and ask for HGSS
-- **HAK — roadside assistance:** [1987](tel:1987) (from abroad: [+385 1 1987](tel:+38511987))
+- **Medical emergency / ambulance:** _local number_
+- **Fire brigade:** _local number_
+- **Police:** _local number_
+- **Roadside assistance:** _local number_
+- **Mountain / sea rescue:** _local number, if relevant_
+
+> Replace these with the right numbers for your country. 112 works across the EU and most of Europe.
 
 ## 🏥 Healthcare nearby
 
-- **Emergency room and hospital** — closest is in **Delnice** (~25 min drive)
-- **Pharmacy** — in **Skrad** and **Delnice**
-- **Veterinarian** — in **Delnice**
+- **Emergency room / hospital** — closest is in _\[town\]_ (~_X_ min drive)
+- **Pharmacy** — in _\[town\]_
+- **Veterinarian** — in _\[town\]_
 
-For a serious medical situation, call [194](tel:194) or [112](tel:112). Don't drive yourself or another guest with serious symptoms — let an ambulance come.
+For a serious medical situation, call [112](tel:112). Don't drive yourself or another guest with serious symptoms — let an ambulance come.
 
 ## 🛠️ Damage or malfunction
 
-Report any damage, fault, or malfunction **immediately** — to Selma or Marija. We'll do our best to resolve it as soon as possible. Thank you for your understanding. 🌲
+Report any damage, fault, or malfunction **immediately**. We'll do our best to resolve it as soon as possible. Thank you for your understanding. 🌲

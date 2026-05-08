@@ -20,7 +20,7 @@ Manopola sinistra = **funzione**, destra = **temperatura**.
 - **ECO** — risparmio energetico; **non preriscaldate, non aprite la porta** durante la cottura
 - **Defrost** — solo ventola
 
-**Spia R** = forno acceso. **Spia L** = la resistenza sta consumando; si spegne al raggiungimento della temperatura. *L'accensione/spegnimento ciclico è normale.*
+**Spia R** = forno acceso. **Spia L** = la resistenza sta consumando corrente; si spegne al raggiungimento della temperatura impostata. *L'accensione e lo spegnimento ciclici sono normali.*
 
 ## 🔥 Primo utilizzo
 
@@ -30,13 +30,6 @@ Lavate vassoi e griglie, rimetteteli, poi fate andare **tradizionale 250 °C / 3
 
 - **Porta e vetro diventano molto caldi** — tenete lontani i bambini.
 - All'apertura esce **vapore caldo** — tirate piano, viso indietro.
-- Non appoggiatevi sulla porta aperta; niente oggetti pesanti sopra (>15 kg).
+- Non appoggiatevi sulla porta aperta; non appoggiateci oggetti pesanti (>15 kg).
 - La **ventola di raffreddamento** può girare qualche minuto dopo la cottura — è normale.
-- Vetro porta: panno umido + detergente delicato. **Niente abrasivi né raschietti metallici** — il vetro può rompersi.
-
-## 📋 Specifiche
-
-Il forno è un **Amica TR110TB Retro** (nero).
-
-- [Manuale croato →](https://www.prirucnici.hr/amica/tr-110-tb/priručnik)
-- [PDF del produttore →](https://amica-group.hr/files-api/products-pim/manual/Amica/SER_0018751_IOB/e37690e294f8a0c819457a893f209d0c2f467b05_SER_0018751_IOB.pdf)
+- Vetro della porta: panno umido + detergente delicato. **Niente abrasivi né raschietti metallici** — il vetro può rompersi.

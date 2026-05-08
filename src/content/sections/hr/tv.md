@@ -3,15 +3,11 @@ title: Televizor
 icon: 📺
 order: 4
 category: indulge
-summary: Pronalaženje kanala kroz IbPRO Smart Player aplikaciju.
+summary: Kako koristiti televizor i unaprijed instalirane streaming aplikacije.
 ---
 
-Za pristup TV kanalima:
+Uključite televizor daljinskim upravljačem — ulaz bi trebao već biti pravilno postavljen.
 
-1. Na TV-u otvorite **Aplikacije**.
-2. Pronađite ikonu **IbPRO Smart Player**.
-3. Pritisnite **OK** na daljinskom upravljaču.
-4. Pričekajte da se aplikacija učita.
-5. Birajte kanale po želji.
+Ako želite gledati programe uživo, potražite **\[vašu aplikaciju za kanale\]** u popisu aplikacija na TV-u i pritisnite **OK**.
 
-Smart TV ima i Netflix, YouTube, i druge aplikacije ako se prijavite svojim računom — ne zaboravite se odjaviti prije odlaska.
+Smart TV ima i Netflix, YouTube i druge streaming aplikacije. Prijavite se svojim računom ako želite — i ne zaboravite se **odjaviti prije odlaska**, kako sljedeći gosti ne bi koristili vašu pretplatu.

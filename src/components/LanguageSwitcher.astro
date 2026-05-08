@@ -62,7 +62,7 @@ const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
   document.querySelectorAll<HTMLAnchorElement>('[data-lang-option]').forEach((a) => {
     a.addEventListener('click', () => {
       const code = a.dataset.langOption;
-      if (code) localStorage.setItem('ksume-lang', code);
+      if (code) localStorage.setItem('guest-guide-lang', code);
     });
   });
 </script>

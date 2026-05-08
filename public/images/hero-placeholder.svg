@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" preserveAspectRatio="xMidYMid slice">
+  <!--
+    Placeholder hero image for Guest Guide.
+    Replace `public/images/hero-placeholder.svg` with your own atmospheric photo
+    (recommended: ~1920x1280 JPG/WebP, 200-400 KB after compression), and update
+    `hero.photoSrc` in `src/config/property.ts`.
+  -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1f17"/>
+      <stop offset="0.55" stop-color="#1a2a20"/>
+      <stop offset="1" stop-color="#26352a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.62" r="0.55">
+      <stop offset="0" stop-color="#f8d089" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#c87b3e" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#1a2a20" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1280" fill="url(#sky)"/>
+  <rect width="1920" height="1280" fill="url(#glow)"/>
+  <!-- Distant tree silhouettes -->
+  <g fill="#0a1410" opacity="0.85">
+    <polygon points="0,820 60,720 110,790 160,690 230,800 280,710 340,790 400,700 460,810 520,740 580,800 640,720 700,800 760,720 820,790 880,710 940,800 1000,720 1060,800 1120,710 1180,790 1240,720 1300,800 1360,720 1420,790 1480,710 1540,800 1600,720 1660,790 1720,710 1780,800 1840,720 1920,790 1920,1280 0,1280"/>
+  </g>
+  <!-- Foreground silhouette -->
+  <g fill="#06100c">
+    <polygon points="0,940 80,860 140,920 220,840 300,920 380,860 460,940 540,860 620,930 700,840 780,920 860,860 940,940 1020,860 1100,920 1180,840 1260,920 1340,860 1420,940 1500,860 1580,920 1660,840 1740,920 1820,860 1920,940 1920,1280 0,1280"/>
+  </g>
+  <!-- Subtle cabin roof shape, centered -->
+  <g fill="#1a1410" opacity="0.9">
+    <polygon points="820,1020 1100,1020 1100,1180 820,1180"/>
+    <polygon points="800,1030 1120,1030 960,920"/>
+    <rect x="940" y="1070" width="40" height="80" fill="#3a2818" opacity="0.85"/>
+    <rect x="860" y="1080" width="44" height="44" fill="#5a3a1c" opacity="0.6"/>
+    <rect x="1016" y="1080" width="44" height="44" fill="#5a3a1c" opacity="0.6"/>
+  </g>
+</svg>

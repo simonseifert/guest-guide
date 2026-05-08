@@ -8,24 +8,19 @@ summary: Orario di check-out, check-out tardivo e cauzione.
 
 ## ⏰ Orario di check-out
 
-**Check-out:** entro le **12:00**.
+**Check-out:** entro le **11:00**.
 
 ## 💶 Check-out tardivo
 
-Se desiderate prolungare il soggiorno, avvisateci in anticipo — possiamo organizzarlo con un sovrapprezzo:
-
-- **Fino alle 16:00** — supplemento **60 EUR**
-- **Fino alle 19:00** — supplemento **120 EUR**
+Se desiderate prolungare il soggiorno, avvisateci in anticipo — di solito possiamo organizzarlo con un sovrapprezzo. _Impostate qui le vostre tariffe._
 
 ## 🔐 Cauzione
 
-La **cauzione di 200 EUR** (versata al check-in) viene **rimborsata integralmente** se il giorno della partenza non viene riscontrato alcun danno.
-
-In caso di danni, la cauzione può essere trattenuta in parte (fino al valore stimato del danno) o per intero.
+La cauzione versata al check-in viene **rimborsata integralmente** se il giorno della partenza non viene riscontrato alcun danno. In caso di danni, la cauzione può essere trattenuta in parte o per intero.
 
 ## ✅ Prima di partire
 
 - Spegnete luci, climatizzatore e tutti gli apparecchi.
-- Rimettete il coperchio sull'idromassaggio.
+- Rimettete il coperchio sull'idromassaggio (se la struttura ne ha uno).
 - Lasciate le chiavi nel posto concordato.
 - Controllate di non aver dimenticato oggetti personali. 🎒

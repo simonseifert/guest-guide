@@ -3,48 +3,43 @@ title: Glazbeni sustav
 icon: 🎵
 order: 8
 category: tech
-summary: Stereo prijemnik Onkyo TX-8220 — paljenje, izvor zvuka, Bluetooth.
+summary: Kako uključiti pojačalo, odabrati ulaz i streamati s telefona.
 ---
 
-Glazbeni sustav je **Onkyo TX-8220** — stereo prijemnik (pojačalo) s Bluetoothom i FM/AM radio prijemnikom. Spojen je na zvučnike u prostoriji.
+Glazbeni sustav je stereo prijemnik / pojačalo spojen na zvučnike u prostoriji. Većina modernih prijemnika radi na isti način — ove su upute namjerno općenite. _Zamijenite specifičnostima vašeg modela._
 
 ## ▶️ Paljenje i isključivanje
 
-- Pritisnite **gumb 🔘 Power** na prednjoj ploči ili na daljinskom upravljaču.
-- Lampica oko gumba se uključi kad je uređaj upaljen.
+- Pritisnite **gumb Power** na prednjoj ploči ili na daljinskom upravljaču.
+- Indikatorska lampica pokazuje da je uređaj uključen.
 
 ## 🎚️ Glasnoća
 
-- Velika **okrugla ručka desno** (Volume) — okrenite za promjenu glasnoće.
-- Polako podižite — uređaj je snažan (100 W po kanalu) i može glasno svirati prije nego što očekujete.
+- Koristite **veliku okruglu ručku za glasnoću** sprijeda (ili daljinski).
+- Polako podižite — većina prijemnika ima dosta snage i može glasno svirati prije nego što očekujete.
 
-## 🎛️ Odabir izvora
+## 🎛️ Odabir ulaza
 
-Lijevo od ručke za glasnoću je **mali kotačić Input Selector** — okrenite ga za izbor:
+Pomoću **selektora ulaza (Input Selector)** odaberite:
 
-- **NET / BT** — Bluetooth (vidi dolje)
-- **TUNER** — FM/AM radio
-- **CD / GAME / AUX / PHONO** — analogni ulazi (CD player, gramofon itd.)
+- **Bluetooth** — streamanje s telefona (vidi dolje)
+- **Tuner** — FM/AM radio
+- **CD / Aux** — analogni ulazi
 
-Što je trenutno odabrano vidi se na **prednjem ekranu**.
+Trenutno odabrani ulaz prikazuje se na prednjem zaslonu.
 
 ## 🔵 Bluetooth — sparivanje s telefonom
 
-1. Okrenite **Input Selector** na **NET/BT** (ili pritisnite tipku **BT** na daljinskom).
-2. Na ekranu će se pojaviti **"Pairing"**.
-3. Na telefonu otvorite **Bluetooth postavke** i odaberite **"Onkyo TX-8220"**.
-4. Pričekajte par sekundi — kad ekran pokaže ime telefona, spojeni ste.
-5. Pustite glazbu kao i obično — ide kroz zvučnike.
+1. Okrenite **Input Selector** na **Bluetooth** (ili pritisnite **BT** na daljinskom).
+2. Na zaslonu će se pojaviti **"Pairing"**.
+3. Na telefonu otvorite **Bluetooth postavke** i odaberite **\[ime vašeg prijemnika\]**.
+4. Pričekajte nekoliko sekundi — kad zaslon pokaže ime telefona, spojeni ste.
+5. Pustite glazbu kao i obično — ići će kroz zvučnike.
 
-Sljedeći put kad uključite uređaj i odaberete BT, telefon se sam spoji ako je u dometu.
+Sljedeći put, ako je prijemnik upaljen i Bluetooth odabran, telefon se spaja automatski.
 
 ## 🔇 Ako nema zvuka
 
-- Provjerite da uređaj **nije utišan** (gumb **Mute** na daljinskom — ekran prikazuje *"Muting"*).
-- Provjerite da je **odabran pravi izvor** (Input Selector).
-- Provjerite da su **zvučnici uključeni** — gumb **Speaker A** mora biti pritisnut (lampica gori).
-- Ako koristite TV preko AUX kabela, zvuk TV-a ne ide kroz prijemnik dok ne odaberete AUX.
-
-## 📋 Specifikacije
-
-[Onkyo TX-8220 — službena stranica →](https://onkyo.com/emea/home-audio/tx-8220)
+- Provjerite da uređaj **nije utišan** (gumb Mute na daljinskom).
+- Provjerite da je **odabran pravi ulaz**.
+- Provjerite da su **zvučnici uključeni** na prijemniku.

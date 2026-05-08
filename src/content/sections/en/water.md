@@ -37,14 +37,6 @@ After two long showers in a row, give it some time before the next one.
 
 This means the boiler has hit a fault.
 
-1. **Switch the boiler off at the mains** (the blue-light switch by the downstairs bathroom) for 1 minute.
+1. **Switch the boiler off at the mains** for 1 minute.
 2. Switch it back on.
-3. If it's still flashing, **contact Selma or Marija** — don't try to open the unit yourself.
-
-## 📋 Specifications
-
-The boiler is an **Ariston Velis Evo 100** (electric, 1500 W, max 65 °C).
-
-- [Croatian manual (Prirucnici.hr) →](https://www.prirucnici.hr/ariston-thermo/velis-evo/priručnik)
-- [English manual (Ariston UK) →](https://library.ariston.co.uk/velis-evo-uk-manual/65441707)
-- [Product page →](https://ptp-zapresic.hr/shop/cijena/bojler-ariston-velis-evo-100-elektricni-15w)
+3. If it's still flashing, **contact us** — don't try to open the unit yourself.

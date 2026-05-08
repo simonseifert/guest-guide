@@ -1,34 +1,34 @@
 ---
-title: Whirlpool
+title: Whirlpool (Jacuzzi)
 icon: 💦
 order: 1
 category: indulge
-summary: Sundance Denali 680 — Nutzungsregeln, Hygiene und Sicherheit.
+summary: Nutzungsregeln, Hygiene und Sicherheit.
 safetyCritical: true
 ---
 
-Der Whirlpool ist **kein Spielplatz für Kinder**, sondern ein Ort der Entspannung und Therapie, vorrangig für Erwachsene gedacht. Damit es für alle hygienisch, sicher und angenehm bleibt, halten Sie sich bitte **unbedingt** an die folgenden Regeln.
+Der Whirlpool (Jacuzzi) ist **kein Spielplatz für Kinder** — er ist ein Ort der Entspannung und Therapie, vorrangig für Erwachsene gedacht. Damit es für alle Gäste hygienisch, sicher und angenehm bleibt, halten Sie sich bitte **strikt** an die folgenden Regeln.
 
 ## ⚠️ Nutzungsregeln
 
 - Die Nutzung erfolgt **auf eigene Gefahr**.
 - **Vor dem Einsteigen unbedingt duschen.**
 - **Kein Zutritt** mit schmutzigen Füßen oder mit Verschmutzungen aus dem Garten oder der Natur (Erde, Gras, Sand…) — und **keine Haustiere**.
-- Kinder dürfen den Whirlpool nur **unter ständiger Aufsicht von Erwachsenen** benutzen.
-- Springen, Tauchen und unangemessenes Verhalten sind verboten.
+- Kinder dürfen den Jacuzzi nur **unter ständiger Aufsicht von Erwachsenen** benutzen.
+- Kein Springen, Tauchen oder grobes Verhalten.
 - Empfohlene Aufenthaltsdauer: **maximal 2 × 20 Minuten**.
 - Personen mit **offenen Wunden, Hautinfektionen oder gesundheitlichen Beschwerden dürfen den Pool nicht benutzen**.
-- **Kein Essen, keine Getränke, keine Glasgegenstände** im Whirlpool.
+- **Keine Speisen, Getränke oder Glasgegenstände** im Jacuzzi.
 
 ## 💧 Wasserpflege
 
-Bei Trübung des Wassers oder anderen Auffälligkeiten kontaktieren Sie bitte sofort die Gastgeberin.
+Bei Trübung des Wassers oder anderen Auffälligkeiten kontaktieren Sie bitte sofort Ihren Gastgeber.
 
-Bei längerem Aufenthalt (mehr als 2–3 Tage) und wenn Sie sich auskennen, können Sie eine Multifunktions-Tablette zur Wasserpflege hinzufügen — sie liegt in der Holzkiste neben dem Whirlpool.
+Bei längerem Aufenthalt (mehr als 2–3 Tage) und wenn Sie sich mit der Bedienung auskennen, können Sie eine Multifunktions-Tablette zur Wasserpflege hinzufügen — sie liegt in der Holzkiste neben dem Jacuzzi.
 
 ## 🛡️ Nach der Nutzung
 
-**Bitte Abdeckung wieder auflegen**, damit weder Insekten noch andere Tiere ins Wasser geraten und die Temperatur bis zum nächsten Mal gehalten wird.
+**Legen Sie die Abdeckung wieder auf**, damit weder Insekten noch andere kleine Tiere ins Wasser geraten und die Temperatur bis zum nächsten Mal gehalten wird.
 
 ---
 

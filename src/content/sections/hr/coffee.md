@@ -3,40 +3,33 @@ title: Aparat za kavu
 icon: ☕
 order: 5
 category: tech
-summary: Iperespresso aparat — priprema, ampule i uobičajeni problemi.
+summary: Kako pripremiti kavu i što učiniti kad ne želi surađivati.
 ---
 
-Aparat je **Illy X7.1 Iperespresso** — radi na Illy Iperespresso ampulama. Detaljne upute proizvođača nalaze se na šanku u **sivoj koverti**.
+Na kuhinjskoj radnoj plohi nalazi se aparat za espresso na kapsule. Kapsule su u ladici lijevo. _Zamijenite informacijama specifičnim za vaš aparat._
 
 ## ▶️ Pokretanje
 
-1. Uključite aparat u struju.
-2. Napunite **plavi spremnik vodom**.
-3. Stavite ampulu u držač.
-4. Pritisnite **glavni prekidač s lijeve strane** dok se ne upali žuta 💛 lampica.
-5. Pričekajte nekoliko minuta da aparat dostigne radnu temperaturu — upalit će se plava 💙 lampica sa slikom šalice.
-6. Stavite šalicu ispod ručke i pritisnite **plavu ikonu šalice** za pripremu kave.
+1. Provjerite je li aparat uključen u struju.
+2. Napunite **spremnik za vodu** ako je nizak.
+3. Umetnite kapsulu u držač.
+4. Pritisnite **glavni prekidač** i pričekajte da se upali lampica spremnosti.
+5. Stavite šalicu ispod mlaznice i pritisnite **tipku za pripremu**.
 
 ## 🔧 Ako kava ne izlazi
 
-Zbog dugog stajanja ili nekorištenja, ampula može biti začepljena.
+Nakon dužeg stajanja, otvor za kapsulu može se začepiti.
 
-- Maknite dršku s ampulom (ili samo ampulu).
-- Pustite **nekoliko šalica vode** da otekne van.
-- ⚠️ Pažljivo — voda je vruća, čuvajte se opeklina.
+- Maknite kapsulu.
+- Propustite **nekoliko šalica čiste vruće vode** kako biste isprali.
+- ⚠️ Oprez — voda je vruća.
 
-Nakon toga ponovno umetnite ampulu i probajte.
+Zatim ponovno umetnite kapsulu i pokušajte. Ako voda uopće ne izlazi, provjerite da je **spremnik za vodu pravilno sjeo** (mora "kliknuti" na mjesto).
 
-Ako voda ne izlazi uopće, provjerite da je **plavi spremnik vode pravilno sjeo** (mora "kliknuti" na mjesto).
+## 🚨 Upozoravajuće lampice
 
-## 🚨 Crveno svjetlo
+Ako vidite crvenu ili trepćuću lampicu upozorenja, **nemojte dalje pritiskati tipke** — javite nam se. Većinu se lako riješi kad znamo o čemu se radi.
 
-Ako se na aparatu pojavi **crveno svjetlo**, **nemojte ništa pritiskati** — javite se Selmi ili Mariji.
+## ⚠️ Mlaznica za paru
 
-## ⚠️ Pazite na paru (Pannarello)
-
-Aparat ima **mlaznicu za paru / mlijeko** sa strane. Ako je ne koristite, ne dirajte je — vrlo je vruća (oko 120 °C) i može uzrokovati opekline.
-
-## 📋 Specifikacije
-
-[Illy X7.1 Iperespresso — službene specifikacije →](https://drinks.hr/proizvod/aparati-za-kavu/x7-1-iperespresso/illy-iperespresso-home-aparat-za-kavu-x7-1-crveni/)
+Ako vaš aparat ima mlaznicu za paru / mlijeko, ne dirajte je tijekom rada — vrlo je vruća.

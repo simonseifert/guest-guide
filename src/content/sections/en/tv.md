@@ -3,15 +3,11 @@ title: TV
 icon: 📺
 order: 4
 category: indulge
-summary: Finding channels via the IbPRO Smart Player app.
+summary: How to use the TV and any preinstalled streaming apps.
 ---
 
-To access the TV channels:
+Turn the TV on with the remote — the input should already be set correctly.
 
-1. Open **Apps** on the TV.
-2. Find the **IbPRO Smart Player** icon.
-3. Press **OK** on the remote.
-4. Wait for the app to load.
-5. Choose any channel.
+If you'd like to watch live channels, look for the **\[your channel app\]** in the TV's apps list and press **OK**.
 
-The smart TV also has Netflix, YouTube, and other apps if you sign in with your account — please remember to sign out before leaving.
+The smart TV also has Netflix, YouTube, and other streaming apps. Sign in with your own account if you'd like — and please remember to **sign out before you leave**, so the next guests don't end up using your subscription.

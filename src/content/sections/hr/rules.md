@@ -10,15 +10,15 @@ summary: Pravila boravka — tihi sati, gosti, pušenje, životinje.
 
 Poštujte mir i tišinu **od 22:00 do 08:00**.
 
-Zabavljanja i veća okupljanja nisu dopuštena bez prethodnog odobrenja domaćice.
+Zabave i veća okupljanja nisu dopušteni bez prethodnog odobrenja domaćina.
 
 ## 🚭 Pušenje
 
-Pušenje je dozvoljeno **samo na otvorenom prostoru**.
+Pušenje je dopušteno **samo na otvorenom**.
 
 ## 🛏️ Dodatni gosti
 
-Boravak preko dana, višesatni boravak ili noćenje **dodatnih gostiju** (prijatelja, rodbine…) **ZABRANJENO** je i dodatno se naplaćuje, ovisno o dnevnom ili noćnom boravku.
+Boravak preko dana, produženi boravak ili noćenje **dodatnih gostiju** (prijatelja, rodbine…) **NIJE DOPUŠTENO** i dodatno se naplaćuje, ovisno o dnevnom ili noćnom boravku.
 
 U slučaju inspekcijskog nadzora, prijavljeni gost snosi trošak kazne za neprijavljene osobe.
 
@@ -26,18 +26,18 @@ U slučaju inspekcijskog nadzora, prijavljeni gost snosi trošak kazne za neprij
 
 - Korištenje bazena na **vlastitu odgovornost**.
 - Djeca moraju biti **pod stalnim nadzorom odraslih**.
-- Nije dozvoljeno **skakanje ili trčanje** oko bazena.
-- **Zabranjeno** je unošenje staklenih predmeta u zonu bazena.
+- Nije dopušteno **skakanje ni trčanje** oko bazena.
+- **Bez staklenih predmeta** u zoni bazena.
 
 Detaljne upute u sekciji [Hidromasažni bazen](/hr/jacuzzi).
 
 ## 🕯️ Sigurnost
 
-- Ne palite svijeće unutar kolibe — samo izvan, u previđene svijećnjake.
+- Ne palite svijeće unutar kolibe — samo izvan, u za to predviđene svijećnjake.
 - Ulazna vrata i vrata terase držite zatvorena (ili povucite mrežicu) zbog letećih i ostalih životinja. 🦟🐝🐭
-- Prilikom izlaska iz objekta **ugasite svjetla** i klimu.
+- Prilikom izlaska iz objekta **ugasite svjetla** i klima-uređaj.
 - Ključeve držite na sigurnom mjestu.
-- Svaku štetu ili kvar **prijavite odmah domaćici**.
+- Svaku štetu ili kvar **odmah prijavite domaćinu**.
 
 ## 🐾 Vanjski prostor
 

@@ -1,23 +1,23 @@
 ---
-title: OFYR grill
+title: Grill
 icon: 🥩
 order: 3
 category: indulge
-summary: Lighting, prepping the plate, and cleaning after use.
+summary: Lighting, prep, and cleaning after use.
 ---
 
-The OFYR Classic is a fire pit and a cooking plate in one — please treat it with care.
+There's an outdoor grill / fire pit. Please treat it with care.
 
 ## 🔥 Prep
 
-1. **Light the fire** in the centre and let the plate heat up.
-2. **Before cooking**, oil the plate with a paper towel and a little oil (regular or olive).
+1. **Light the fire** and let the cooking surface heat up.
+2. **Before cooking**, oil the plate or grates with a paper towel and a little oil.
 
 ## 🥩 Cooking
 
-- The first kitchen drawer (or right next to the grill) has a **spatula with the OFYR logo** for moving and flipping food.
-- Move food to the outer edge of the plate when it's done — that's the cooler holding zone.
+- A spatula and tongs are in the kitchen drawer (or right next to the grill).
+- Move food to the cooler edge of the cooking surface to hold while you finish other items.
 
 ## 🧽 Cleaning
 
-Please **scrape food residue off the plate while it's still warm** — paper towel + spatula. That keeps the plate in good shape for the next guests.
+Please **scrape food residue off while the surface is still warm** — paper towel + spatula. That keeps it in good shape for the next guests.

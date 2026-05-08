@@ -1,23 +1,23 @@
 ---
-title: OFYR roštilj
+title: Roštilj
 icon: 🥩
 order: 3
 category: indulge
-summary: Loženje, priprema ploče, i čišćenje nakon korištenja.
+summary: Loženje, priprema i čišćenje nakon korištenja.
 ---
 
-OFYR Classic je vatreno-središte i ploča za pečenje u jednom — molimo postupajte s njim pažljivo.
+Vanjski roštilj / vatreno središte. Molimo, postupajte s njim pažljivo.
 
 ## 🔥 Priprema
 
-1. **Naložite vatru** u središtu i pričekajte da se ploča zagrije.
-2. **Prije pečenja**, papirnatim ubrusom namažite ploču s malo ulja (obično ili maslinovo).
+1. **Naložite vatru** i pričekajte da se površina za pečenje zagrije.
+2. **Prije pečenja**, papirnatim ubrusom namažite ploču ili rešetku s malo ulja.
 
 ## 🥩 Pečenje
 
-- U prvoj ladici u kuhinji ili pored roštilja nalazi se **lopatica s OFYR logotipom** za pomoć kod okretanja i pomicanja hrane.
-- Pomičite hranu prema vanjskom rubu kada je gotova — tamo je hladnija zona za održavanje topline.
+- Lopatica i hvataljke nalaze se u kuhinjskoj ladici (ili odmah pored roštilja).
+- Pomičite hranu prema hladnijem rubu površine za pečenje kako biste je održavali toplom dok dovršavate ostalo.
 
 ## 🧽 Čišćenje
 
-Molimo da **odstranite ostatke hrane s ploče dok je ploča još topla** — papirnatim ubrusom i lopaticom. Tako ploča ostaje u dobrom stanju za sljedeće goste.
+Molimo, **uklonite ostatke hrane dok je površina još topla** — papirnatim ubrusom i lopaticom. Tako ploča ostaje u dobrom stanju za sljedeće goste.

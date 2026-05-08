@@ -1,18 +1,18 @@
 ---
 // Tailwind-styled prose container for rendered markdown bodies
 ---
-<div class="prose-ksume">
+<div class="prose-guide">
   <slot />
 </div>
 
 <style is:global>
-  .prose-ksume {
+  .prose-guide {
     color: var(--color-bark-900);
     line-height: 1.65;
     font-size: 1.0625rem;
   }
-  .prose-ksume > * + * { margin-top: 1.1em; }
-  .prose-ksume h2 {
+  .prose-guide > * + * { margin-top: 1.1em; }
+  .prose-guide h2 {
     font-family: var(--font-display);
     font-size: 1.65rem;
     font-weight: 500;
@@ -21,7 +21,7 @@
     margin-bottom: 0.4em;
     line-height: 1.2;
   }
-  .prose-ksume h3 {
+  .prose-guide h3 {
     font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 500;
@@ -29,27 +29,27 @@
     margin-top: 1.6em;
     margin-bottom: 0.3em;
   }
-  .prose-ksume p { margin: 0; }
-  .prose-ksume strong { color: var(--color-forest-800); font-weight: 600; }
-  .prose-ksume a {
+  .prose-guide p { margin: 0; }
+  .prose-guide strong { color: var(--color-forest-800); font-weight: 600; }
+  .prose-guide a {
     color: var(--color-forest-700);
     text-decoration: underline;
     text-decoration-color: rgba(47, 74, 58, 0.3);
     text-underline-offset: 3px;
     transition: text-decoration-color 0.15s;
   }
-  .prose-ksume a:hover { text-decoration-color: var(--color-forest-700); }
-  .prose-ksume ul {
+  .prose-guide a:hover { text-decoration-color: var(--color-forest-700); }
+  .prose-guide ul {
     list-style: none;
     padding-left: 0;
     margin-top: 0.6em;
   }
-  .prose-ksume ul > li {
+  .prose-guide ul > li {
     position: relative;
     padding-left: 1.4em;
     margin-top: 0.45em;
   }
-  .prose-ksume ul > li::before {
+  .prose-guide ul > li::before {
     content: "";
     position: absolute;
     left: 0.35em;
@@ -59,20 +59,20 @@
     border-radius: 50%;
     background: var(--color-forest-500);
   }
-  .prose-ksume ol {
-    counter-reset: ksume-counter;
+  .prose-guide ol {
+    counter-reset: guide-counter;
     list-style: none;
     padding-left: 0;
     margin-top: 0.6em;
   }
-  .prose-ksume ol > li {
-    counter-increment: ksume-counter;
+  .prose-guide ol > li {
+    counter-increment: guide-counter;
     position: relative;
     padding-left: 2em;
     margin-top: 0.6em;
   }
-  .prose-ksume ol > li::before {
-    content: counter(ksume-counter);
+  .prose-guide ol > li::before {
+    content: counter(guide-counter);
     position: absolute;
     left: 0;
     top: 0.05em;
@@ -87,7 +87,7 @@
     place-items: center;
     line-height: 1;
   }
-  .prose-ksume code {
+  .prose-guide code {
     background: var(--color-forest-700);
     color: var(--color-cream-100);
     padding: 0.15em 0.5em;
@@ -97,12 +97,12 @@
     font-weight: 600;
     letter-spacing: 0.02em;
   }
-  .prose-ksume hr {
+  .prose-guide hr {
     border: 0;
     border-top: 1px solid rgba(47, 74, 58, 0.15);
     margin: 2em 0;
   }
-  .prose-ksume blockquote {
+  .prose-guide blockquote {
     border-left: 3px solid var(--color-forest-500);
     padding-left: 1em;
     color: var(--color-bark-900);

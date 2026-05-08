@@ -3,40 +3,33 @@ title: Kaffeemaschine
 icon: ☕
 order: 5
 category: tech
-summary: Iperespresso-Maschine — Zubereitung, Kapseln und häufige Probleme.
+summary: Wie Sie Kaffee zubereiten — und was zu tun ist, wenn die Maschine streikt.
 ---
 
-Die Maschine ist eine **Illy X7.1 Iperespresso** — sie verwendet Illy Iperespresso-Kapseln. Die ausführliche Anleitung finden Sie im **grauen Umschlag auf der Theke**.
+Auf der Küchenarbeitsplatte steht eine Espressomaschine mit Kapseln. Die Kapseln liegen in der Schublade links. _Bitte mit den Spezifika Ihrer Maschine ersetzen._
 
 ## ▶️ Inbetriebnahme
 
-1. Stecken Sie das Gerät in die Steckdose.
-2. Füllen Sie den **blauen Wassertank**.
+1. Stellen Sie sicher, dass die Maschine an die Steckdose angeschlossen ist.
+2. Füllen Sie den **Wassertank**, falls nötig.
 3. Setzen Sie eine Kapsel in den Halter ein.
-4. Drücken Sie den **Hauptschalter links**, bis die gelbe 💛 Lampe leuchtet.
-5. Warten Sie einige Minuten, bis die Maschine Betriebstemperatur erreicht — die blaue 💙 Tassen-Lampe leuchtet auf.
-6. Stellen Sie eine Tasse unter den Auslauf und drücken Sie das **blaue Tassen-Symbol**.
+4. Drücken Sie den **Hauptschalter** und warten Sie auf die Bereitschaftslampe.
+5. Stellen Sie eine Tasse unter den Auslauf und drücken Sie die **Brüh-Taste**.
 
 ## 🔧 Wenn kein Kaffee herauskommt
 
-Nach längerem Stillstand kann die Kapsel verstopfen.
+Nach längerem Stillstand kann der Kapsel-Schacht verstopfen.
 
-- Nehmen Sie den Griff mit der Kapsel heraus (oder nur die Kapsel).
-- Lassen Sie **mehrere Tassen Wasser** durchlaufen.
-- ⚠️ Vorsicht — das Wasser ist heiß, Verbrennungsgefahr.
+- Entfernen Sie die Kapsel.
+- Lassen Sie **einige Tassen heißes klares Wasser** zum Spülen durchlaufen.
+- ⚠️ Vorsicht — das Wasser ist heiß.
 
-Anschließend Kapsel wieder einsetzen und erneut versuchen.
+Anschließend Kapsel wieder einsetzen und erneut versuchen. Wenn überhaupt kein Wasser durchläuft, prüfen Sie, ob der **Wassertank richtig sitzt** (er muss hörbar einrasten).
 
-Wenn überhaupt kein Wasser durchläuft, prüfen Sie, ob der **blaue Wassertank richtig sitzt** (er muss hörbar einrasten).
+## 🚨 Warnleuchten
 
-## 🚨 Rotes Licht
+Wenn eine rote oder blinkende Warnleuchte erscheint, **drücken Sie nicht weiter Tasten** — melden Sie sich bei uns. Die meisten Probleme lassen sich leicht beheben, sobald wir wissen, worum es geht.
 
-Wenn ein **rotes Licht** erscheint, **bitte keine weiteren Tasten drücken** — melden Sie sich bei Selma oder Marija.
+## ⚠️ Dampfrohr
 
-## ⚠️ Vorsicht beim Dampfrohr (Pannarello)
-
-Die Maschine hat seitlich ein **Dampf- / Milchschaumrohr**. Wenn Sie es nicht benutzen, fassen Sie es nicht an — es wird sehr heiß (etwa 120 °C) und kann zu Verbrennungen führen.
-
-## 📋 Spezifikationen
-
-[Illy X7.1 Iperespresso — offizielle Spezifikationen →](https://drinks.hr/proizvod/aparati-za-kavu/x7-1-iperespresso/illy-iperespresso-home-aparat-za-kavu-x7-1-crveni/)
+Falls Ihre Maschine ein Dampf- / Milchschaumrohr besitzt, fassen Sie es während der Nutzung nicht an — es wird sehr heiß.

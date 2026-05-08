@@ -34,9 +34,3 @@ Wash the trays and racks, put them back in, then run **conventional at 250 °C /
 - The **cooling fan** may run for a few minutes after baking — that's normal.
 - Door glass: damp cloth + mild detergent. **No abrasives or metal scrapers** — the glass can crack.
 
-## 📋 Specifications
-
-The oven is an **Amica TR110TB Retro** (black).
-
-- [Croatian manual →](https://www.prirucnici.hr/amica/tr-110-tb/priručnik)
-- [Manufacturer's PDF manual →](https://amica-group.hr/files-api/products-pim/manual/Amica/SER_0018751_IOB/e37690e294f8a0c819457a893f209d0c2f467b05_SER_0018751_IOB.pdf)

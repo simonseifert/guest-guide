@@ -3,7 +3,7 @@ title: Hot tub (Jacuzzi)
 icon: 💦
 order: 1
 category: indulge
-summary: Sundance Denali 680 — rules of use, hygiene, and safety.
+summary: Rules of use, hygiene, and safety.
 safetyCritical: true
 ---
 

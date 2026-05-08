@@ -3,38 +3,34 @@ title: Hitno i kontakt
 icon: 📞
 order: 10
 category: stay
-summary: Brojevi za hitne slučajeve i kontakti domaćice.
+summary: Brojevi za hitne slučajeve i kontakt domaćina.
 ---
 
-Za sve vezano za boravak — ako vam nešto treba, ako nešto ne radi, ili samo ako imate pitanje — slobodno se javite. 💚
+Za sve vezano za boravak — ako vam nešto treba, ako nešto ne radi ili samo imate pitanje — slobodno se javite. 💚
 
-## 🏡 Domaćica i pomoć
+## 🏡 Domaćin i lokalna pomoć
 
-**Selma Seifert** — domaćica
-[📱 +385 98 184 7383](tel:+385981847383)
-
-**Teta Marija (Marija Katić)** — lokalna pomoćnica
-[📱 +385 91 595 8286](tel:+385915958286)
-
-Marija je domaća osoba koja pomaže u održavanju kuće, dočekuje goste i pomaže ako Selma nije u dosegu. Ako vam **bilo što** zatreba dok ste u kolibi, slobodno joj se javite.
+Podaci o domaćinu i pomoćniku povlače se iz `src/config/property.ts` i automatski se prikazuju na naslovnici. Možete ih navesti i ovdje ako želite dodatni kontekst — primjerice _"nazovite \[pomoćnika\] ako ne uspijete dobiti \[domaćina\]"._
 
 ## 🆘 Hitni brojevi
 
-- **Jedinstveni broj za hitne slučajeve:** [112](tel:112)
-- **Hitna pomoć (medicinska):** [194](tel:194)
-- **Vatrogasci:** [193](tel:193)
-- **Policija:** [192](tel:192)
-- **HGSS — gorska služba spašavanja:** [zovite 112](tel:112) i zatražite HGSS
-- **HAK — pomoć na cesti:** [1987](tel:1987) (u Hrvatskoj iz inozemstva: [+385 1 1987](tel:+38511987))
+- **Europski broj za hitne slučajeve:** [112](tel:112)
+- **Hitna pomoć / medicinska hitnoća:** _lokalni broj_
+- **Vatrogasci:** _lokalni broj_
+- **Policija:** _lokalni broj_
+- **Pomoć na cesti:** _lokalni broj_
+- **Gorska / pomorska služba spašavanja:** _lokalni broj, ako je primjenjivo_
+
+> Zamijenite ove brojeve onima za vašu zemlju. 112 radi u cijeloj EU i većini Europe.
 
 ## 🏥 Zdravstvo u blizini
 
-- **Hitna i bolnica** — najbliža je u **Delnicama** (~25 min vožnje)
-- **Ljekarna** — u **Skradu** i **Delnicama**
-- **Veterinar** — u **Delnicama**
+- **Hitna pomoć / bolnica** — najbliža je u _\[grad\]_ (~_X_ min vožnje)
+- **Ljekarna** — u _\[grad\]_
+- **Veterinar** — u _\[grad\]_
 
-U slučaju ozbiljne medicinske situacije zovite [194](tel:194) ili [112](tel:112). Ne pokušavajte sami voziti gosta s ozbiljnim simptomima — neka dođe vozilo.
+U slučaju ozbiljne medicinske situacije zovite [112](tel:112). Ne pokušavajte sami voziti gosta s ozbiljnim simptomima — neka dođe vozilo hitne pomoći.
 
-## 🛠️ U slučaju kvara ili štete
+## 🛠️ Šteta ili kvar
 
-Svaku štetu, kvar ili neispravnost prijavite **odmah** — Selmi ili Mariji. Pokušat ćemo riješiti što prije moguće. Hvala na razumijevanju. 🌲
+Svaku štetu, kvar ili neispravnost prijavite **odmah**. Pokušat ćemo riješiti što prije. Hvala na razumijevanju. 🌲

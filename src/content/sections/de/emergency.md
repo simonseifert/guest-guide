@@ -3,38 +3,34 @@ title: Notfall & Kontakt
 icon: 📞
 order: 10
 category: stay
-summary: Notrufnummern und Kontakt zur Gastgeberin.
+summary: Notrufnummern und Kontakt zum Gastgeber.
 ---
 
-Für alles rund um Ihren Aufenthalt — wenn Sie etwas brauchen, etwas nicht funktioniert oder Sie einfach eine Frage haben — melden Sie sich. 💚
+Für alles rund um Ihren Aufenthalt — wenn Sie etwas brauchen, etwas nicht funktioniert oder Sie einfach eine Frage haben — melden Sie sich gerne. 💚
 
-## 🏡 Gastgeberin & Hilfe vor Ort
+## 🏡 Gastgeber & Hilfe vor Ort
 
-**Selma Seifert** — Gastgeberin
-[📱 +385 98 184 7383](tel:+385981847383)
-
-**Teta Marija (Marija Katić)** — lokale Helferin
-[📱 +385 91 595 8286](tel:+385915958286)
-
-Marija ist eine ortsansässige Helferin, die das Haus betreut, Gäste empfängt und einspringt, wenn Selma nicht erreichbar ist. Wenn Sie während Ihres Aufenthalts **irgendetwas** brauchen, können Sie sich direkt an sie wenden.
+Die Daten zum Gastgeber und zu Helfern werden aus `src/config/property.ts` geladen und automatisch auf der Startseite angezeigt. Sie können sie auch hier auflisten, wenn Sie zusätzlichen Kontext geben möchten — etwa _"rufen Sie \[Helfer\] an, falls Sie \[Gastgeber\] nicht erreichen"._
 
 ## 🆘 Notrufnummern
 
-- **Einheitliche Notrufnummer:** [112](tel:112)
-- **Rettungsdienst (medizinisch):** [194](tel:194)
-- **Feuerwehr:** [193](tel:193)
-- **Polizei:** [192](tel:192)
-- **HGSS — Kroatische Bergrettung:** [112 anrufen](tel:112) und HGSS verlangen
-- **HAK — Pannenhilfe:** [1987](tel:1987) (aus dem Ausland: [+385 1 1987](tel:+38511987))
+- **Europäische Notrufnummer:** [112](tel:112)
+- **Rettungsdienst / medizinischer Notfall:** _lokale Nummer_
+- **Feuerwehr:** _lokale Nummer_
+- **Polizei:** _lokale Nummer_
+- **Pannenhilfe:** _lokale Nummer_
+- **Berg- / Seenotrettung:** _lokale Nummer, falls relevant_
+
+> Ersetzen Sie diese Nummern durch die für Ihr Land passenden. 112 funktioniert in der gesamten EU und in den meisten Ländern Europas.
 
 ## 🏥 Gesundheitsversorgung in der Nähe
 
-- **Notaufnahme und Krankenhaus** — am nächsten in **Delnice** (~25 Min. Fahrt)
-- **Apotheke** — in **Skrad** und **Delnice**
-- **Tierarzt** — in **Delnice**
+- **Notaufnahme / Krankenhaus** — am nächsten in _\[Ort\]_ (~_X_ Min. Fahrt)
+- **Apotheke** — in _\[Ort\]_
+- **Tierarzt** — in _\[Ort\]_
 
-Bei einem ernsten medizinischen Notfall wählen Sie [194](tel:194) oder [112](tel:112). Fahren Sie keinen Gast mit ernsten Symptomen selbst — warten Sie auf den Rettungswagen.
+Bei einem ernsten medizinischen Notfall wählen Sie [112](tel:112). Fahren Sie sich oder einen anderen Gast mit ernsten Symptomen nicht selbst — warten Sie auf den Rettungswagen.
 
-## 🛠️ Bei Schäden oder Defekten
+## 🛠️ Schäden oder Defekte
 
-Schäden oder Defekte bitte **sofort** melden — bei Selma oder Marija. Wir versuchen, alles schnellstmöglich zu beheben. Vielen Dank für Ihr Verständnis. 🌲
+Schäden, Mängel oder Defekte bitte **sofort** melden. Wir bemühen uns, das so schnell wie möglich zu beheben. Vielen Dank für Ihr Verständnis. 🌲

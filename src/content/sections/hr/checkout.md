@@ -8,24 +8,19 @@ summary: Vrijeme odjave, kasna odjava i polog.
 
 ## ⏰ Vrijeme odjave
 
-**Check-out:** do **12:00**.
+**Check-out:** do **11:00**.
 
 ## 💶 Kasna odjava
 
-Ako želite produžiti boravak, javite nam unaprijed — možemo to omogućiti uz najavu i nadoplatu:
+Ako želite produžiti boravak, javite nam unaprijed — obično to možemo omogućiti uz nadoplatu. _Postavite vlastite cijene ovdje._
 
-- **Do 16:00** — naknada **60 EUR**
-- **Do 19:00** — naknada **120 EUR**
+## 🔐 Sigurnosni polog
 
-## 🔐 Polog
-
-Sigurnosni polog od **200 EUR** (predan kod check-in-a) **vraća se u cijelosti** ako se na dan odlaska ne utvrdi nikakva šteta.
-
-Ako se utvrdi šteta, polog se može zadržati djelomično (u iznosu procijenjene štete) ili u cijelosti.
+Sigurnosni polog uzet pri prijavi **vraća se u cijelosti** ako se na dan odlaska ne utvrdi nikakva šteta. Ako se utvrdi šteta, polog se može zadržati djelomično ili u cijelosti.
 
 ## ✅ Prije odlaska
 
-- Ugasite svjetla, klimu i sve uređaje.
-- Vratite poklopac na hidromasažni bazen.
+- Ugasite svjetla, klima-uređaj i sve uređaje.
+- Vratite poklopac na hidromasažni bazen (ako ga imate u objektu).
 - Ostavite ključeve na dogovorenom mjestu.
-- Provjerite jeste li ponijeli sve osobne stvari. 🎒
+- Još jednom provjerite niste li zaboravili nešto od osobnih stvari. 🎒
