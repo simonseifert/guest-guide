@@ -27,3 +27,7 @@ pnpm-debug.log*
 .gstack/
 .vercel
 public/images/cabin/
+
+# host-specific config (commit places.config.example.json instead)
+places.config.json
+.places-cache/

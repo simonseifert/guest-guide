@@ -1,0 +1,29 @@
+{
+  "$schema": "Documentation: https://developers.google.com/maps/documentation/places/web-service/place-id",
+  "_help": "Copy this file to places.config.json and fill in real Place IDs. Find IDs at https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder",
+  "categories": [
+    {
+      "name": "Walking distance",
+      "icon": "🥾",
+      "subhead": "under 15 min",
+      "places": [
+        { "id": "ChIJN1t_tDeuEmsRUsoyG83frY4" },
+        { "id": "ChIJ5mO0wxK0t4kRA-AiFx6_kTk" }
+      ]
+    },
+    {
+      "name": "Up to 30 min drive",
+      "icon": "🚗",
+      "subhead": "",
+      "places": [
+        { "id": "ChIJrTLr-GyuEmsRBfy61i59si0" }
+      ]
+    },
+    {
+      "name": "Where to eat",
+      "icon": "🍽️",
+      "subhead": "our favourites",
+      "places": []
+    }
+  ]
+}

@@ -25,6 +25,8 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 - 📰 **Print-friendly stylesheet** — guests can print any section as clean monochrome A4
 - 💸 **Affiliate-link helper** — earn commission from Viator / GetYourGuide / Booking / Amazon links with one config field
 - 📊 **Privacy-friendly analytics** (optional) — Plausible / Umami / GoatCounter, no cookie banner needed
+- 🤖 **AI bootstrapper** — paste a property description (or URL) → first-draft guide in 30 seconds via Claude
+- 📍 **Google Places auto-import** — turn a list of place IDs into rich "Places to visit" markdown with photos, ratings, opening hours
 
 ## Screenshots
 
@@ -62,6 +64,14 @@ cd my-guest-guide
 npm install
 npm run dev          # open http://localhost:4321
 ```
+
+### Or skip the manual edit and let Claude bootstrap it
+
+```bash
+ANTHROPIC_API_KEY=sk-ant-... npm run bootstrap
+```
+
+The CLI prompts for a property description (or paste a public listing URL) and Claude writes a full first-draft guidebook — `src/config/property.ts` plus 8-10 section markdown files — in about 30 seconds. Costs ~$0.15 in API credits per run. See [AI bootstrap](#ai-bootstrap) below for details.
 
 ## Customize for your property — 4 steps
 
@@ -155,9 +165,12 @@ public/
   images/hero-placeholder.svg       ← swap for your hero photo
   manifest.webmanifest              ← (auto-generated at build)
 scripts/
+  bootstrap.mjs                     ← AI guidebook bootstrapper (Anthropic)
+  fetch-places.mjs                  ← Google Places API → places.md
   generate-icons.mjs                ← regenerates PWA icons from a source SVG
   generate-poster.mjs               ← writes dist/poster.png — fridge-ready Wi-Fi + guide QR
   translate.mjs                     ← translate EN markdown into another language
+places.config.example.json          ← copy to places.config.json (gitignored) for fetch-places
 ```
 
 ## Stack
@@ -168,6 +181,82 @@ scripts/
 - [@vite-pwa/astro](https://vite-pwa-org.netlify.app/frameworks/astro.html) for service worker + manifest generation (Workbox under the hood)
 - [qrcode](https://github.com/soldair/node-qrcode) for build-time Wi-Fi QR generation
 - [rehype-external-links](https://github.com/rehypejs/rehype-external-links) so external markdown links open in new tabs
+
+## AI bootstrap
+
+The fastest way from "blank repo" to "first-draft guidebook" is to let Claude do the typing.
+
+```bash
+ANTHROPIC_API_KEY=sk-ant-... npm run bootstrap
+```
+
+The CLI offers three input modes:
+
+```bash
+# Paste a public listing URL (Booking, Vrbo, your own site)
+npm run bootstrap -- --url=https://example.com/listings/cabin
+
+# Pass a description directly
+npm run bootstrap -- --description="3-bedroom log cabin in Aspen with hot tub, sauna, fireplace, OFYR grill"
+
+# Or run with no args and the CLI opens an interactive prompt
+npm run bootstrap
+```
+
+It writes:
+- `src/config/property.ts` — name, address, host placeholder, Wi-Fi placeholder, languages
+- `src/content/sections/<lang>/*.md` — welcome, rules, checkout, emergency, plus auto-detected amenity sections (jacuzzi, sauna, grill, tv, coffee, oven, water, avr, places, explore)
+
+After it runs, `npm run dev` to preview. Always do a human pass — Claude is good at structure and tone but you need to fill in real Wi-Fi credentials, real local picks, real host phone numbers. Use `--dry-run` to see the plan without writing files.
+
+> The AI runs at **bootstrap time**, not at runtime. After it finishes, the repo is just markdown — no API key, no backend, no third-party calls. The static-PWA story is preserved.
+
+## Auto-import places from Google
+
+If you have a list of nearby attractions, restaurants, and shops, you can populate a rich "Places to visit" section with one command instead of writing each entry by hand.
+
+### 1. Find Place IDs
+
+Use Google's [Place ID Finder](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder) — search for a place, copy the ID that starts with `ChIJ…`.
+
+### 2. Fill in `places.config.json`
+
+```bash
+cp places.config.example.json places.config.json
+```
+
+```json
+{
+  "categories": [
+    {
+      "name": "Walking distance",
+      "icon": "🥾",
+      "subhead": "under 15 min",
+      "places": [
+        { "id": "ChIJN1t_tDeuEmsRUsoyG83frY4" },
+        { "id": "ChIJ5mO0wxK0t4kRA-AiFx6_kTk" }
+      ]
+    },
+    {
+      "name": "Where to eat",
+      "icon": "🍽️",
+      "places": [{ "id": "ChIJ..." }]
+    }
+  ]
+}
+```
+
+### 3. Run the importer
+
+```bash
+GOOGLE_PLACES_API_KEY=xxx npm run fetch-places
+```
+
+For each place it pulls name, address, rating, review count, editorial summary, opening hours, and the first photo (saved to `public/places/`). It generates `src/content/sections/<lang>/places.md` for every language in `PROPERTY.languages`. Place data is fetched in each language using Google's `languageCode` parameter — no separate translation pass needed.
+
+API responses are cached in `.places-cache/` for 30 days, so re-runs don't re-bill. Pass `--force` to bust the cache. Pass `--slug attractions` to use a different filename. Pass `--langs en,de` to limit which language files are written.
+
+**Costs:** ~$0.017 per place lookup, $0.007 per photo. Free tier covers most setups (a typical 30-place list costs under $1). See the [Places API pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
 
 ## Earn commission from your guide (optional)
 
