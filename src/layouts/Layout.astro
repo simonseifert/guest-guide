@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Icon from '../components/Icon.astro';
-import { languages, t, type Lang } from '../i18n/ui';
+import { languages, t, withFallback, type Lang } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 import { PROPERTY } from '../config/property';
 // vite-pwa/astro virtual module — gives us the manifest <link> + theme-color
@@ -21,12 +21,14 @@ const pageTitle = title ? `${title} · ${PROPERTY.brand.name}` : PROPERTY.brand.
 const pageDescription = description ?? PROPERTY.brand.tagline;
 
 const pathWithoutLang = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
-const langLabels: Record<Lang, { full: string }> = {
-  hr: { full: 'Hrvatski' },
-  en: { full: 'English' },
-  de: { full: 'Deutsch' },
-  it: { full: 'Italiano' },
+
+const footerLabels: Partial<Record<Lang, { address: string; host: string; taxId: string; emergency: string }>> = {
+  en: { address: 'Address', host: 'Host', taxId: 'Tax ID', emergency: 'European emergency number' },
+  de: { address: 'Adresse', host: 'Gastgeber:in', taxId: 'USt-ID', emergency: 'Einheitliche Notrufnummer' },
+  hr: { address: 'Adresa', host: 'Domaćin', taxId: 'OIB', emergency: 'Jedinstveni broj za hitne slučajeve' },
+  it: { address: 'Indirizzo', host: 'Padrone/a', taxId: 'P.IVA', emergency: 'Numero unico di emergenza' },
 };
+const f = withFallback(footerLabels, lang);
 ---
 <!doctype html>
 <html lang={lang} data-page={isHomepage ? 'home' : 'section'}>
@@ -77,7 +79,7 @@ const langLabels: Record<Lang, { full: string }> = {
                 href={`/${code}${pathWithoutLang === '/' ? '' : pathWithoutLang}`}
                 aria-current={code === lang ? 'true' : 'false'}
               >
-                {langLabels[code as Lang].full} <span class="code">{code.toUpperCase()}</span>
+                {languages[code as Lang]} <span class="code">{code.toUpperCase()}</span>
               </a>
             ))}
           </div>
@@ -93,11 +95,11 @@ const langLabels: Record<Lang, { full: string }> = {
             <span>{PROPERTY.brand.name}</span>
           </div>
           <dl>
-            <dt>{lang === 'hr' ? 'Adresa' : lang === 'de' ? 'Adresse' : lang === 'it' ? 'Indirizzo' : 'Address'}</dt>
+            <dt>{f.address}</dt>
             <dd>{PROPERTY.address.line1}, {PROPERTY.address.postcode} {PROPERTY.address.city}, {PROPERTY.address.country}</dd>
             {PROPERTY.hosts[0] && (
               <>
-                <dt>{lang === 'hr' ? 'Domaćin' : lang === 'de' ? 'Gastgeber:in' : lang === 'it' ? 'Padrone/a' : 'Host'}</dt>
+                <dt>{f.host}</dt>
                 <dd>{PROPERTY.hosts[0].name}</dd>
               </>
             )}
@@ -109,19 +111,14 @@ const langLabels: Record<Lang, { full: string }> = {
             )}
             {PROPERTY.taxId && (
               <>
-                <dt>{lang === 'hr' ? 'OIB' : lang === 'de' ? 'USt-ID' : lang === 'it' ? 'P.IVA' : 'Tax ID'}</dt>
+                <dt>{f.taxId}</dt>
                 <dd>{PROPERTY.taxId}</dd>
               </>
             )}
           </dl>
           <div class="emergency">
             <span class="badge">112</span>
-            <span class="label">
-              {lang === 'hr' ? 'Jedinstveni broj za hitne slučajeve' :
-               lang === 'de' ? 'Einheitliche Notrufnummer' :
-               lang === 'it' ? 'Numero unico di emergenza' :
-               'European emergency number'}
-            </span>
+            <span class="label">{f.emergency}</span>
           </div>
           <div class="legal">© {new Date().getFullYear()} {PROPERTY.brand.name}</div>
         </div>

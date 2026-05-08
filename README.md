@@ -4,27 +4,16 @@ A multilingual, offline-capable, brand-customizable **guest information PWA** fo
 
 A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**, **TouchStay**, and other "guest info" SaaS tools. Built on **Astro 5 + Tailwind 4** — fast, owned by you, no monthly fee. Mobile-first, sub-200kb first load, full offline support after the first visit.
 
-**🌐 [Live demo →](https://guest-guide.vercel.app)** &nbsp;·&nbsp; [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsimonseifert%2Fguest-guide)
+[![Live Demo](https://img.shields.io/badge/%F0%9F%8C%90_Live_Demo-guest--guide.vercel.app-22c55e?style=for-the-badge)](https://guest-guide.vercel.app)
 
-<table>
-  <tr valign="top">
-    <td width="33%"><img src="docs/screenshots/mobile-home.png" alt="Mobile home"/></td>
-    <td width="33%"><img src="docs/screenshots/mobile-section.png" alt="Mobile section page"/></td>
-    <td width="33%"><img src="docs/screenshots/mobile-explore.png" alt="Mobile explore the area"/></td>
-  </tr>
-  <tr valign="top">
-    <td align="center"><sub>Home — Wi-Fi QR, house rules, sections grouped by category</sub></td>
-    <td align="center"><sub>Section page — safety callouts, prose styled for readability</sub></td>
-    <td align="center"><sub>Explore the area — embedded map + place lists</sub></td>
-  </tr>
-</table>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsimonseifert%2Fguest-guide)
 
 ---
 
 ## Features
 
 - 📱 **Mobile-first** — designed at 390px, scales clean to desktop
-- 🌍 **Multilingual** — English / German / Croatian / Italian out of the box, drop or add any
+- 🌍 **Multilingual** — ships with EN/DE/HR/IT; add any language with one DeepL command
 - 🛜 **PWA + offline** — service worker precaches the whole site so guests with patchy signal can still read instructions
 - 🪪 **Wi-Fi tap-to-join QR** — guests scan with their camera, phone joins automatically (`WIFI:` URI scheme)
 - 🗺️ **Embedded interactive map** for nearby places + open-in-Maps deeplink
@@ -32,6 +21,21 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 - 🎨 **Brand-customizable** — single config file (`src/config/property.ts`) controls all property-specific data
 - 🔒 **`noindex` by default** — guest info, not search-traffic content
 - 🆓 **No SaaS fees** — host it on Vercel / Netlify / Cloudflare Pages free tier
+
+## Screenshots
+
+<table>
+  <tr valign="top">
+    <td align="center" width="33%"><sub><b>Home</b><br/>Wi-Fi QR, house rules, sections grouped by category</sub></td>
+    <td align="center" width="33%"><sub><b>Section page</b><br/>Safety callouts, prose styled for readability</sub></td>
+    <td align="center" width="33%"><sub><b>Explore the area</b><br/>Embedded map + place lists</sub></td>
+  </tr>
+  <tr valign="top">
+    <td><img src="docs/screenshots/mobile-home.png" alt="Mobile home"/></td>
+    <td><img src="docs/screenshots/mobile-section.png" alt="Mobile section page"/></td>
+    <td><img src="docs/screenshots/mobile-explore.png" alt="Mobile explore the area"/></td>
+  </tr>
+</table>
 
 ## Why this exists
 
@@ -144,7 +148,9 @@ public/
   favicon.svg, icon-*.png, apple-touch-icon.png
   images/hero-placeholder.svg       ← swap for your hero photo
   manifest.webmanifest              ← (auto-generated at build)
-scripts/generate-icons.mjs          ← regenerates PWA icons from a source SVG
+scripts/
+  generate-icons.mjs                ← regenerates PWA icons from a source SVG
+  translate.mjs                     ← translate EN markdown into another language
 ```
 
 ## Stack
@@ -158,12 +164,55 @@ scripts/generate-icons.mjs          ← regenerates PWA icons from a source SVG
 
 ## Adding or removing languages
 
-Ships with EN/DE/HR/IT. To trim or add:
+Ships with EN/DE/HR/IT. Adding a new language is one command + a two-line edit.
 
-1. Edit `PROPERTY.languages` in `src/config/property.ts`.
-2. Update the `Lang` union and the `languages` map in `src/i18n/ui.ts`.
-3. Add or remove the corresponding `src/content/sections/<lang>/` directories.
-4. Update the per-language translation maps in `Hero.astro`, `MapPreview.astro`, `WifiCard.astro`, and `Layout.astro` if you change the locale set.
+### Auto-translate with DeepL (or OpenAI / Anthropic / Google)
+
+```bash
+# 1. Generate translated markdown for the target language (e.g. Spanish):
+DEEPL_API_KEY=xxx npm run translate -- es
+
+# Or pick a different provider:
+OPENAI_API_KEY=xxx    npm run translate -- es --provider openai
+ANTHROPIC_API_KEY=xxx npm run translate -- es --provider anthropic
+GOOGLE_TRANSLATE_API_KEY=xxx npm run translate -- es --provider google
+```
+
+DeepL's [free tier](https://www.deepl.com/pro#developer) gives you 500k characters/month — more than enough for the ~30 KB of guidebook text. Get your free API key, set it as an env var, run the command. Translation takes about 30 seconds for all 13 sections.
+
+The script preserves frontmatter (only `title` and `summary` are translated), markdown structure, links, code blocks, emoji, and `[bracketed placeholders]`. Pass `--force` to overwrite existing translations.
+
+### Wire the language up
+
+After translating, two more edits to make the language appear in the UI:
+
+```ts
+// src/i18n/ui.ts
+export const languages = {
+  en: 'English',
+  de: 'Deutsch',
+  hr: 'Hrvatski',
+  it: 'Italiano',
+  es: 'Español',   // ← add this
+} as const;
+```
+
+```ts
+// src/config/property.ts
+languages: ['en', 'de', 'hr', 'it', 'es'],   // ← add 'es'
+```
+
+UI strings (nav labels, "Read more", category headings) automatically fall back to English for any language that doesn't have its own dictionary in `src/i18n/ui.ts`. To get fully native-language UI, copy the `en` block in `ui` and translate the values — about 30 strings.
+
+### Supported language codes
+
+The translate script accepts any ISO 2-letter code your provider supports. DeepL covers ~30 languages; OpenAI/Anthropic cover ~100. Common picks for vacation rentals: `es` (Spanish), `fr` (French), `nl` (Dutch), `pl` (Polish), `cs` (Czech), `sk` (Slovak), `sl` (Slovenian), `hu` (Hungarian), `pt` (Portuguese), `ja` (Japanese), `zh` (Chinese).
+
+### Removing a language
+
+Drop it from `PROPERTY.languages`, delete `src/content/sections/<lang>/`, and remove its entry from `src/i18n/ui.ts`. That's it.
+
+> **Always do a human pass.** Machine translation gets you 90% of the way there. The other 10% — tone, idiom, local quirks like "OIB" vs "Tax ID" — still benefits from a native speaker reading through once.
 
 ## License
 

@@ -2,7 +2,7 @@
 import QRCode from 'qrcode';
 import Icon from './Icon.astro';
 import { PROPERTY } from '../config/property';
-import type { Lang } from '../i18n/ui';
+import { withFallback, type Lang } from '../i18n/ui';
 
 interface Props {
   ssid?: string;
@@ -25,13 +25,14 @@ const qrSvg = await QRCode.toString(wifiURI, {
   color: { dark: '#14201A', light: '#F4EFE6' },
 });
 
-const labels: Record<Lang, { wifi: string; net: string; pass: string; copy: string; copied: string; foot: string }> = {
-  hr: { wifi: 'Wi-Fi', net: 'Mreža', pass: 'Lozinka', copy: 'Kopiraj', copied: 'Kopirano', foot: 'Skenirajte QR kamerom' },
+type WifiLabels = { wifi: string; net: string; pass: string; copy: string; copied: string; foot: string };
+const labels: Partial<Record<Lang, WifiLabels>> = {
   en: { wifi: 'Wi-Fi', net: 'Network', pass: 'Password', copy: 'Copy', copied: 'Copied', foot: 'Scan the QR with your camera' },
   de: { wifi: 'Wi-Fi', net: 'Netzwerk', pass: 'Passwort', copy: 'Kopieren', copied: 'Kopiert', foot: 'QR mit der Kamera scannen' },
+  hr: { wifi: 'Wi-Fi', net: 'Mreža', pass: 'Lozinka', copy: 'Kopiraj', copied: 'Kopirano', foot: 'Skenirajte QR kamerom' },
   it: { wifi: 'Wi-Fi', net: 'Rete', pass: 'Password', copy: 'Copia', copied: 'Copiato', foot: 'Inquadra il QR con la fotocamera' },
 };
-const l = labels[lang];
+const l = withFallback(labels, lang);
 ---
 <div class="wifi-wrap">
   <div class="wifi" aria-labelledby="wifiTitle" data-copied={l.copied}>

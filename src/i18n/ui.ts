@@ -1,22 +1,51 @@
+/**
+ * UI strings + language registry.
+ *
+ * Out of the box we ship full UI translations for EN/DE/HR/IT. Any other
+ * language code added to `languages` below will fall back to English for any
+ * missing string. Run `node scripts/translate.mjs <lang>` to populate the
+ * markdown content for a new language; UI strings can be added by hand or
+ * through the same script (see scripts/translate.mjs --ui).
+ */
+
 export const languages = {
-  hr: 'Hrvatski',
   en: 'English',
   de: 'Deutsch',
+  hr: 'Hrvatski',
   it: 'Italiano',
+  // Add more languages here. They will fall back to English UI strings until
+  // you fill them in below. Common tourism languages:
+  // es: 'Español',
+  // fr: 'Français',
+  // nl: 'Nederlands',
+  // pl: 'Polski',
+  // cs: 'Čeština',
+  // sk: 'Slovenčina',
+  // sl: 'Slovenščina',
+  // hu: 'Magyar',
+  // pt: 'Português',
+  // ja: '日本語',
+  // zh: '中文',
 } as const;
 
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
 
-/**
- * Static UI strings, per language. Section names ("nav.*") map to the
- * markdown filenames in `src/content/sections/<lang>/<slug>.md`. If you
- * rename, add, or remove sections, update this file to match.
- *
- * `site.title` is shown when no per-page title is set; leave as `null` and
- * the site falls back to `PROPERTY.brand.name` from `src/config/property.ts`.
- */
-export const ui = {
+type UiKey =
+  | 'site.title'
+  | 'site.tagline'
+  | 'cat.rules' | 'cat.indulge' | 'cat.tech' | 'cat.stay'
+  | 'cat.indulge.sub' | 'cat.tech.sub' | 'cat.stay.sub'
+  | 'nav.welcome' | 'nav.wifi' | 'nav.jacuzzi' | 'nav.sauna' | 'nav.coffee'
+  | 'nav.grill' | 'nav.tv' | 'nav.oven' | 'nav.rules' | 'nav.checkout'
+  | 'nav.explore' | 'nav.evisitor' | 'nav.contact'
+  | 'cta.host' | 'cta.emergency'
+  | 'common.read_more' | 'common.back' | 'common.important' | 'common.warning'
+  | 'lang.label';
+
+type UiDict = Partial<Record<UiKey, string | null>>;
+
+export const ui: Partial<Record<Lang, UiDict>> = {
   en: {
     'site.title': null,
     'site.tagline': 'Guest guide',
@@ -141,9 +170,18 @@ export const ui = {
     'common.warning': 'Attenzione',
     'lang.label': 'Lingua',
   },
-} as const;
+};
 
-export function t(lang: Lang, key: keyof (typeof ui)[typeof defaultLang]): string {
-  const value = ui[lang][key] ?? ui[defaultLang][key];
+export function t(lang: Lang, key: UiKey): string {
+  const value = ui[lang]?.[key] ?? ui[defaultLang]?.[key];
   return value ?? '';
+}
+
+/**
+ * Look up a per-component copy map with English fallback. Use this in
+ * components that have language-specific prose (Hero, WifiCard, MapPreview…)
+ * so adding a new language doesn't require editing every component.
+ */
+export function withFallback<T>(map: Partial<Record<Lang, T>>, lang: Lang): T {
+  return (map[lang] ?? map[defaultLang]) as T;
 }

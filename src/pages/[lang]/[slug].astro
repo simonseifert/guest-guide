@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import MapPreview from '../../components/MapPreview.astro';
 import type { IconName } from '../../components/icons';
-import { t, type Lang } from '../../i18n/ui';
+import { t, withFallback, type Lang } from '../../i18n/ui';
 
 export async function getStaticPaths() {
   const all = await getCollection('sections');
@@ -39,16 +39,16 @@ const iconForSlug: Record<string, IconName> = {
 
 const { Content } = await render(entry);
 
-const safetyCopy: Record<Lang, string> = {
-  hr: 'Pažljivo pročitajte sigurnosna pravila prije korištenja.',
+const safetyCopy: Partial<Record<Lang, string>> = {
   en: 'Please read the safety rules carefully before use.',
   de: 'Bitte lesen Sie die Sicherheitsregeln vor der Nutzung sorgfältig.',
+  hr: 'Pažljivo pročitajte sigurnosna pravila prije korištenja.',
   it: 'Leggete attentamente le regole di sicurezza prima dell’uso.',
 };
-const importantLabel: Record<Lang, string> = {
-  hr: 'Važno',
+const importantLabel: Partial<Record<Lang, string>> = {
   en: 'Important',
   de: 'Wichtig',
+  hr: 'Važno',
   it: 'Importante',
 };
 ---
@@ -72,7 +72,7 @@ const importantLabel: Record<Lang, string> = {
     {entry.data.safetyCritical && (
       <div class="safety-callout">
         <Icon name="warn" size={18} />
-        <p><strong>{importantLabel[lang]}:</strong> {safetyCopy[lang]}</p>
+        <p><strong>{withFallback(importantLabel, lang)}:</strong> {withFallback(safetyCopy, lang)}</p>
       </div>
     )}
 

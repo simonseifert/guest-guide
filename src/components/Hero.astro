@@ -1,6 +1,6 @@
 ---
 import { PROPERTY } from '../config/property';
-import type { Lang } from '../i18n/ui';
+import { withFallback, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -9,13 +9,8 @@ const { lang } = Astro.props;
 
 /* Edit these per-language headlines for your property. The {titleEm} segment
    gets a heavier weight and is rendered as an inline emphasis. */
-const copy: Record<Lang, { eyebrow: string; titleLead: string; titleEm: string; titleTail: string }> = {
-  hr: {
-    eyebrow: 'Vodič za goste',
-    titleLead: 'Dobrodošli u ',
-    titleEm: 'kolibu',
-    titleTail: '. Sve što vam treba — na jednom mjestu.',
-  },
+type HeroCopy = { eyebrow: string; titleLead: string; titleEm: string; titleTail: string };
+const copy: Partial<Record<Lang, HeroCopy>> = {
   en: {
     eyebrow: 'Guest guide',
     titleLead: 'Welcome to ',
@@ -28,6 +23,12 @@ const copy: Record<Lang, { eyebrow: string; titleLead: string; titleEm: string; 
     titleEm: 'der Hütte',
     titleTail: '. Alles, was Sie brauchen — an einem Ort.',
   },
+  hr: {
+    eyebrow: 'Vodič za goste',
+    titleLead: 'Dobrodošli u ',
+    titleEm: 'kolibu',
+    titleTail: '. Sve što vam treba — na jednom mjestu.',
+  },
   it: {
     eyebrow: 'Guida per gli ospiti',
     titleLead: 'Benvenuti nella ',
@@ -36,7 +37,7 @@ const copy: Record<Lang, { eyebrow: string; titleLead: string; titleEm: string; 
   },
 };
 
-const c = copy[lang];
+const c = withFallback(copy, lang);
 const subline = `${PROPERTY.address.city}, ${PROPERTY.address.country} — ${PROPERTY.brand.name}.`;
 ---
 <section class="hero" id="hero" style={`--hero-photo: url('${PROPERTY.hero.photoSrc}')`}>

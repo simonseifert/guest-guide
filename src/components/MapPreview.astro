@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { PROPERTY } from '../config/property';
-import type { Lang } from '../i18n/ui';
+import { withFallback, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -16,13 +16,13 @@ const {
 
 const place = PROPERTY.map.placeLabel;
 const ariaLabel = place;
-const openLabel: Record<Lang, string> = {
-  hr: 'Otvori u Mapama',
+const openLabel: Partial<Record<Lang, string>> = {
   en: 'Open in Maps',
   de: 'In Maps öffnen',
+  hr: 'Otvori u Mapama',
   it: 'Apri in Maps',
 };
-const c = { place, open: openLabel[lang], ariaLabel };
+const c = { place, open: withFallback(openLabel, lang), ariaLabel };
 ---
 <div class="map-card">
   <iframe

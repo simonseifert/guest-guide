@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import type { IconName } from './icons';
-import type { Lang } from '../i18n/ui';
+import { withFallback, type Lang } from '../i18n/ui';
 
 interface Props {
   href: string;
@@ -12,10 +12,10 @@ interface Props {
   lang: Lang;
 }
 const { href, icon, title, summary, safety = false, lang } = Astro.props;
-const safetyLabel: Record<Lang, string> = {
-  hr: 'Oprez',
+const safetyLabel: Partial<Record<Lang, string>> = {
   en: 'Safety first',
   de: 'Vorsicht',
+  hr: 'Oprez',
   it: 'Attenzione',
 };
 ---
@@ -27,7 +27,7 @@ const safetyLabel: Record<Lang, string> = {
     {safety && (
       <span class="safety-flag">
         <Icon name="warn" size={10} />
-        {safetyLabel[lang]}
+        {withFallback(safetyLabel, lang)}
       </span>
     )}
   </span>
