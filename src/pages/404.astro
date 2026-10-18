@@ -1,0 +1,46 @@
+---
+/* Static 404 for the guest guide (Vercel serves dist/404.html for unknown paths).
+   Kept standalone and tiny: guests land here only from a mistyped or old link. */
+import { PROPERTY, type Lang } from '../config/property';
+
+const copy: Record<Lang, { notFound: string; guide: string; name: string }> = {
+  en: { notFound: 'Page not found', guide: 'Guest guide', name: 'English' },
+  de: { notFound: 'Seite nicht gefunden', guide: 'Gästehandbuch', name: 'Deutsch' },
+  hr: { notFound: 'Stranica nije pronađena', guide: 'Vodič za goste', name: 'Hrvatski' },
+  it: { notFound: 'Pagina non trovata', guide: 'Guida per gli ospiti', name: 'Italiano' },
+};
+const langs = [PROPERTY.defaultLanguage, ...PROPERTY.languages.filter((l) => l !== PROPERTY.defaultLanguage)];
+---
+<!doctype html>
+<html lang={PROPERTY.defaultLanguage}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    {/* Same theme choice as the guide (Accessibility panel), else the phone setting. */}
+    <script is:inline>
+      (function () {
+        var t; try { t = (JSON.parse(localStorage.getItem('guest-guide-a11y') || '{}') || {}).theme; } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <title>{copy[PROPERTY.defaultLanguage].notFound} · {PROPERTY.brand.name}</title>
+    <style>
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #F1ECE2; color: #1F1A14; font: 16px/1.5 system-ui, sans-serif; }
+      main { padding: 32px 24px; text-align: center; max-width: 420px; }
+      h1 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
+      p { margin: 0 0 20px; color: #5C534A; }
+      [data-theme="dark"] body { background: #16120E; color: #EEE7DC; } [data-theme="dark"] p { color: #C4B8A8; } [data-theme="dark"] a { background: #2F5D43; }
+      nav { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+      a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #1A2A20; color: #F4EFE6; text-decoration: none; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>{langs.map((l) => copy[l].notFound).join(' · ')}</h1>
+      <p>{langs.map((l) => copy[l].guide).join(' · ')}</p>
+      <nav>{langs.map((l) => <a href={`/${l}`}>{copy[l].name}</a>)}</nav>
+    </main>
+  </body>
+</html>

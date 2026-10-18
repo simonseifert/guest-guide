@@ -3,6 +3,8 @@ import '../styles/global.css';
 import '../styles/print.css';
 import Icon from '../components/Icon.astro';
 import Analytics from '../components/Analytics.astro';
+import Search from '../components/Search.astro';
+import A11y from '../components/A11y.astro';
 import { languages, t, withFallback, type Lang } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 import { PROPERTY } from '../config/property';
@@ -37,9 +39,41 @@ const f = withFallback(footerLabels, lang);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     {PROPERTY.noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="theme-color" content="#1A2A20" />
+    <meta name="theme-color" content="#F1ECE2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16120E" media="(prefers-color-scheme: dark)" />
+    {/* The home hero is a CSS background, which the browser only finds after the CSS loads
+       (Lighthouse mobile LCP 4.4 s). Preloading it lets the photo start with the HTML. */}
+    {isHomepage && <link rel="preload" as="image" href={PROPERTY.hero.photoSrc} fetchpriority="high" />}
+    {/* Accessibility choices (A11y.astro) applied before first paint, so a
+       guest who picked Dark or bigger text never sees a flash of the default. */}
+    <script is:inline>
+      (function () {
+        var KEY = 'guest-guide-a11y', d = document.documentElement, s = {};
+        try { s = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) {}
+        var dark = matchMedia('(prefers-color-scheme: dark)');
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+        function apply() {
+          var t = s.theme === 'light' || s.theme === 'dark' ? s.theme : (dark.matches ? 'dark' : 'light');
+          d.setAttribute('data-theme', t);
+          d.style.colorScheme = t;
+          var metas = document.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', t === 'dark' ? (s.contrast ? '#000000' : '#16120E') : (s.contrast ? '#FFFFFF' : '#F1ECE2'));
+          if (s.size === '1' || s.size === '2') d.setAttribute('data-text', s.size); else d.removeAttribute('data-text');
+          d.classList.toggle('a11y-contrast', !!s.contrast);
+          d.classList.toggle('a11y-readable', !!s.readable);
+          d.classList.toggle('a11y-calm', s.calm === undefined ? reduce.matches : !!s.calm);
+        }
+        dark.addEventListener && dark.addEventListener('change', apply);
+        window.ggA11y = {
+          get: function () { return Object.assign({}, s); },
+          set: function (n) { s = n || {}; try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} apply(); }
+        };
+        apply();
+        document.addEventListener('DOMContentLoaded', apply);
+      })();
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
 
@@ -70,12 +104,16 @@ const f = withFallback(footerLabels, lang);
             <Icon name="antlers" size={22} class="antlers" />
             <span>{PROPERTY.brand.shortName}</span>
           </a>
-          <button class="lang-pill" id="langBtn" aria-haspopup="true" aria-expanded="false" type="button">
-            <span id="langLabel">{lang.toUpperCase()}</span>
-            <Icon name="caret" size={10} />
-          </button>
+          <div class="header-actions">
+            <A11y lang={lang} />
+            <Search lang={lang} />
+            <button class="lang-pill" id="langBtn" aria-haspopup="true" aria-expanded="false" type="button">
+              <span id="langLabel">{lang.toUpperCase()}</span>
+              <Icon name="caret" size={10} />
+            </button>
+          </div>
           <div class="lang-menu" id="langMenu" role="menu">
-            {Object.keys(languages).map((code) => (
+            {PROPERTY.languages.map((code) => (
               <a
                 role="menuitem"
                 data-lang={code}
@@ -89,7 +127,9 @@ const f = withFallback(footerLabels, lang);
         </div>
       </header>
 
-      <slot />
+      <main id="main">
+        <slot />
+      </main>
 
       <footer class="site-footer">
         <div class="footer-inner">
@@ -128,7 +168,7 @@ const f = withFallback(footerLabels, lang);
       </footer>
     </div>
 
-    <!-- Service worker registration — caches the site for offline cabin use -->
+    <!-- Service worker registration — caches the site for offline use -->
     <script>
       // @ts-ignore - virtual module from vite-pwa/astro
       import('virtual:pwa-register').then(({ registerSW }) => {
@@ -136,7 +176,7 @@ const f = withFallback(footerLabels, lang);
       }).catch(() => { /* dev mode: no-op */ });
     </script>
 
-    <script define:vars={{ supportedLangs: Object.keys(languages) }}>
+    <script define:vars={{ supportedLangs: [...PROPERTY.languages] }}>
       // Header over-hero state — only for homepages with a hero
       (function() {
         const header = document.getElementById('siteHeader');
@@ -159,6 +199,13 @@ const f = withFallback(footerLabels, lang);
         langBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           const open = langMenu.classList.toggle('open');
+          // Only one dropdown at a time: opening the language menu closes search.
+          const sp = document.getElementById('searchPanel');
+          if (open && sp && !sp.hidden) {
+            sp.hidden = true;
+            document.getElementById('searchBtn')?.setAttribute('aria-expanded', 'false');
+            document.documentElement.classList.remove('search-open');
+          }
           langBtn.setAttribute('aria-expanded', String(open));
         });
         document.addEventListener('click', () => langMenu.classList.remove('open'));

@@ -1,0 +1,234 @@
+---
+/**
+ * Header search: a round button next to the language pill that drops a search
+ * panel under the header. The index (/<lang>/search.json) is fetched on first
+ * open and is precached by the service worker, so search also works offline.
+ * Matching ignores case and diacritics ("osigurac" finds "osigurači").
+ */
+import Icon from './Icon.astro';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const hints = (t(lang, 'search.hint') ?? '').split(' · ').filter(Boolean);
+---
+<button
+  class="search-btn"
+  id="searchBtn"
+  type="button"
+  aria-label={t(lang, 'search.open')}
+  aria-expanded="false"
+  aria-controls="searchPanel"
+>
+  <Icon name="search" size={17} strokeWidth={1.6} />
+</button>
+
+<div
+  class="search-panel"
+  id="searchPanel"
+  role="dialog"
+  aria-label={t(lang, 'search.open')}
+  hidden
+  data-lang={lang}
+  data-empty={t(lang, 'search.empty')}
+  data-results={t(lang, 'search.results')}
+>
+  <div class="search-field">
+    <Icon name="search" size={18} strokeWidth={1.6} />
+    <input
+      id="searchInput"
+      type="search"
+      inputmode="search"
+      enterkeyhint="search"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder={t(lang, 'search.placeholder')}
+      aria-label={t(lang, 'search.open')}
+      aria-controls="searchResults"
+    />
+    <button class="search-close" id="searchClose" type="button" aria-label={t(lang, 'search.close')}>
+      <Icon name="close" size={16} strokeWidth={1.8} />
+    </button>
+  </div>
+  <div class="search-hints" id="searchHints">
+    {hints.map((h) => <button type="button" class="search-chip" data-q={h}>{h}</button>)}
+  </div>
+  <p class="search-status" id="searchStatus" role="status" aria-live="polite"></p>
+  <ul class="search-results" id="searchResults"></ul>
+</div>
+
+<script>
+  type Item = { s: string; t: string; i: string; h: string; a: string; x: string };
+
+  const btn = document.getElementById('searchBtn') as HTMLButtonElement | null;
+  const panel = document.getElementById('searchPanel') as HTMLDivElement | null;
+  const input = document.getElementById('searchInput') as HTMLInputElement | null;
+  const closeBtn = document.getElementById('searchClose') as HTMLButtonElement | null;
+  const list = document.getElementById('searchResults') as HTMLUListElement | null;
+  const status = document.getElementById('searchStatus') as HTMLParagraphElement | null;
+  const hintsBox = document.getElementById('searchHints') as HTMLDivElement | null;
+
+  if (btn && panel && input && closeBtn && list && status && hintsBox) {
+    const lang = panel.dataset.lang!;
+    let items: Item[] | null = null;
+    let loading: Promise<Item[]> | null = null;
+    let active = -1;
+
+    // One output char per input char, so positions in the folded text map 1:1
+    // back to the original (needed to cut and highlight snippets).
+    const foldChar = (c: string) => {
+      const lower = c.toLowerCase();
+      if (lower === 'đ') return 'd';
+      if (lower === 'ß') return 's';
+      const base = lower.normalize('NFD').replace(/\p{M}/gu, '');
+      return base.length === 1 ? base : lower;
+    };
+    const fold = (s: string) => Array.from(s, foldChar).join('');
+    const esc = (s: string) =>
+      s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+
+    const load = () =>
+      (loading ??= fetch(`/${lang}/search.json`)
+        .then((r) => r.json())
+        // Hyphen-free copy appended so "wifi" finds "Wi-Fi" and "checkout" finds "check-out".
+        .then((d: Item[]) => (items = d.map((it) => {
+          const f = fold(`${it.t} ${it.h} ${it.x}`);
+          return { ...it, f: `${f} ${f.replace(/-/g, '')}` } as Item;
+        })))
+        .catch(() => (items = [])));
+
+    const highlight = (text: string, terms: string[]) => {
+      const f = fold(text);
+      const marks: [number, number][] = [];
+      for (const term of terms) {
+        let i = f.indexOf(term);
+        while (i !== -1) { marks.push([i, i + term.length]); i = f.indexOf(term, i + term.length); }
+      }
+      marks.sort((a, b) => a[0] - b[0]);
+      let out = '', pos = 0;
+      for (const [a, b] of marks) {
+        if (a < pos) continue;
+        out += esc(text.slice(pos, a)) + '<mark>' + esc(text.slice(a, b)) + '</mark>';
+        pos = b;
+      }
+      return out + esc(text.slice(pos));
+    };
+
+    const snippet = (text: string, terms: string[]) => {
+      if (!text) return '';
+      const f = fold(text);
+      const hit = Math.min(...terms.map((t) => f.indexOf(t)).filter((i) => i >= 0));
+      if (!isFinite(hit) || hit < 60) return text.length > 150 ? text.slice(0, 150).trimEnd() + '…' : text;
+      const start = text.lastIndexOf(' ', hit - 40) + 1;
+      const cut = text.slice(start, start + 150).trimEnd();
+      return '…' + cut + (start + 150 < text.length ? '…' : '');
+    };
+
+    const search = (q: string) => {
+      const terms = fold(q).split(/[\s,.;:!?·]+/).filter(Boolean);
+      if (!items || !terms.length || fold(q).trim().length < 2) return null;
+      const scored: { it: Item; score: number }[] = [];
+      for (const it of items) {
+        const all = (it as Item & { f: string }).f;
+        if (!terms.every((t) => all.includes(t))) continue;
+        const both = (x: string) => `${fold(x)} ${fold(x).replace(/-/g, '')}`;
+        const ft = both(it.t), fh = both(it.h);
+        let score = 0;
+        for (const t of terms) {
+          if (ft.includes(t)) score += 10;
+          if (fh.includes(t)) score += 6;
+          if (new RegExp(`(^|[^\\p{L}\\p{N}])${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'u').test(all)) score += 2;
+          score += 1;
+        }
+        scored.push({ it, score });
+      }
+      scored.sort((a, b) => b.score - a.score);
+      return { terms, hits: scored.slice(0, 12).map((s) => s.it) };
+    };
+
+    const setActive = (i: number) => {
+      const opts = Array.from(list.querySelectorAll<HTMLAnchorElement>('a'));
+      if (!opts.length) { active = -1; return; }
+      active = (i + opts.length) % opts.length;
+      opts.forEach((o, j) => o.classList.toggle('is-active', j === active));
+      opts[active].scrollIntoView({ block: 'nearest' });
+    };
+
+    const render = () => {
+      const q = input.value;
+      const res = search(q);
+      active = -1;
+      hintsBox.hidden = q.trim().length > 0;
+      if (!res) { list.innerHTML = ''; status.textContent = ''; return; }
+      if (!res.hits.length) { list.innerHTML = ''; status.textContent = panel.dataset.empty ?? ''; return; }
+      const forms = (panel.dataset.results ?? '').split('|');
+      const cat = new Intl.PluralRules(lang).select(res.hits.length);
+      // one | few | other (Croatian has all three; EN/DE use one | other)
+      const word = cat === 'one' ? forms[0] : cat === 'few' ? (forms[1] ?? forms.at(-1)) : forms.at(-1);
+      status.textContent = `${res.hits.length} ${word ?? ''}`;
+      list.innerHTML = res.hits
+        .map((it, i) => {
+          const href = `/${lang}/${it.s}${it.a ? '#' + it.a : ''}`;
+          return `<li><a id="sr-${i}" href="${esc(href)}">
+            <span class="sr-icon" aria-hidden="true">${esc(it.i)}</span>
+            <span class="sr-body">
+              <span class="sr-title">${highlight(it.t, res.terms)}${it.h ? ` <span class="sr-sep">›</span> ${highlight(it.h, res.terms)}` : ''}</span>
+              <span class="sr-text">${highlight(snippet(it.x, res.terms), res.terms)}</span>
+            </span></a></li>`;
+        })
+        .join('');
+    };
+
+    const open = () => {
+      document.getElementById('langMenu')?.classList.remove('open');
+      document.getElementById('langBtn')?.setAttribute('aria-expanded', 'false');
+      panel.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('search-open');
+      input.focus({ preventScroll: true });
+      load().then(render);
+    };
+    const close = (refocus = true) => {
+      if (panel.hidden) return;
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('search-open');
+      if (refocus) btn.focus({ preventScroll: true });
+    };
+
+    btn.addEventListener('click', (e) => { e.stopPropagation(); panel.hidden ? open() : close(); });
+    closeBtn.addEventListener('click', () => close());
+    panel.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('click', () => close(false));
+    hintsBox.addEventListener('click', (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('.search-chip');
+      if (!chip) return;
+      input.value = chip.dataset.q ?? '';
+      input.focus({ preventScroll: true });
+      load().then(render);
+    });
+    input.addEventListener('input', () => load().then(render));
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+      else if (e.key === 'Enter') {
+        const opts = list.querySelectorAll<HTMLAnchorElement>('a');
+        const target = opts[active >= 0 ? active : 0];
+        if (target) { e.preventDefault(); target.click(); }
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+      // "/" opens search on desktop, like most sites
+      if (e.key === '/' && panel.hidden && !(e.target as HTMLElement).closest('input, textarea')) {
+        e.preventDefault();
+        open();
+      }
+    });
+    // Following a result to an anchor on the same page: close so the heading is visible.
+    list.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) close(false);
+    });
+  }
+</script>

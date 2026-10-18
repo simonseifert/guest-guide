@@ -25,12 +25,12 @@ const qrSvg = await QRCode.toString(wifiURI, {
   color: { dark: '#14201A', light: '#F4EFE6' },
 });
 
-type WifiLabels = { wifi: string; net: string; pass: string; copy: string; copied: string; foot: string };
+type WifiLabels = { wifi: string; net: string; pass: string; copy: string; copied: string };
 const labels: Partial<Record<Lang, WifiLabels>> = {
-  en: { wifi: 'Wi-Fi', net: 'Network', pass: 'Password', copy: 'Copy', copied: 'Copied', foot: 'Scan the QR with your camera' },
-  de: { wifi: 'Wi-Fi', net: 'Netzwerk', pass: 'Passwort', copy: 'Kopieren', copied: 'Kopiert', foot: 'QR mit der Kamera scannen' },
-  hr: { wifi: 'Wi-Fi', net: 'Mreža', pass: 'Lozinka', copy: 'Kopiraj', copied: 'Kopirano', foot: 'Skenirajte QR kamerom' },
-  it: { wifi: 'Wi-Fi', net: 'Rete', pass: 'Password', copy: 'Copia', copied: 'Copiato', foot: 'Inquadra il QR con la fotocamera' },
+  en: { wifi: 'Wi-Fi', net: 'Network', pass: 'Password', copy: 'Copy', copied: 'Copied' },
+  de: { wifi: 'Wi-Fi', net: 'Netzwerk', pass: 'Passwort', copy: 'Kopieren', copied: 'Kopiert' },
+  hr: { wifi: 'Wi-Fi', net: 'Mreža', pass: 'Lozinka', copy: 'Kopiraj', copied: 'Kopirano' },
+  it: { wifi: 'Wi-Fi', net: 'Rete', pass: 'Password', copy: 'Copia', copied: 'Copiato' },
 };
 const l = withFallback(labels, lang);
 ---
@@ -56,12 +56,7 @@ const l = withFallback(labels, lang);
           <button type="button" class="copy-btn" data-copy={password}>{l.copy}</button>
         </div>
       </div>
-      <div class="wifi-qr" aria-label="Wi-Fi QR — scan to join" set:html={qrSvg} />
-    </div>
-
-    <div class="wifi-foot">
-      <Icon name="qr" />
-      <span>{l.foot}</span>
+      <div class="wifi-qr" role="img" aria-label="Wi-Fi QR, scan to join" set:html={qrSvg} />
     </div>
   </div>
 </div>

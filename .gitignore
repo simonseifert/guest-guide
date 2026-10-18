@@ -30,3 +30,4 @@ pnpm-debug.log*
 # host-specific config (commit places.config.example.json instead)
 places.config.json
 .places-cache/
+dist-print/

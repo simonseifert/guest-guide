@@ -7,20 +7,22 @@ interface Props {
   title: string;
   desc?: string;
   lang: Lang;
+  eyebrow?: Partial<Record<Lang, string>>;
 }
-const { href, title, desc, lang } = Astro.props;
-const eyebrow: Partial<Record<Lang, string>> = {
+const { href, title, desc, lang, eyebrow: eyebrowProp } = Astro.props;
+const defaultEyebrow: Partial<Record<Lang, string>> = {
   en: 'Read this first',
   de: 'Bitte zuerst lesen',
   hr: 'Pročitajte prvo',
   it: 'Da leggere per primo',
 };
+const eyebrow = eyebrowProp ?? defaultEyebrow;
 ---
 <a class="rules-feature" href={href}>
   <span class="icon-tile"><Icon name="house" size={28} /></span>
   <span class="meta">
     <div class="eyebrow">{withFallback(eyebrow, lang)}</div>
-    <h3>{title}</h3>
+    <h2>{title}</h2>
     {desc && <div class="desc">{desc}</div>}
   </span>
   <Icon name="arrow" size={16} class="arrow" />

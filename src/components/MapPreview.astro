@@ -22,17 +22,35 @@ const openLabel: Partial<Record<Lang, string>> = {
   hr: 'Otvori u Mapama',
   it: 'Apri in Maps',
 };
-const c = { place, open: withFallback(openLabel, lang), ariaLabel };
+const showLabel: Partial<Record<Lang, string>> = {
+  en: 'Show map',
+  de: 'Karte anzeigen',
+  hr: 'Prikaži kartu',
+  it: 'Mostra mappa',
+};
+const noteLabel: Partial<Record<Lang, string>> = {
+  en: 'Loads Google Maps, which may set cookies.',
+  de: 'Lädt Google Maps, das Cookies setzen kann.',
+  hr: 'Učitava Google Karte, koje mogu postaviti kolačiće.',
+  it: 'Carica Google Maps, che può impostare cookie.',
+};
+const c = {
+  place,
+  open: withFallback(openLabel, lang),
+  show: withFallback(showLabel, lang),
+  note: withFallback(noteLabel, lang),
+  ariaLabel,
+};
 ---
+{/* Google's embed only loads after a tap (no Google cookies or 1 MB of map
+    scripts on page load). The choice is remembered on the device. */}
 <div class="map-card">
-  <iframe
-    class="map-frame"
-    src={embed}
-    title={c.ariaLabel}
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    allowfullscreen
-  ></iframe>
+  <div class="map-frame map-consent" data-embed={embed} data-title={c.ariaLabel}>
+    <Icon name="pin" size={26} strokeWidth={1.5} />
+    <p class="map-consent-place">{c.place}</p>
+    <button type="button" class="map-consent-btn">{c.show}</button>
+    <p class="map-consent-note">{c.note}</p>
+  </div>
   <div class="map-foot">
     <span class="place">
       <Icon name="pin" size={14} />
@@ -44,3 +62,27 @@ const c = { place, open: withFallback(openLabel, lang), ariaLabel };
     </a>
   </div>
 </div>
+
+<script>
+  const KEY = 'guest-guide-maps';
+  const load = (box: HTMLElement) => {
+    const f = document.createElement('iframe');
+    f.className = 'map-frame';
+    f.src = box.dataset.embed!;
+    f.title = box.dataset.title!;
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.allowFullscreen = true;
+    box.replaceWith(f);
+    return f;
+  };
+  let ok = false;
+  try { ok = localStorage.getItem(KEY) === '1'; } catch {}
+  document.querySelectorAll<HTMLElement>('.map-consent').forEach((box) => {
+    if (ok) { load(box); return; }
+    box.querySelector('button')!.addEventListener('click', () => {
+      try { localStorage.setItem(KEY, '1'); } catch {}
+      load(box).focus();
+    });
+  });
+</script>

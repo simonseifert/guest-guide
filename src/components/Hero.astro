@@ -15,32 +15,38 @@ const copy: Partial<Record<Lang, HeroCopy>> = {
     eyebrow: 'Guest guide',
     titleLead: 'Welcome to ',
     titleEm: 'the cabin',
-    titleTail: '. Everything you need — in one place.',
+    titleTail: '. Everything you need, in one place.',
   },
   de: {
     eyebrow: 'Gästeführer',
     titleLead: 'Willkommen in ',
     titleEm: 'der Hütte',
-    titleTail: '. Alles, was Sie brauchen — an einem Ort.',
+    titleTail: '. Alles, was Sie brauchen, an einem Ort.',
   },
   hr: {
     eyebrow: 'Vodič za goste',
     titleLead: 'Dobrodošli u ',
     titleEm: 'kolibu',
-    titleTail: '. Sve što vam treba — na jednom mjestu.',
+    titleTail: '. Sve što vam treba, na jednom mjestu.',
   },
   it: {
     eyebrow: 'Guida per gli ospiti',
     titleLead: 'Benvenuti nella ',
     titleEm: 'baita',
-    titleTail: '. Tutto ciò che vi serve — in un unico posto.',
+    titleTail: '. Tutto ciò che vi serve, in un unico posto.',
   },
 };
 
 const c = withFallback(copy, lang);
-const subline = `${PROPERTY.address.city}, ${PROPERTY.address.country} — ${PROPERTY.brand.name}.`;
+const subline = `${PROPERTY.address.city}, ${PROPERTY.address.country}`;
+
+const heroPosition = PROPERTY.hero.photoPosition ?? 'center 40%';
 ---
-<section class="hero" id="hero" style={`--hero-photo: url('${PROPERTY.hero.photoSrc}')`}>
+<section
+  class="hero"
+  id="hero"
+  style={`--hero-photo: url('${PROPERTY.hero.photoSrc}'); --hero-photo-position: ${heroPosition};`}
+>
   <div class="photo" role="img" aria-label={PROPERTY.hero.photoAlt}></div>
   <div class="scrim"></div>
   <div class="hero-stack">
@@ -52,3 +58,4 @@ const subline = `${PROPERTY.address.city}, ${PROPERTY.address.country} — ${PRO
     </div>
   </div>
 </section>
+

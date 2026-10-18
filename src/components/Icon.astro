@@ -50,6 +50,13 @@ const common = {
     <path d="M13 26 V19 H19 V26"/>
   </svg>
 )}
+{name === 'cabin' && (
+  <svg viewBox="0 0 32 32" {...common}>
+    <path d="M4 25 V16 C4 9, 9.5 5, 16 5 C22.5 5, 28 9, 28 16 V25"/>
+    <path d="M13 25 V17 H19 V25"/>
+    <path d="M2.5 25 H29.5"/>
+  </svg>
+)}
 {name === 'jacuzzi' && (
   <svg viewBox="0 0 32 32" {...common}>
     <path d="M4 16 H28"/>
@@ -106,6 +113,26 @@ const common = {
   <svg viewBox="0 0 32 32" {...common}>
     <path d="M16 4 C 16 4, 9 13, 9 19 C 9 23, 12 26, 16 26 C 20 26, 23 23, 23 19 C 23 13, 16 4, 16 4 Z"/>
     <path d="M13 19 C 13 21, 14.5 22.5, 16 22.5"/>
+  </svg>
+)}
+{name === 'tennis' && (
+  <svg viewBox="0 0 32 32" {...common}>
+    <ellipse cx="13" cy="12" rx="8" ry="9"/>
+    <path d="M13 3 C 9 6, 9 18, 13 21" opacity="0.5"/>
+    <path d="M13 3 C 17 6, 17 18, 13 21" opacity="0.5"/>
+    <path d="M7 9 H19 M7 15 H19" opacity="0.5"/>
+    <path d="M13 21 V29"/>
+    <path d="M10 25 H16"/>
+    <circle cx="25" cy="23" r="2.4" fill="currentColor"/>
+  </svg>
+)}
+{name === 'pool' && (
+  <svg viewBox="0 0 32 32" {...common}>
+    <path d="M4 15 H28"/>
+    <path d="M5 15 V21 C5 23.5, 6.5 25, 9 25 H23 C25.5 25, 27 23.5, 27 21 V15"/>
+    <path d="M3 19 C 5 18, 7 20, 9 19 C 11 18, 13 20, 15 19" opacity="0.6"/>
+    <path d="M23 12 V6 H26"/>
+    <path d="M23 9 H26"/>
   </svg>
 )}
 {name === 'audio' && (
@@ -167,5 +194,32 @@ const common = {
 {name === 'external' && (
   <svg viewBox="0 0 12 12" {...{ ...common, 'stroke-width': 1.5 }}>
     <path d="M3 9 L9 3 M5 3 H9 V7"/>
+  </svg>
+)}
+{name === 'a11y' && (
+  <svg viewBox="0 0 24 24" {...common}>
+    <circle cx="12" cy="12" r="9.5"/>
+    <circle cx="12" cy="7.3" r="1.2"/>
+    <path d="M7.6 10 L12 11 L16.4 10"/>
+    <path d="M12 11 V14 L9.9 17.6"/>
+    <path d="M12 14 L14.1 17.6"/>
+  </svg>
+)}
+{name === 'speak' && (
+  <svg viewBox="0 0 24 24" {...common}>
+    <path d="M4 9.5 H7.5 L12 5.5 V18.5 L7.5 14.5 H4 Z"/>
+    <path d="M15.5 9 A4 4 0 0 1 15.5 15"/>
+    <path d="M18 6.5 A7.5 7.5 0 0 1 18 17.5"/>
+  </svg>
+)}
+{name === 'search' && (
+  <svg viewBox="0 0 24 24" {...common}>
+    <circle cx="10.5" cy="10.5" r="6.5"/>
+    <path d="M15.5 15.5 L20.5 20.5"/>
+  </svg>
+)}
+{name === 'close' && (
+  <svg viewBox="0 0 24 24" {...common}>
+    <path d="M6 6 L18 18 M18 6 L6 18"/>
   </svg>
 )}

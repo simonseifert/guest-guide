@@ -14,14 +14,18 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 
 - 📱 **Mobile-first** — designed at 390px, scales clean to desktop
 - 🌍 **Multilingual** — ships with EN/DE/HR/IT; add any language with one DeepL command
-- 🛜 **PWA + offline** — service worker precaches the whole site so guests with patchy signal can still read instructions
+- 🛜 **PWA + offline** — pages load network-first (guests always see your latest edits), with the whole site precached as the offline fallback for patchy signal
+- 🔎 **Search** — header search across every section ("wifi", "fuses", "check-out"), works offline
+- ♿ **Accessibility panel** — light/dark/auto theme, text size, high contrast, easier-reading font, reduce motion, and read-aloud with the phone's own voice. Choices stick per device and apply before first paint
+- 🌗 **Dark mode** — follows the phone setting, or the guest's choice in the panel
 - 🪪 **Wi-Fi tap-to-join QR** — guests scan with their camera, phone joins automatically (`WIFI:` URI scheme)
-- 🗺️ **Embedded interactive map** for nearby places + open-in-Maps deeplink
+- 🗺️ **Tap-to-load map** — Google's embed (and its cookies) load only after the guest taps "Show map"; open-in-Maps deeplink always visible
 - ☎️ **Tap-to-call** emergency + host contact numbers
 - 🎨 **Brand-customizable** — single config file (`src/config/property.ts`) controls all property-specific data
 - 🔒 **`noindex` by default** — guest info, not search-traffic content
 - 🆓 **No SaaS fees** — host it on Vercel / Netlify / Cloudflare Pages free tier
 - 🖨️ **Printable A4 poster** — `npm run poster` generates a fridge-ready PNG with Wi-Fi QR + guide QR
+- 📖 **Printable guide book** — `npm run print` turns the same markdown into an A4 book per language: cover with Wi-Fi + guide QR, contents, one section per page, binding margin, contacts page
 - 📰 **Print-friendly stylesheet** — guests can print any section as clean monochrome A4
 - 💸 **Affiliate-link helper** — earn commission from Viator / GetYourGuide / Booking / Amazon links with one config field
 - 📊 **Privacy-friendly analytics** (optional) — Plausible / Umami / GoatCounter, no cookie banner needed
@@ -151,14 +155,19 @@ src/
   content/sections/{en,de,hr,it}/*.md
   components/
     Hero, WifiCard, RulesFeature, AntlerDivider,
-    SectionGroup, SectionRow, MapPreview, Icon
+    SectionGroup, SectionRow, MapPreview, Icon,
+    Search (header search panel), A11y (accessibility panel)
   layouts/Layout.astro              ← header + footer + html shell
   pages/
     index.astro                     ← / → language-detected redirect
     [lang]/index.astro              ← /en, /de, /hr, /it (homepages)
     [lang]/[slug].astro             ← per-section pages
+    [lang]/search.json.ts           ← per-language search index (built at deploy)
+    404.astro                       ← multilingual not-found page
   i18n/ui.ts                        ← UI strings + per-language labels
   lib/remark-affiliates.mjs         ← rewrites affiliate links at build time
+  lib/rehype-image-size.mjs         ← adds width/height to markdown images (no layout shift)
+  sw.ts                             ← service worker: pages network-first, precache offline fallback
   styles/global.css                 ← design system tokens + component CSS
   styles/print.css                  ← print stylesheet (single column, hide chrome)
 public/
@@ -171,6 +180,7 @@ scripts/
   fetch-places.mjs                  ← Google Places API → places.md
   generate-icons.mjs                ← regenerates PWA icons from a source SVG
   generate-poster.mjs               ← writes dist/poster.png — fridge-ready Wi-Fi + guide QR
+  print-guide.mjs                   ← writes dist-print/guide-<lang>.html — A4 guide book to print to PDF
   translate.mjs                     ← translate EN markdown into another language
 places.config.example.json          ← copy to places.config.json (gitignored) for fetch-places
 ```
@@ -325,6 +335,17 @@ Two QR codes — one to join the Wi-Fi automatically, one to open the digital gu
   <img src="docs/screenshots/poster-preview.png" alt="Printable A4 poster preview" width="320"/>
 </p>
 
+### Print the whole guide as a book
+
+```bash
+npm run print
+# → dist-print/guide-en.html, guide-de.html, …  (one per language in PROPERTY.languages)
+```
+
+Open each file in Chrome, wait a second for it to finish laying out, then Print → Save as PDF (A4, default margins, "Background graphics" on). You get a cover with your hero photo plus Wi-Fi and guide QR codes, a contents page, every section starting on a new page (safety-critical ones flagged), a wider left margin for binding, and a contacts page at the back. Set `reviews.googleReviewUrl` in `property.ts` to add a "leave a review" QR there. A small layout pass shrinks photos in any section whose last page would be mostly empty.
+
+Needs Node 22.6+ (the script reads `property.ts` directly).
+
 The site itself also has a print stylesheet — guests can print any section page (rules, hot tub instructions, check-out) as clean monochrome A4. The web chrome (header, language switcher, footer, embedded maps) is hidden automatically.
 
 ## Adding or removing languages
@@ -375,7 +396,7 @@ The translate script accepts any ISO 2-letter code your provider supports. DeepL
 
 ### Removing a language
 
-Drop it from `PROPERTY.languages`, delete `src/content/sections/<lang>/`, and remove its entry from `src/i18n/ui.ts`. That's it.
+Drop it from `PROPERTY.languages`. Pages, the language menu, the 404 page and the printable guide only build the languages listed there. Delete `src/content/sections/<lang>/` too if you want a tidy repo.
 
 > **Always do a human pass.** Machine translation gets you 90% of the way there. The other 10% — tone, idiom, local quirks like "OIB" vs "Tax ID" — still benefits from a native speaker reading through once.
 

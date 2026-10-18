@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import MapPreview from '../../components/MapPreview.astro';
+import RulesFeature from '../../components/RulesFeature.astro';
 import type { IconName } from '../../components/icons';
 import { t, withFallback, type Lang } from '../../i18n/ui';
 
@@ -29,15 +30,32 @@ const iconForSlug: Record<string, IconName> = {
   coffee: 'coffee',
   oven: 'oven',
   water: 'water',
+  tennis: 'tennis',
+  pool: 'pool',
   avr: 'audio',
   rules: 'house',
+  top10: 'house',
   checkout: 'clock',
   explore: 'pine',
   emergency: 'phone',
   welcome: 'antlers',
+  glamping: 'cabin',
 };
 
 const { Content } = await render(entry);
+
+// The Top 10 page is the condensed version of the full house rules — link to
+// it right under the rules content itself, not just from the homepage list,
+// since a guest reading the full rules is exactly who wants the short version.
+const top10Entry = slug === 'rules'
+  ? (await getCollection('sections')).find((s) => s.id === `${lang}/top10`)
+  : undefined;
+const shortVersionEyebrow: Partial<Record<Lang, string>> = {
+  en: 'Short version',
+  de: 'Kurzfassung',
+  hr: 'Kratka verzija',
+  it: 'Versione breve',
+};
 
 const safetyCopy: Partial<Record<Lang, string>> = {
   en: 'Please read the safety rules carefully before use.',
@@ -85,6 +103,16 @@ const importantLabel: Partial<Record<Lang, string>> = {
     <div class="prose-guide">
       <Content />
     </div>
+
+    {top10Entry && (
+      <RulesFeature
+        lang={lang}
+        href={`/${lang}/top10`}
+        title={top10Entry.data.title}
+        desc={top10Entry.data.summary}
+        eyebrow={shortVersionEyebrow}
+      />
+    )}
   </article>
 </Layout>
 

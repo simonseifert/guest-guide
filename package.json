@@ -12,7 +12,8 @@
     "translate": "node scripts/translate.mjs",
     "poster": "node scripts/generate-poster.mjs",
     "fetch-places": "node scripts/fetch-places.mjs",
-    "bootstrap": "node scripts/bootstrap.mjs"
+    "bootstrap": "node scripts/bootstrap.mjs",
+    "print": "node --experimental-strip-types --no-warnings scripts/print-guide.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

@@ -41,7 +41,8 @@ type UiKey =
   | 'nav.explore' | 'nav.evisitor' | 'nav.contact'
   | 'cta.host' | 'cta.emergency'
   | 'common.read_more' | 'common.back' | 'common.important' | 'common.warning'
-  | 'lang.label';
+  | 'lang.label'
+  | 'search.open' | 'search.placeholder' | 'search.empty' | 'search.close' | 'search.results' | 'search.hint';
 
 type UiDict = Partial<Record<UiKey, string | null>>;
 
@@ -76,6 +77,12 @@ export const ui: Partial<Record<Lang, UiDict>> = {
     'common.important': 'Important',
     'common.warning': 'Warning',
     'lang.label': 'Language',
+    'search.open': 'Search the guide',
+    'search.placeholder': 'Search, e.g. Wi-Fi, sauna, fuses',
+    'search.empty': 'Nothing found. Try another word.',
+    'search.close': 'Close search',
+    'search.results': 'result|results',
+    'search.hint': 'Wi-Fi · check-out · sauna · fuses · pharmacy',
   },
   de: {
     'site.title': null,
@@ -107,6 +114,12 @@ export const ui: Partial<Record<Lang, UiDict>> = {
     'common.important': 'Wichtig',
     'common.warning': 'Achtung',
     'lang.label': 'Sprache',
+    'search.open': 'Handbuch durchsuchen',
+    'search.placeholder': 'Suchen, z. B. WLAN, Sauna, Sicherungen',
+    'search.empty': 'Nichts gefunden. Versuchen Sie ein anderes Wort.',
+    'search.close': 'Suche schließen',
+    'search.results': 'Ergebnis|Ergebnisse',
+    'search.hint': 'WLAN · Check-out · Sauna · Sicherungen · Apotheke',
   },
   hr: {
     'site.title': null,
@@ -138,6 +151,12 @@ export const ui: Partial<Record<Lang, UiDict>> = {
     'common.important': 'Važno',
     'common.warning': 'Pažnja',
     'lang.label': 'Jezik',
+    'search.open': 'Pretraži vodič',
+    'search.placeholder': 'Pretražite, npr. Wi-Fi, sauna, osigurači',
+    'search.empty': 'Nema rezultata. Pokušajte drugu riječ.',
+    'search.close': 'Zatvori pretragu',
+    'search.results': 'rezultat|rezultata|rezultata',
+    'search.hint': 'Wi-Fi · odjava · sauna · osigurači · ljekarna',
   },
   it: {
     'site.title': null,
@@ -169,6 +188,12 @@ export const ui: Partial<Record<Lang, UiDict>> = {
     'common.important': 'Importante',
     'common.warning': 'Attenzione',
     'lang.label': 'Lingua',
+    'search.open': 'Cerca nella guida',
+    'search.placeholder': 'Cerca, es. Wi-Fi, sauna, fusibili',
+    'search.empty': "Nessun risultato. Prova un'altra parola.",
+    'search.close': 'Chiudi ricerca',
+    'search.results': 'risultato|risultati',
+    'search.hint': 'Wi-Fi · check-out · sauna · fusibili · farmacia',
   },
 };
 

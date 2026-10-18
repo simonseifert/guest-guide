@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeExternalLinks from 'rehype-external-links';
+import rehypeImageSize from './src/lib/rehype-image-size.mjs';
 import AstroPWA from '@vite-pwa/astro';
 import { PROPERTY } from './src/config/property';
 import { remarkAffiliates } from './src/lib/remark-affiliates.mjs';
@@ -20,6 +21,7 @@ export default defineConfig({
       [remarkAffiliates, { affiliates: PROPERTY.affiliates }],
     ],
     rehypePlugins: [
+      rehypeImageSize,
       [
         rehypeExternalLinks,
         {
@@ -67,47 +69,17 @@ export default defineConfig({
           { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' },
         ],
       },
-      workbox: {
+      // Hand-written worker (src/sw.ts): pages network-first, precache as the
+      // offline fallback. generateSW can't do that, because its precache route
+      // always answers before any runtimeCaching rule.
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      injectManifest: {
         // Precache every static asset that ships with the build, so the entire
         // site loads offline after the first visit. Cabin signal is patchy.
-        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,woff2,ico,txt}'],
-        // Don't try to precache the runtime-fetched 11MB+ image library —
-        // Workbox doesn't ship that, but adding an upper limit is safe.
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,woff2,ico,txt,json}'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4MB per asset
-        cleanupOutdatedCaches: true,
-        navigateFallback: `/${PROPERTY.defaultLanguage}`,
-        navigateFallbackDenylist: [/^\/(_|api)/],
-        runtimeCaching: [
-          {
-            // Google Fonts CSS — refresh occasionally
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'google-fonts-stylesheets',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 30 },
-            },
-          },
-          {
-            // Google Fonts files — long cache, immutable
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-webfonts',
-              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-          {
-            // Google Maps embed (won't really work offline but cache the iframe shell)
-            urlPattern: /^https:\/\/www\.google\.com\/maps\/.*/i,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'google-maps',
-              networkTimeoutSeconds: 4,
-              expiration: { maxEntries: 4, maxAgeSeconds: 60 * 60 * 24 * 7 },
-            },
-          },
-        ],
       },
     }),
   ],

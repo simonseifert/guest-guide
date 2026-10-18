@@ -145,6 +145,10 @@
   .prose-guide a[href^="mailto:"]::after {
     content: "";
   }
+  /* Encoded Maps search URLs are useless on paper and bury the address. */
+  .prose-guide a[href*="google.com/maps"]::after {
+    content: "";
+  }
 
   /* Safety callouts: keep them visible but inkjet-friendly. */
   .safety-callout,

@@ -1,6 +1,7 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# This is the default. The site is also marked noindex via meta + X-Robots-Tag.
-# To allow search engines, set PROPERTY.noindex = false in
-# src/config/property.ts AND replace the rule above with `Allow: /`.
+# The guide stays out of search through `noindex, nofollow` (meta tag + X-Robots-Tag
+# header, see PROPERTY.noindex). Crawling is allowed on purpose: a robots.txt block
+# would hide that noindex from Google, and if your main website links to the guide,
+# a blocked URL could still show up in results as a bare link.

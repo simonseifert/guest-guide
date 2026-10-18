@@ -2,6 +2,7 @@ export type IconName =
   | 'antlers'
   | 'wifi'
   | 'house'
+  | 'cabin'
   | 'jacuzzi'
   | 'sauna'
   | 'grill'
@@ -9,6 +10,8 @@ export type IconName =
   | 'coffee'
   | 'oven'
   | 'water'
+  | 'tennis'
+  | 'pool'
   | 'audio'
   | 'clock'
   | 'pine'
@@ -18,4 +21,8 @@ export type IconName =
   | 'arrow'
   | 'caret'
   | 'warn'
-  | 'external';
+  | 'external'
+  | 'search'
+  | 'a11y'
+  | 'speak'
+  | 'close';

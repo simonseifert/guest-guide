@@ -1,0 +1,232 @@
+---
+/**
+ * Accessibility panel: a round button in the header (next to search) that
+ * drops a panel with appearance (auto/light/dark), text size, high contrast,
+ * easier reading, reduce motion and read-aloud. Choices are stored on the
+ * device (localStorage "guest-guide-a11y") and applied to <html> by the inline
+ * script in Layout.astro before first paint, so pages never flash.
+ */
+import Icon from './Icon.astro';
+import { withFallback, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+type Labels = {
+  open: string; theme: string; auto: string; light: string; dark: string; size: string;
+  contrast: string; contrastHint: string; readable: string; readableHint: string;
+  calm: string; calmHint: string; read: string; stop: string; reset: string; close: string;
+};
+const labels: Partial<Record<Lang, Labels>> = {
+  en: {
+    open: 'Accessibility', theme: 'Appearance', auto: 'Auto', light: 'Light', dark: 'Dark', size: 'Text size',
+    contrast: 'High contrast', contrastHint: 'Black and white, stronger lines',
+    readable: 'Easier reading', readableHint: 'Plain font, more spacing, underlined links',
+    calm: 'Reduce motion', calmHint: 'No animations',
+    read: 'Read this page aloud', stop: 'Stop reading', reset: 'Reset to default', close: 'Close',
+  },
+  de: {
+    open: 'Barrierefreiheit', theme: 'Darstellung', auto: 'Auto', light: 'Hell', dark: 'Dunkel', size: 'Textgröße',
+    contrast: 'Hoher Kontrast', contrastHint: 'Schwarz-weiß, kräftigere Linien',
+    readable: 'Leichter lesen', readableHint: 'Schlichte Schrift, mehr Abstand, unterstrichene Links',
+    calm: 'Weniger Bewegung', calmHint: 'Keine Animationen',
+    read: 'Seite vorlesen', stop: 'Vorlesen stoppen', reset: 'Zurücksetzen', close: 'Schließen',
+  },
+  hr: {
+    open: 'Pristupačnost', theme: 'Izgled', auto: 'Auto', light: 'Svijetlo', dark: 'Tamno', size: 'Veličina teksta',
+    contrast: 'Visoki kontrast', contrastHint: 'Crno-bijelo, jače linije',
+    readable: 'Lakše čitanje', readableHint: 'Jednostavan font, veći razmaci, podcrtane poveznice',
+    calm: 'Manje animacija', calmHint: 'Bez animacija',
+    read: 'Pročitaj stranicu naglas', stop: 'Zaustavi čitanje', reset: 'Vrati zadano', close: 'Zatvori',
+  },
+};
+const l = withFallback(labels, lang);
+const speechLang = ({ hr: 'hr-HR', de: 'de-DE', en: 'en-GB', it: 'it-IT' } as Record<string, string>)[lang] ?? lang;
+---
+<button
+  class="search-btn a11y-btn"
+  id="a11yBtn"
+  type="button"
+  aria-label={l.open}
+  aria-expanded="false"
+  aria-controls="a11yPanel"
+>
+  <Icon name="a11y" size={19} strokeWidth={1.5} />
+</button>
+
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" hidden data-speech-lang={speechLang} data-read={l.read} data-stop={l.stop}>
+  <div class="a11y-head">
+    <p class="a11y-title" id="a11yTitle">{l.open}</p>
+    <button class="search-close" id="a11yClose" type="button" aria-label={l.close}>
+      <Icon name="close" size={16} strokeWidth={1.8} />
+    </button>
+  </div>
+
+  <fieldset class="a11y-group">
+    <legend>{l.theme}</legend>
+    <div class="a11y-seg">
+      <button type="button" data-key="theme" data-val="auto" aria-pressed="false">{l.auto}</button>
+      <button type="button" data-key="theme" data-val="light" aria-pressed="false">{l.light}</button>
+      <button type="button" data-key="theme" data-val="dark" aria-pressed="false">{l.dark}</button>
+    </div>
+  </fieldset>
+
+  <fieldset class="a11y-group">
+    <legend>{l.size}</legend>
+    <div class="a11y-seg">
+      <button type="button" data-key="size" data-val="0" aria-pressed="false" aria-label="A (100%)"><span class="a-sm">A</span></button>
+      <button type="button" data-key="size" data-val="1" aria-pressed="false" aria-label="A+ (115%)"><span class="a-md">A</span>+</button>
+      <button type="button" data-key="size" data-val="2" aria-pressed="false" aria-label="A++ (130%)"><span class="a-lg">A</span>++</button>
+    </div>
+  </fieldset>
+
+  <button type="button" class="a11y-toggle" role="switch" aria-checked="false" data-key="contrast">
+    <span class="label">{l.contrast}<small>{l.contrastHint}</small></span><span class="a11y-switch" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="a11y-toggle" role="switch" aria-checked="false" data-key="readable">
+    <span class="label">{l.readable}<small>{l.readableHint}</small></span><span class="a11y-switch" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="a11y-toggle" role="switch" aria-checked="false" data-key="calm">
+    <span class="label">{l.calm}<small>{l.calmHint}</small></span><span class="a11y-switch" aria-hidden="true"></span>
+  </button>
+
+  <button type="button" class="a11y-read" id="a11yRead" aria-pressed="false" hidden>
+    <Icon name="speak" size={18} strokeWidth={1.6} /><span>{l.read}</span>
+  </button>
+  <button type="button" class="a11y-reset" id="a11yReset">{l.reset}</button>
+</div>
+
+<script>
+  type Settings = { theme?: string; size?: string; contrast?: boolean; readable?: boolean; calm?: boolean };
+  const api = (window as unknown as { ggA11y?: { get: () => Settings; set: (s: Settings) => void } }).ggA11y;
+  const btn = document.getElementById('a11yBtn') as HTMLButtonElement | null;
+  const panel = document.getElementById('a11yPanel') as HTMLDivElement | null;
+  const closeBtn = document.getElementById('a11yClose') as HTMLButtonElement | null;
+  const readBtn = document.getElementById('a11yRead') as HTMLButtonElement | null;
+  const resetBtn = document.getElementById('a11yReset') as HTMLButtonElement | null;
+
+  if (api && btn && panel && closeBtn && readBtn && resetBtn) {
+    const reduceOS = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const render = () => {
+      const s = api.get();
+      panel.querySelectorAll<HTMLButtonElement>('.a11y-seg button').forEach((b) => {
+        const cur = b.dataset.key === 'theme' ? s.theme || 'auto' : s.size || '0';
+        b.setAttribute('aria-pressed', String(cur === b.dataset.val));
+      });
+      panel.querySelectorAll<HTMLButtonElement>('.a11y-toggle').forEach((b) => {
+        const k = b.dataset.key as 'contrast' | 'readable' | 'calm';
+        const on = k === 'calm' ? s.calm ?? reduceOS : !!s[k];
+        b.setAttribute('aria-checked', String(on));
+      });
+    };
+
+    panel.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const seg = (e.target as Element).closest<HTMLButtonElement>('.a11y-seg button');
+      const tog = (e.target as Element).closest<HTMLButtonElement>('.a11y-toggle');
+      const s = api.get();
+      if (seg) api.set({ ...s, [seg.dataset.key!]: seg.dataset.val });
+      else if (tog) api.set({ ...s, [tog.dataset.key!]: tog.getAttribute('aria-checked') !== 'true' });
+      else return;
+      render();
+    });
+    resetBtn.addEventListener('click', () => { api.set({}); render(); });
+
+    // Only one dropdown at a time: opening this one closes search and language.
+    const open = () => {
+      document.getElementById('langMenu')?.classList.remove('open');
+      document.getElementById('langBtn')?.setAttribute('aria-expanded', 'false');
+      const sp = document.getElementById('searchPanel');
+      if (sp && !sp.hidden) {
+        sp.hidden = true;
+        document.getElementById('searchBtn')?.setAttribute('aria-expanded', 'false');
+        document.documentElement.classList.remove('search-open');
+      }
+      render();
+      panel.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      (panel.querySelector('.a11y-seg button[aria-pressed="true"]') as HTMLElement | null)?.focus();
+    };
+    const close = (refocus = true) => {
+      if (panel.hidden) return;
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (refocus) btn.focus();
+    };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); panel.hidden ? open() : close(); });
+    closeBtn.addEventListener('click', () => close());
+    document.addEventListener('click', () => close(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    document.getElementById('searchBtn')?.addEventListener('click', () => close(false));
+    document.getElementById('langBtn')?.addEventListener('click', () => close(false));
+
+    // Read aloud with the device's own voice, one block at a time (long
+    // utterances get cut off in Chrome), highlighting and scrolling to each.
+    const synth = 'speechSynthesis' in window ? window.speechSynthesis : null;
+    if (synth) {
+      readBtn.hidden = false;
+      const speechLang = panel.dataset.speechLang!;
+      const label = readBtn.querySelector('span')!;
+      let reading = false;
+      let current: Element | null = null;
+
+      const setCurrent = (el: Element | null) => {
+        current?.classList.remove('a11y-reading');
+        current = el;
+        if (el) {
+          el.classList.add('a11y-reading');
+          el.scrollIntoView({ block: 'center', behavior: document.documentElement.classList.contains('a11y-calm') ? 'auto' : 'smooth' });
+        }
+      };
+      const stop = () => {
+        reading = false;
+        synth.cancel();
+        setCurrent(null);
+        readBtn.setAttribute('aria-pressed', 'false');
+        label.textContent = panel.dataset.read!;
+      };
+      const blocks = () =>
+        Array.from(document.querySelectorAll('main :is(h1, h2, h3, h4, p, li, dt, dd, figcaption, .row .summary)'))
+          .filter((el) => {
+            const h = el as HTMLElement;
+            if (!h.offsetParent || h.closest('[aria-hidden="true"], .search-panel, .wifi-qr')) return false;
+            if (el.matches('li') && el.querySelector('p')) return false; // its <p>s are read instead
+            if (el.parentElement?.closest('main :is(p, li, dd, figcaption)')) return false;
+            return (h.innerText || '').trim().length > 1;
+          });
+      const voice = () => {
+        const vs = synth.getVoices();
+        return vs.find((v) => v.lang === speechLang) ?? vs.find((v) => v.lang.toLowerCase().startsWith(speechLang.slice(0, 2)));
+      };
+      const start = () => {
+        const list = blocks();
+        if (!list.length) return;
+        reading = true;
+        readBtn.setAttribute('aria-pressed', 'true');
+        label.textContent = panel.dataset.stop!;
+        let i = 0;
+        const next = () => {
+          if (!reading) return;
+          if (i >= list.length) { stop(); return; }
+          const el = list[i++];
+          const u = new SpeechSynthesisUtterance((el as HTMLElement).innerText.trim());
+          u.lang = speechLang;
+          const v = voice();
+          if (v) u.voice = v;
+          u.onstart = () => setCurrent(el);
+          u.onend = next;
+          u.onerror = () => { if (reading) next(); };
+          synth.speak(u);
+        };
+        synth.cancel();
+        next();
+      };
+      readBtn.addEventListener('click', () => {
+        if (reading) stop();
+        else { close(false); start(); }
+      });
+      window.addEventListener('pagehide', () => synth.cancel());
+    }
+  }
+</script>

@@ -59,15 +59,30 @@ export const PROPERTY = {
   hero: {
     /** Path to a wide cinematic photo of your property. ~1920×1280 ideal. */
     photoSrc: '/images/hero-placeholder.svg',
+    /** Optional CSS background-position for the hero crop on narrow phones,
+     *  e.g. '80% 50%' to keep a subject on the right in frame. */
+    photoPosition: 'center 40%' as string | undefined,
     /** Alt text describing the photo (for screen readers). */
     photoAlt: 'A cabin at twilight',
   },
 
+  /* ---------- Reviews (optional) ---------- */
+  reviews: {
+    /** Google "write a review" link (Business Profile → Ask for reviews), e.g.
+     *  https://search.google.com/local/writereview?placeid=… Adds a review QR
+     *  to the printable guide (npm run print). `null` hides it. */
+    googleReviewUrl: null as string | null,
+  },
+
   /* ---------- Map ---------- */
   map: {
-    /** Embed URL for an interactive map (e.g. Google My Maps embed). */
+    /** Embed URL for the interactive map. Loads only after the guest taps
+     *  "Show map" (no Google cookies on page load). Coordinates give the most
+     *  exact pin: 'https://www.google.com/maps?q=LAT,LNG&z=16&output=embed'. */
     embedUrl: 'https://www.google.com/maps?q=Eiffel+Tower&output=embed',
-    /** Public share URL. Used by the "Open in Maps" button. */
+    /** Public share URL. Used by the "Open in Maps" button. Your Google
+     *  Business Profile share link (maps.app.goo.gl/…) is best: reviews,
+     *  photos and directions in one place. */
     shareUrl: 'https://www.google.com/maps?q=Eiffel+Tower',
     /** Short address shown next to the open-in-maps link. */
     placeLabel: 'Your address · Your area',
