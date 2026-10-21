@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { withFallback, type Lang } from '../i18n/ui';
+import type { IconName } from './icons';
 
 interface Props {
   href: string;
@@ -8,8 +9,9 @@ interface Props {
   desc?: string;
   lang: Lang;
   eyebrow?: Partial<Record<Lang, string>>;
+  icon?: IconName;
 }
-const { href, title, desc, lang, eyebrow: eyebrowProp } = Astro.props;
+const { href, title, desc, lang, eyebrow: eyebrowProp, icon = 'house' } = Astro.props;
 const defaultEyebrow: Partial<Record<Lang, string>> = {
   en: 'Read this first',
   de: 'Bitte zuerst lesen',
@@ -19,7 +21,7 @@ const defaultEyebrow: Partial<Record<Lang, string>> = {
 const eyebrow = eyebrowProp ?? defaultEyebrow;
 ---
 <a class="rules-feature" href={href}>
-  <span class="icon-tile"><Icon name="house" size={28} /></span>
+  <span class="icon-tile"><Icon name={icon} size={28} /></span>
   <span class="meta">
     <div class="eyebrow">{withFallback(eyebrow, lang)}</div>
     <h2>{title}</h2>

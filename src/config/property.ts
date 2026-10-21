@@ -74,6 +74,15 @@ export const PROPERTY = {
     googleReviewUrl: null as string | null,
   },
 
+  /* ---------- Printed guide book (npm run print) ---------- */
+  print: {
+    /** Photo above the hosts' welcome letter, e.g. '/images/pool.jpg'. `null` = no photo. */
+    letterPhoto: null as string | null,
+    /** Opener photos for the three chapters (Welcome, Enjoy, House). A `null`
+     *  entry falls back to the first photo used inside that chapter. */
+    chapterPhotos: [null, null, null] as (string | null)[],
+  },
+
   /* ---------- Map ---------- */
   map: {
     /** Embed URL for the interactive map. Loads only after the guest taps

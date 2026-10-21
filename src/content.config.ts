@@ -12,6 +12,8 @@ const sections = defineCollection({
     order: z.number(),
     category: z.enum(categories).optional(),
     summary: z.string().optional(),
+    /** Replaces `summary` in the printed book, where arrival steps are left out. */
+    printSummary: z.string().optional(),
     safetyCritical: z.boolean().default(false),
   }),
 });

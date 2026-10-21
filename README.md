@@ -25,7 +25,9 @@ A free, open-source alternative to **[InfoSpot](https://www.infospot.online/)**,
 - 🔒 **`noindex` by default** — guest info, not search-traffic content
 - 🆓 **No SaaS fees** — host it on Vercel / Netlify / Cloudflare Pages free tier
 - 🖨️ **Printable A4 poster** — `npm run poster` generates a fridge-ready PNG with Wi-Fi QR + guide QR
-- 📖 **Printable guide book** — `npm run print` turns the same markdown into an A4 book per language: cover with Wi-Fi + guide QR, contents, one section per page, binding margin, contacts page
+- 📖 **Printable guide book** — `npm run print` turns the same markdown into an A4 book per language: cover with Wi-Fi + guide QR, a welcome letter signed by the hosts, three chapters with photo openers, one section per page, binding margin, contacts page, and unnumbered guestbook pages at the end
+- 📋 **Important information page** — category, prices, complaints procedure, safety equipment and camera notice in one place (what many countries require holiday rentals to display)
+- 🔑 **Arrival first** — a "Before you arrive" card at the top of the homepage leads to directions and the key
 - 📰 **Print-friendly stylesheet** — guests can print any section as clean monochrome A4
 - 💸 **Affiliate-link helper** — earn commission from Viator / GetYourGuide / Booking / Amazon links with one config field
 - 📊 **Privacy-friendly analytics** (optional) — Plausible / Umami / GoatCounter, no cookie banner needed
@@ -343,6 +345,14 @@ npm run print
 ```
 
 Open each file in Chrome, wait a second for it to finish laying out, then Print → Save as PDF (A4, default margins, "Background graphics" on). You get a cover with your hero photo plus Wi-Fi and guide QR codes, a contents page, every section starting on a new page (safety-critical ones flagged), a wider left margin for binding, and a contacts page at the back. Set `reviews.googleReviewUrl` in `property.ts` to add a "leave a review" QR there. A small layout pass shrinks photos in any section whose last page would be mostly empty.
+
+The book also has:
+
+- **A welcome letter** after the cover, signed with the hosts' first names. Edit the wording in `copy` in `scripts/print-guide.mjs`; `print.letterPhoto` in `property.ts` adds a photo above it.
+- **Three chapters** (Welcome, Enjoy, House and appliances), each opened by a photo page. Set `print.chapterPhotos`, or leave `null` and the first photo inside that chapter is used.
+- **Important information** at the end. Its photos (e.g. an evacuation plan) print large and are never shrunk.
+- **Guestbook pages** last, without page numbers, so the owners can bind in more blank pages later.
+- **Web-only text.** End a `##` heading with `<!-- web -->` to keep that whole subsection off paper (the arrival and key steps: whoever reads the book is already inside), or end any other line with it to drop just that line. List items that are only a link (map searches, downloads) are left out of print, and other links show their address. `printSummary` in a section's frontmatter replaces its `summary` in the book.
 
 Needs Node 22.6+ (the script reads `property.ts` directly).
 

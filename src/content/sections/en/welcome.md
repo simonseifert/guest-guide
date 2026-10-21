@@ -9,9 +9,15 @@ Dear guests, welcome.
 
 This guide has everything you might need during your stay. If something isn't here, just message us.
 
+## 🔑 Arrival and key <!-- web -->
+
+The key is in a _\[lockbox / key safe\]_ at _\[where exactly\]_. **We'll send you the code by message on the day you arrive.**
+
+> Add a photo of the lockbox or the entrance here. This part only shows on the website: the printed book skips it, because whoever reads the book is already inside.
+
 ## 📶 Wi-Fi
 
-The Wi-Fi card on the homepage has a tap-to-join QR code. The password is also written on the fridge.
+The Wi-Fi card on the front page has a tap-to-join QR code. The password is also written on the fridge.
 
 ## ⏰ Key info
 

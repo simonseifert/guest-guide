@@ -9,6 +9,12 @@ Dragi gosti, dobrodošli.
 
 Ovaj vodič sadrži sve što vam može zatrebati tijekom boravka. Ako nešto ne nađete ovdje, samo nam pošaljite poruku.
 
+## 🔑 Dolazak i ključ <!-- web -->
+
+Ključ se nalazi u _\[sefu za ključ\]_ kod _\[točno mjesto\]_. **Šifru sefa dobit ćete porukom na dan dolaska.**
+
+> Ovdje dodajte fotografiju sefa ili ulaza. Ovaj dio vidi se samo na webu: tiskani vodič ga preskače jer je onaj tko ga čita već u kući.
+
 ## 📶 Wi-Fi
 
 Wi-Fi kartica na naslovnici ima QR kôd za spajanje jednim dodirom. Lozinka je također napisana na hladnjaku.

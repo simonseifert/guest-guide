@@ -31,6 +31,7 @@ const sections = all
 const slug = (s: typeof sections[number]) => s.id.split('/')[1];
 const rules = sections.find((s) => s.data.category === 'rules');
 const top10 = sections.find((s) => slug(s) === 'top10');
+const welcome = sections.find((s) => slug(s) === 'welcome');
 const indulge = sections.filter((s) => s.data.category === 'indulge');
 const tech = sections.filter((s) => s.data.category === 'tech');
 const stay = sections.filter((s) => s.data.category === 'stay');
@@ -52,8 +53,17 @@ const iconForSlug: Record<string, IconName> = {
   checkout: 'clock',
   explore: 'pine',
   emergency: 'phone',
+  important: 'info',
   welcome: 'antlers',
   glamping: 'cabin',
+};
+
+// Guests open the guide before they reach the door: directions and the key come first.
+const arrivalEyebrow: Partial<Record<Lang, string>> = {
+  en: 'Before you arrive',
+  de: 'Vor der Anreise',
+  hr: 'Prije dolaska',
+  it: "Prima dell'arrivo",
 };
 
 const shortVersionEyebrow: Partial<Record<Lang, string>> = {
@@ -65,6 +75,17 @@ const shortVersionEyebrow: Partial<Record<Lang, string>> = {
 ---
 <Layout isHomepage>
   <Hero lang={lang} />
+
+  {welcome && (
+    <RulesFeature
+      lang={lang}
+      href={`/${lang}/${slug(welcome)}`}
+      title={welcome.data.title}
+      desc={welcome.data.summary}
+      eyebrow={arrivalEyebrow}
+      icon="antlers"
+    />
+  )}
 
   <WifiCard ssid={WIFI_SSID} password={WIFI_PASSWORD} lang={lang} />
 

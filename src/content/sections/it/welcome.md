@@ -9,9 +9,15 @@ Cari ospiti, benvenuti.
 
 Questa guida raccoglie tutto ciò che potreste cercare durante il soggiorno. Se manca qualcosa, scriveteci pure.
 
+## 🔑 Arrivo e chiavi <!-- web -->
+
+La chiave si trova in una _\[cassetta di sicurezza\]_ presso _\[punto esatto\]_. **Vi invieremo il codice via messaggio il giorno dell'arrivo.**
+
+> Aggiungete qui una foto della cassetta o dell'ingresso. Questa parte compare solo sul sito: la guida stampata la salta, perché chi la legge è già in casa.
+
 ## 📶 Wi-Fi
 
-La carta Wi-Fi sulla pagina iniziale ha un codice QR per connettervi con un tocco. La password è anche scritta sul frigorifero.
+La carta Wi-Fi in prima pagina ha un codice QR per connettervi con un tocco. La password è anche scritta sul frigorifero.
 
 ## ⏰ Informazioni essenziali
 

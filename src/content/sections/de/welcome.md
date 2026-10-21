@@ -9,9 +9,15 @@ Liebe Gäste, herzlich willkommen.
 
 Dieser Leitfaden enthält alles, was Sie während Ihres Aufenthalts brauchen könnten. Sollte etwas fehlen, schreiben Sie uns einfach.
 
+## 🔑 Ankunft und Schlüssel <!-- web -->
+
+Der Schlüssel liegt in einem _\[Schlüsselsafe\]_ bei _\[genaue Stelle\]_. **Den Code schicken wir Ihnen am Anreisetag per Nachricht.**
+
+> Fügen Sie hier ein Foto des Schlüsselsafes oder des Eingangs ein. Dieser Teil erscheint nur auf der Website: Das gedruckte Handbuch lässt ihn weg, denn wer es liest, ist schon im Haus.
+
 ## 📶 Wi-Fi
 
-Die Wi-Fi-Karte auf der Startseite enthält einen QR-Code zum Verbinden mit einem Tipp. Das Passwort steht außerdem am Kühlschrank.
+Die Wi-Fi-Karte auf der Titelseite enthält einen QR-Code zum Verbinden mit einem Tipp. Das Passwort steht außerdem am Kühlschrank.
 
 ## ⏰ Wichtige Infos
 

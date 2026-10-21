@@ -14,6 +14,7 @@ export type IconName =
   | 'pool'
   | 'audio'
   | 'clock'
+  | 'info'
   | 'pine'
   | 'phone'
   | 'pin'
