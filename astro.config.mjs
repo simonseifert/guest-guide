@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeImageSize from './src/lib/rehype-image-size.mjs';
 import AstroPWA from '@vite-pwa/astro';
+import { unified } from '@astrojs/markdown-remark';
 import { PROPERTY } from './src/config/property';
 import { remarkAffiliates } from './src/lib/remark-affiliates.mjs';
 
@@ -17,6 +18,9 @@ export default defineConfig({
     },
   },
   markdown: {
+    // Astro 7 renders Markdown with Satteri by default. These are remark/rehype
+    // plugins, so keep the unified pipeline.
+    processor: unified(),
     remarkPlugins: [
       [remarkAffiliates, { affiliates: PROPERTY.affiliates }],
     ],
@@ -80,6 +84,9 @@ export default defineConfig({
         // site loads offline after the first visit. Cabin signal is patchy.
         globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,woff2,ico,txt,json}'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4MB per asset
+        // Astro 7 hands the PWA plugin a build config with minify off, which left
+        // the worker at 110 kB instead of 32 kB.
+        minify: true,
       },
     }),
   ],
